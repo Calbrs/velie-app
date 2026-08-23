@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 import '../../core/constants/post_media_type.dart';
 import '../../core/constants/post_status.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/utils/date_time_formatter.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 import '../../models/post_schedule_model.dart';
 import '../common/app_card.dart';
 import '../common/status_badge.dart';
@@ -116,7 +117,7 @@ class PostListCard extends StatelessWidget {
               const SizedBox(width: 4),
               Flexible(
                 child: Text(
-                  post.recurrenceSummary,
+                  post.localizedRecurrenceSummary(AppLocalizations.of(context)),
                   style: AppTextStyles.caption.copyWith(fontSize: 11),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -200,7 +201,7 @@ class PostListCard extends StatelessWidget {
             const SizedBox(width: 4),
             Flexible(
               child: Text(
-                post.recurrenceSummary,
+                post.localizedRecurrenceSummary(AppLocalizations.of(context)),
                 style: AppTextStyles.caption.copyWith(fontSize: 11),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,

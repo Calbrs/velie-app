@@ -51,8 +51,8 @@ class ScheduleService {
       });
       final res = await _api.dio.post('/posts', data: form);
       return PostScheduleModel.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -63,8 +63,8 @@ class ScheduleService {
         'status': ?status?.apiValue,
       });
       return _parseList(res.data);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -73,8 +73,8 @@ class ScheduleService {
     try {
       final res = await _api.dio.post('/posts/$postId/retry');
       return PostScheduleModel.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -83,8 +83,8 @@ class ScheduleService {
     try {
       final res = await _api.dio.get('/posts/$postId');
       return PostScheduleModel.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -121,8 +121,8 @@ class ScheduleService {
       });
       final res = await _api.dio.put('/posts/$postId', data: form);
       return PostScheduleModel.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -130,8 +130,8 @@ class ScheduleService {
   Future<void> deletePost(int postId) async {
     try {
       await _api.dio.delete('/posts/$postId');
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 

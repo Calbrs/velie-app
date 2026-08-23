@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -9,10 +9,12 @@ import '../../core/utils/phone_formatter.dart';
 import '../../core/utils/validators.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/instance_provider.dart';
+import '../../services/api_client.dart';
 import '../../widgets/common/backend_offline_banner.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 
 
-/// Login screen — phone + password, with a link back to register.
+/// Login screen â€” phone + password, with a link back to register.
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -65,15 +67,16 @@ class _LoginScreenState extends State<LoginScreen> {
       if (hasInstance) {
         context.go('/dashboard');
       } else {
-        // Registered but not linked — ask what they want to do
+        // Registered but not linked â€” ask what they want to do
         _showUnlinkedSheet();
       }
     } catch (e) {
       if (!mounted) return;
       _checkBackend();
+      final l10n = AppLocalizations.of(context);
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Kuingia haukufaulu: $e')));
+      ).showSnackBar(SnackBar(content: Text(l10n.loginFailed(apiErrorMessage(e, l10n)))));
     } finally {
       if (mounted) setState(() => _submitting = false);
     }

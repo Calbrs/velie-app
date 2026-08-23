@@ -1,4 +1,5 @@
-import 'package:dio/dio.dart';
+﻿import 'package:dio/dio.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 
 import '../core/constants/app_constants.dart';
 
@@ -39,26 +40,29 @@ class ApiClient {
   String? authToken;
 }
 
-/// Converts a [DioException] into a human-friendly Swahili message.
-String apiErrorMessage(DioException e) {
-  switch (e.type) {
-    case DioExceptionType.connectionTimeout:
-    case DioExceptionType.sendTimeout:
-    case DioExceptionType.receiveTimeout:
-      return 'Muda umeisha — angalia mtandao wako';
-    case DioExceptionType.connectionError:
-      return 'Haiwezi kuunganishwa na seva';
-    case DioExceptionType.badResponse:
-      final status = e.response?.statusCode;
-      if (status == 401) return 'Idhini imekataliwa (401)';
-      if (status == 404) return 'Hakuna maelezo yaliyopatikana (404)';
-      final msg = _extractMessage(e.response?.data);
-      return msg ?? 'Seva imerudisha hitilafu ($status)';
-    case DioExceptionType.cancel:
-      return 'Ombi limeghairiwa';
-    default:
-      return 'Hitilafu isiyojulikana';
+/// Converts any error into a human-friendly localized message.
+String apiErrorMessage(Object e, AppLocalizations l10n) {
+  if (e is DioException) {
+    switch (e.type) {
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
+        return l10n.apiErrorTimeout;
+      case DioExceptionType.connectionError:
+        return l10n.apiErrorConnectionFailed;
+      case DioExceptionType.badResponse:
+        final status = e.response?.statusCode;
+        if (status == 401) return l10n.apiErrorUnauthorized;
+        if (status == 404) return l10n.apiErrorNotFound;
+        final msg = _extractMessage(e.response?.data);
+        return msg ?? l10n.apiErrorServer(status?.toString() ?? 'unknown');
+      case DioExceptionType.cancel:
+        return l10n.apiErrorCancelled;
+      default:
+        return l10n.errorUnknown;
+    }
   }
+  return e.toString();
 }
 
 String? _extractMessage(dynamic data) {

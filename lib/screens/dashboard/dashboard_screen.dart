@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -12,13 +12,14 @@ import '../../models/business_model.dart';
 import '../../models/post_schedule_model.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/create_post_provider.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 import '../../providers/dashboard_provider.dart';
 import '../../providers/queue_provider.dart';
 import '../../providers/update_provider.dart';
 import '../../widgets/common/app_card.dart';
 import '../../widgets/post/post_list_card.dart';
 
-/// Dashboard — dark theme (Charcoal & Gold).
+/// Dashboard â€” dark theme (Charcoal & Gold).
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -260,10 +261,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
   /// Single horizontal card holding all three summary stats side by side,
   /// separated by thin vertical dividers (spec: "horizontal_single_card").
   Widget _summaryCard(BuildContext context, DashboardProvider dashboard) {
+    final l10n = AppLocalizations.of(context);
     final items = <_SummaryItem>[
-      _SummaryItem('Zinazosubiri', dashboard.pendingCount, AppColors.primary, status: PostStatus.pending),
-      _SummaryItem('Zilizotumwa', dashboard.sentCount, AppColors.statusSent, status: PostStatus.sent),
-      _SummaryItem('Zimeshindwa', dashboard.failedCount, AppColors.statusFailed, status: PostStatus.failed),
+      _SummaryItem(l10n.pending, dashboard.pendingCount, AppColors.primary, status: PostStatus.pending),
+      _SummaryItem(l10n.sent, dashboard.sentCount, AppColors.statusSent, status: PostStatus.sent),
+      _SummaryItem(l10n.failed, dashboard.failedCount, AppColors.statusFailed, status: PostStatus.failed),
     ];
 
     final loading = dashboard.isLoading && dashboard.posts.isEmpty;
@@ -284,7 +286,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Total Status', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
+                  Text(l10n.totalStatus, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
                   if (loading)
                     Container(width: 20, height: 16, decoration: BoxDecoration(color: AppColors.surfaceMuted, borderRadius: BorderRadius.circular(4)))
                   else
@@ -360,7 +362,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /// Vertical timeline of recent posts — a thin connecting line on the
+  /// Vertical timeline of recent posts â€” a thin connecting line on the
   /// left, each post shown as a dot + card with date/time, status and
   /// an overflow menu (spec: "vertical_timeline").
   Widget _recentPostsTimeline(BuildContext context, DashboardProvider dashboard) {

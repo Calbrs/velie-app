@@ -25,8 +25,8 @@ class AuthService {
         'password': password,
       });
       return _handleAuth(res);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -41,8 +41,8 @@ class AuthService {
         'password': password,
       });
       return _handleAuth(res);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -52,8 +52,8 @@ class AuthService {
     try {
       final res = await _api.dio.get('/auth/me');
       return BusinessModel.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -64,8 +64,8 @@ class AuthService {
       await _api.dio.post('/auth/forgot-password', data: {
         'phone': ownerPhone,
       });
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -79,8 +79,8 @@ class AuthService {
         'phone': ownerPhone,
         'otp': otp,
       });
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -96,8 +96,8 @@ class AuthService {
         'new_password': newPassword,
       });
       return _handleAuth(res);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 

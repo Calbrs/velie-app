@@ -1,0 +1,1036 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Velie",
+  "@appTitle": { "description": "The app name" },
+
+  "cancel": "Cancel",
+  "@cancel": {},
+
+  "confirm": "Confirm",
+  "@confirm": {},
+
+  "save": "Save",
+  "@save": {},
+
+  "delete": "Delete",
+  "@delete": {},
+
+  "retry": "Retry",
+  "@retry": {},
+
+  "close": "Close",
+  "@close": {},
+
+  "done": "Done",
+  "@done": {},
+
+  "ok": "OK",
+  "@ok": {},
+
+  "skip": "Skip",
+  "@skip": {},
+
+  "next": "Next",
+  "@next": {},
+
+  "back": "Back",
+  "@back": {},
+
+  "send": "Send",
+  "@send": {},
+
+  "edit": "Edit",
+  "@edit": {},
+
+  "loading": "Loading…",
+  "@loading": {},
+
+  "understood": "Got it",
+  "@understood": {},
+
+  "helpTitle": "Help",
+  "@helpTitle": {},
+
+  "errorUnknown": "Unknown error",
+  "@errorUnknown": {},
+
+  "pressAgainToExit": "Press again to exit",
+  "@pressAgainToExit": {},
+
+  "selectStatusType": "Select Status Type",
+  "@selectStatusType": {},
+
+  "videoStatus": "Video Status",
+  "@videoStatus": {},
+
+  "textStatus": "Text Status",
+  "@textStatus": {},
+
+  "imageStatus": "Image Status",
+  "@imageStatus": {},
+
+  "loginTitle": "Sign in to Velie",
+  "@loginTitle": {},
+
+  "phoneNumber": "Phone Number",
+  "@phoneNumber": {},
+
+  "password": "Password",
+  "@password": {},
+
+  "forgotPassword": "Forgot password?",
+  "@forgotPassword": {},
+
+  "signIn": "Sign In",
+  "@signIn": {},
+
+  "noAccount": "Don't have an account?",
+  "@noAccount": {},
+
+  "register": "Register",
+  "@register": {},
+
+  "loginFailed": "Login failed: {error}",
+  "@loginFailed": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "phoneNotLinked": "Number Not Linked",
+  "@phoneNotLinked": {},
+
+  "phoneRegisteredNotLinked": "Your number is registered but not linked to WhatsApp. Continue linking or register another number?",
+  "@phoneRegisteredNotLinked": {},
+
+  "continueToConnect": "Continue to Connect",
+  "@continueToConnect": {},
+
+  "registerOtherNumber": "Register Another Number",
+  "@registerOtherNumber": {},
+
+  "registerTitle": "Create Account",
+  "@registerTitle": {},
+
+  "yourName": "Your Name",
+  "@yourName": {},
+
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": {},
+
+  "repeatPassword": "Repeat Password",
+  "@repeatPassword": {},
+
+  "alreadyHaveAccount": "Already have an account?",
+  "@alreadyHaveAccount": {},
+
+  "signUp": "Sign Up",
+  "@signUp": {},
+
+  "registerFailed": "Registration failed: {error}",
+  "@registerFailed": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "forgotPasswordTitle": "Forgot Password",
+  "@forgotPasswordTitle": {},
+
+  "recoverAccount": "Recover Account",
+  "@recoverAccount": {},
+
+  "recoverAccountBody": "Enter your phone number to receive an OTP via WhatsApp.",
+  "@recoverAccountBody": {},
+
+  "phoneNumberOrUsername": "Phone Number",
+  "@phoneNumberOrUsername": {},
+
+  "sendOtp": "Send OTP",
+  "@sendOtp": {},
+
+  "cannotSendCode": "Cannot send code: {error}",
+  "@cannotSendCode": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "verifyOtpTitle": "Verify OTP",
+  "@verifyOtpTitle": {},
+
+  "enterOtp": "Enter OTP",
+  "@enterOtp": {},
+
+  "otpSentTo": "We sent a code to {phone} via WhatsApp.",
+  "@otpSentTo": {
+    "placeholders": { "phone": { "type": "String" } }
+  },
+
+  "otpCode": "OTP Code",
+  "@otpCode": {},
+
+  "verify": "Verify",
+  "@verify": {},
+
+  "codeExpiresIn": "Code expires in {seconds}s",
+  "@codeExpiresIn": {
+    "placeholders": { "seconds": { "type": "int" } }
+  },
+
+  "codeExpired": "Code expired.",
+  "@codeExpired": {},
+
+  "resend": "Resend",
+  "@resend": {},
+
+  "otpInvalid": "Code not accepted: {error}",
+  "@otpInvalid": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "newPasswordTitle": "New Password",
+  "@newPasswordTitle": {},
+
+  "setNewPassword": "Set New Password",
+  "@setNewPassword": {},
+
+  "passwordMinLength": "Make sure it is at least 6 characters.",
+  "@passwordMinLength": {},
+
+  "newPassword": "New Password",
+  "@newPassword": {},
+
+  "passwordTooShort": "Too short",
+  "@passwordTooShort": {},
+
+  "passwordsDoNotMatch": "Passwords do not match",
+  "@passwordsDoNotMatch": {},
+
+  "resetAndLogin": "Reset & Login",
+  "@resetAndLogin": {},
+
+  "passwordResetSuccess": "Password reset successfully!",
+  "@passwordResetSuccess": {},
+
+  "passwordResetFailed": "Failed to change password: {error}",
+  "@passwordResetFailed": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "connectWhatsapp": "Connect WhatsApp",
+  "@connectWhatsapp": {},
+
+  "pairingCodeLabel": "PAIRING CODE",
+  "@pairingCodeLabel": {},
+
+  "copy": "Copy",
+  "@copy": {},
+
+  "codeCopied": "Code copied",
+  "@codeCopied": {},
+
+  "connected": "Connected ✓",
+  "@connected": {},
+
+  "redirectingToDashboard": "Redirecting to dashboard…",
+  "@redirectingToDashboard": {},
+
+  "getNewCode": "Get New Code",
+  "@getNewCode": {},
+
+  "help": "Help",
+  "@help": {},
+
+  "rateLimited": "Rate limit reached",
+  "@rateLimited": {},
+
+  "cannotConnectToServer": "Cannot connect to server",
+  "@cannotConnectToServer": {},
+
+  "tryAgain": "Try Again",
+  "@tryAgain": {},
+
+  "cannotGetNewCode": "Could not get new code: {error}",
+  "@cannotGetNewCode": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "connectedSnackbar": "Connected! ✓",
+  "@connectedSnackbar": {},
+
+  "howToConnect": "How to Connect",
+  "@howToConnect": {},
+
+  "connectStep1": "Open WhatsApp on your phone",
+  "@connectStep1": {},
+
+  "connectStep2": "Go to: Settings → Linked Devices",
+  "@connectStep2": {},
+
+  "connectStep3": "Tap \"Link a Device\"",
+  "@connectStep3": {},
+
+  "connectStep4": "Choose \"Link with Phone Number\"",
+  "@connectStep4": {},
+
+  "connectStep5": "Enter the code shown here in WhatsApp",
+  "@connectStep5": {},
+
+  "signOutConfirmTitle": "Sign Out?",
+  "@signOutConfirmTitle": {},
+
+  "signOutConfirmBody": "Are you sure you want to delete your registration and start over?",
+  "@signOutConfirmBody": {},
+
+  "signOut": "Sign Out",
+  "@signOut": {},
+
+  "dashboardNoPosts": "No posts yet",
+  "@dashboardNoPosts": {},
+
+  "totalStatus": "Total Status",
+  "@totalStatus": {},
+
+  "pending": "Pending",
+  "@pending": {},
+
+  "sent": "Sent",
+  "@sent": {},
+
+  "failed": "Failed",
+  "@failed": {},
+
+  "profileTitle": "Profile",
+  "@profileTitle": {},
+
+  "logoutButton": "Sign out of account",
+  "@logoutButton": {},
+
+  "logoutConfirmTitle": "Sign Out?",
+  "@logoutConfirmTitle": {},
+
+  "logoutConfirmContent": "You will be removed from your Velie account.",
+  "@logoutConfirmContent": {},
+
+  "disconnectWhatsappTitle": "Disconnect WhatsApp?",
+  "@disconnectWhatsappTitle": {},
+
+  "disconnectWhatsappContent": "This WhatsApp number will be disconnected from Velie. Scheduled posts will be paused.",
+  "@disconnectWhatsappContent": {},
+
+  "disconnect": "Disconnect",
+  "@disconnect": {},
+
+  "languageTitle": "Language",
+  "@languageTitle": {},
+
+  "selectLanguage": "Select Language",
+  "@selectLanguage": {},
+
+  "reportProblemTitle": "Report a Problem",
+  "@reportProblemTitle": {},
+
+  "feedback": "Feedback",
+  "@feedback": {},
+
+  "linkedAccounts": "Linked Accounts",
+  "@linkedAccounts": {},
+
+  "whatsappPrimaryNumber": "WhatsApp (Primary number)",
+  "@whatsappPrimaryNumber": {},
+
+  "whatsappConnected": "WhatsApp connected",
+  "@whatsappConnected": {},
+
+  "notConnected": "Not connected",
+  "@notConnected": {},
+
+  "sendMessage": "Send Message",
+  "@sendMessage": {},
+
+  "describeProblem": "Describe your problem here…",
+  "@describeProblem": {},
+
+  "messageSentSuccess": "Your message was sent successfully.",
+  "@messageSentSuccess": {},
+
+  "messageSentFailed": "Failed to send message.",
+  "@messageSentFailed": {},
+
+  "createdLabel": "Created:",
+  "@createdLabel": {},
+
+  "unknownValue": "Unknown",
+  "@unknownValue": {},
+
+  "connectionLostTitle": "Connection Lost",
+  "@connectionLostTitle": {},
+
+  "connectionLostBody": "WhatsApp was removed from Linked Devices on your phone. Reconnect to continue posting statuses.",
+  "@connectionLostBody": {},
+
+  "reconnect": "Reconnect",
+  "@reconnect": {},
+
+  "statusPending": "Pending",
+  "@statusPending": {},
+
+  "statusSent": "Sent",
+  "@statusSent": {},
+
+  "statusFailed": "Failed",
+  "@statusFailed": {},
+
+  "statusDeleted": "Deleted",
+  "@statusDeleted": {},
+
+  "statusUnknown": "Unknown",
+  "@statusUnknown": {},
+
+  "repeatOnce": "Once",
+  "@repeatOnce": {},
+
+  "repeatWeekdays": "Mon–Fri",
+  "@repeatWeekdays": {},
+
+  "repeatDaily": "Daily",
+  "@repeatDaily": {},
+
+  "repeatWeekly": "Weekly",
+  "@repeatWeekly": {},
+
+  "repeatMonthly": "Monthly",
+  "@repeatMonthly": {},
+
+  "repeatOnceSubtitle": "Send once only",
+  "@repeatOnceSubtitle": {},
+
+  "repeatWeekdaysSubtitle": "Send Mon to Fri every week",
+  "@repeatWeekdaysSubtitle": {},
+
+  "repeatDailySubtitle": "Send every day",
+  "@repeatDailySubtitle": {},
+
+  "repeatWeeklySubtitle": "Send every week",
+  "@repeatWeeklySubtitle": {},
+
+  "repeatMonthlySubtitle": "Send every month",
+  "@repeatMonthlySubtitle": {},
+
+  "apiErrorTimeout": "Connection timed out — check your network",
+  "@apiErrorTimeout": {},
+
+  "apiErrorConnectionFailed": "Cannot connect to server",
+  "@apiErrorConnectionFailed": {},
+
+  "apiErrorUnauthorized": "Authorization denied (401)",
+  "@apiErrorUnauthorized": {},
+
+  "apiErrorNotFound": "No information found (404)",
+  "@apiErrorNotFound": {},
+
+  "apiErrorCancelled": "Request cancelled",
+  "@apiErrorCancelled": {},
+
+  "apiErrorServer": "Server returned an error ({code})",
+  "@apiErrorServer": {
+    "placeholders": { "code": { "type": "String" } }
+  },
+
+  "instanceIdRequired": "Instance ID is required",
+  "@instanceIdRequired": {},
+
+  "backendOfflineTitle": "Server Unavailable",
+  "@backendOfflineTitle": {},
+
+  "backendOfflineBody": "Cannot reach the Velie server. Check your internet connection.",
+  "@backendOfflineBody": {},
+
+  "retryConnection": "Retry",
+  "@retryConnection": {},
+
+  "offlineWarning": "No internet connection",
+  "@offlineWarning": {},
+
+  "dispatchDisclaimer": "Posts scheduled at the same time will be sent 30–60 seconds apart.",
+  "@dispatchDisclaimer": {},
+
+  "onboardingStep1Title": "Open WhatsApp Menu",
+  "@onboardingStep1Title": {},
+
+  "onboardingStep1Body": "Open WhatsApp on your phone, then tap the three-dot menu (⋮) at the top right.",
+  "@onboardingStep1Body": {},
+
+  "onboardingStep2Title": "Select \"Linked Devices\"",
+  "@onboardingStep2Title": {},
+
+  "onboardingStep2Body": "From the menu that opens, select \"Linked Devices\".",
+  "@onboardingStep2Body": {},
+
+  "onboardingStep3Title": "Tap \"Link a Device\"",
+  "@onboardingStep3Title": {},
+
+  "onboardingStep3Body": "On the Linked Devices screen, tap the green \"Link a Device\" button.",
+  "@onboardingStep3Body": {},
+
+  "onboardingStep4Title": "Link with a Number",
+  "@onboardingStep4Title": {},
+
+  "onboardingStep4Body": "On the WhatsApp screen, tap \"Link with phone number instead\" instead of scanning the QR code.",
+  "@onboardingStep4Body": {},
+
+  "onboardingStep5Title": "Enter the Code Provided",
+  "@onboardingStep5Title": {},
+
+  "onboardingStep5Body": "Enter the code shown by Velie in the designated place. Do not enter the code if you did not request it yourself.",
+  "@onboardingStep5Body": {},
+
+  "onboardingContinue": "Continue",
+  "@onboardingContinue": {},
+
+  "validatorNameRequired": "Name is required",
+  "@validatorNameRequired": {},
+
+  "validatorPhoneRequired": "Phone number is required",
+  "@validatorPhoneRequired": {},
+
+  "validatorPhoneInvalid": "Enter a valid phone number",
+  "@validatorPhoneInvalid": {},
+
+  "validatorPasswordRequired": "Password is required",
+  "@validatorPasswordRequired": {},
+
+  "validatorPasswordShort": "Password must be at least 6 characters",
+  "@validatorPasswordShort": {},
+
+  "validatorPasswordMismatch": "Passwords do not match",
+  "@validatorPasswordMismatch": {},
+
+  "scheduleTitle": "Schedule Post",
+  "@scheduleTitle": {},
+
+  "scheduleDateTime": "Date & Time",
+  "@scheduleDateTime": {},
+
+  "scheduleRepeat": "Repeat",
+  "@scheduleRepeat": {},
+
+  "schedulePost": "Schedule Post",
+  "@schedulePost": {},
+
+  "queueTitle": "Queue",
+  "@queueTitle": {},
+
+  "queueEmpty": "No posts found",
+  "@queueEmpty": {},
+
+  "queueFilterAll": "All",
+  "@queueFilterAll": {},
+
+  "queueSearch": "Search posts…",
+  "@queueSearch": {},
+
+  "postDetailTitle": "Post Detail",
+  "@postDetailTitle": {},
+
+  "postDetailCaption": "Caption",
+  "@postDetailCaption": {},
+
+  "postDetailScheduledTime": "Scheduled Time",
+  "@postDetailScheduledTime": {},
+
+  "postDetailViewers": "Viewers",
+  "@postDetailViewers": {},
+
+  "postDetailRepeat": "Repeat",
+  "@postDetailRepeat": {},
+
+  "postDetailRetries": "Retries",
+  "@postDetailRetries": {},
+
+  "postDetailPublishedAt": "Published At",
+  "@postDetailPublishedAt": {},
+
+  "deletePostConfirmTitle": "Delete Post?",
+  "@deletePostConfirmTitle": {},
+
+  "deletePostConfirmBody": "This post will be permanently deleted.",
+  "@deletePostConfirmBody": {},
+
+  "retryPost": "Retry Post",
+  "@retryPost": {},
+
+  "createPostTitle": "Create Post",
+  "@createPostTitle": {},
+
+  "draftSaved": "Draft saved",
+  "@draftSaved": {},
+
+  "saveDraftTitle": "Save Draft?",
+  "@saveDraftTitle": {},
+
+  "saveDraftBody": "Do you want to save this as a draft to continue later?",
+  "@saveDraftBody": {},
+
+  "saveDraft": "Save Draft",
+  "@saveDraft": {},
+
+  "discard": "Discard",
+  "@discard": {},
+
+  "draftsTitle": "Drafts",
+  "@draftsTitle": {},
+
+  "noDrafts": "No drafts yet",
+  "@noDrafts": {},
+
+  "captionHint": "Write your caption here…",
+  "@captionHint": {},
+
+  "addCaption": "Add caption",
+  "@addCaption": {},
+
+  "chooseImage": "Choose Image",
+  "@chooseImage": {},
+
+  "chooseVideo": "Choose Video",
+  "@chooseVideo": {},
+
+  "notificationsTitle": "Notifications",
+  "@notificationsTitle": {},
+
+  "noNotifications": "No notifications",
+  "@noNotifications": {},
+
+  "updateAvailable": "Update Available",
+  "@updateAvailable": {},
+
+  "updateNow": "Update Now",
+  "@updateNow": {},
+
+  "updaterTitle": "App Update",
+  "@updaterTitle": {},
+
+  "downloadingUpdate": "Downloading update…",
+  "@downloadingUpdate": {},
+
+  "updateReady": "Update ready to install",
+  "@updateReady": {},
+
+  "installUpdate": "Install Update",
+  "@installUpdate": {},
+
+  "languageEnglish": "English",
+  "@languageEnglish": {},
+
+  "languageSwahili": "Kiswahili",
+  "@languageSwahili": {},
+
+  "languageChinese": "中文",
+  "@languageChinese": {},
+
+  "queueTitle2": "Posts Queue",
+  "@queueTitle2": {},
+
+  "queueSearchHint": "Search by caption...",
+  "@queueSearchHint": {},
+
+  "queueFilterPending": "Pending",
+  "@queueFilterPending": {},
+
+  "queueFilterSent": "Sent",
+  "@queueFilterSent": {},
+
+  "queueFilterFailed": "Failed",
+  "@queueFilterFailed": {},
+
+  "queueLoadError": "Could not load queue",
+  "@queueLoadError": {},
+
+  "queueNoPostsYet": "No posts scheduled yet",
+  "@queueNoPostsYet": {},
+
+  "queueNoPostsForFilter": "No posts with this status",
+  "@queueNoPostsForFilter": {},
+
+  "queueStartCreating": "Start creating your first post",
+  "@queueStartCreating": {},
+
+  "queueChangeFilter": "Change the filter above",
+  "@queueChangeFilter": {},
+
+  "postDetailChannel": "Channel",
+  "@postDetailChannel": {},
+
+  "postDetailScheduledTime2": "Scheduled Time",
+  "@postDetailScheduledTime2": {},
+
+  "postDetailRecurrence": "Recurrence",
+  "@postDetailRecurrence": {},
+
+  "postDetailStatus": "Status",
+  "@postDetailStatus": {},
+
+  "postDetailViewers2": "Viewers",
+  "@postDetailViewers2": {},
+
+  "postDetailRetries2": "Retries",
+  "@postDetailRetries2": {},
+
+  "postDetailCreatedAt": "Created At",
+  "@postDetailCreatedAt": {},
+
+  "postNotFound": "Post not found",
+  "@postNotFound": {},
+
+  "backToQueue": "Back to Queue",
+  "@backToQueue": {},
+
+  "noCaption": "(No caption)",
+  "@noCaption": {},
+
+  "deletePostPendingContent": "This post will be removed from the queue. This action cannot be undone.",
+  "@deletePostPendingContent": {},
+
+  "deletePostSentContent": "This status will also be deleted from WhatsApp. This action cannot be undone.",
+  "@deletePostSentContent": {},
+
+  "createPostAppBarTitle": "Create",
+  "@createPostAppBarTitle": {},
+
+  "createPostSubtitle": "Create a new video, text, or image status.",
+  "@createPostSubtitle": {},
+
+  "videoStatusSubtitle": "Create or edit a video with music and text overlays.",
+  "@videoStatusSubtitle": {},
+
+  "textStatusSubtitle": "Publish your message with colors and fonts.",
+  "@textStatusSubtitle": {},
+
+  "imageStatusSubtitle": "Upload an image with your caption.",
+  "@imageStatusSubtitle": {},
+
+  "scheduleAppBarTitle": "Schedule Post",
+  "@scheduleAppBarTitle": {},
+
+  "postPreview": "Post Preview",
+  "@postPreview": {},
+
+  "scheduleSection": "Schedule",
+  "@scheduleSection": {},
+
+  "repeatsLabel": "Repeats",
+  "@repeatsLabel": {},
+
+  "scheduleSummarySection": "Schedule Summary",
+  "@scheduleSummarySection": {},
+
+  "firstPost": "First post:",
+  "@firstPost": {},
+
+  "repeatsPrefix": "Repeats:",
+  "@repeatsPrefix": {},
+
+  "endsPrefix": "Ends:",
+  "@endsPrefix": {},
+
+  "schedulePastTimeError": "Set a future time",
+  "@schedulePastTimeError": {},
+
+  "scheduleSuccess": "Post scheduled ✓",
+  "@scheduleSuccess": {},
+
+  "scheduleError": "Error: {error}",
+  "@scheduleError": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "scheduleButton": "SCHEDULE",
+  "@scheduleButton": {},
+
+  "repeatSheetTitle": "Repeat this schedule",
+  "@repeatSheetTitle": {},
+
+  "doesNotRepeat": "Does not repeat",
+  "@doesNotRepeat": {},
+
+  "everyDay": "Every day",
+  "@everyDay": {},
+
+  "everyWeek": "Every week",
+  "@everyWeek": {},
+
+  "everyMonth": "Every month",
+  "@everyMonth": {},
+
+  "repeatOnDays": "Repeat on",
+  "@repeatOnDays": {},
+
+  "endsSection": "Ends",
+  "@endsSection": {},
+
+  "endsNever": "Never",
+  "@endsNever": {},
+
+  "endsOnDate": "On a date",
+  "@endsOnDate": {},
+
+  "endsAfterCount": "After a number of times",
+  "@endsAfterCount": {},
+
+  "timesLabel": "Times: ",
+  "@timesLabel": {},
+
+  "neverEnds": "Never ends",
+  "@neverEnds": {},
+
+  "endsAfterN": "Ends after {count} times",
+  "@endsAfterN": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "everyWeekOn": "Every week on {days}",
+  "@everyWeekOn": {
+    "placeholders": { "days": { "type": "String" } }
+  },
+
+  "textStatusAppBarNew": "Text Status",
+  "@textStatusAppBarNew": {},
+
+  "textStatusAppBarEdit": "Edit Text",
+  "@textStatusAppBarEdit": {},
+
+  "editingBanner": "You are continuing to edit the original post.",
+  "@editingBanner": {},
+
+  "textStatusHint": "Write your status here…",
+  "@textStatusHint": {},
+
+  "recentTextStatuses": "Recent Text Statuses",
+  "@recentTextStatuses": {},
+
+  "repost": "Repost",
+  "@repost": {},
+
+  "continueToSchedule": "Continue to Schedule",
+  "@continueToSchedule": {},
+
+  "imageStatusAppBarNew": "Image Status",
+  "@imageStatusAppBarNew": {},
+
+  "imageStatusAppBarEdit": "Edit Image",
+  "@imageStatusAppBarEdit": {},
+
+  "imageEditingBanner": "You are continuing to edit the original post. The original image will be kept if you don't choose a new one.",
+  "@imageEditingBanner": {},
+
+  "writeCaptionLabel": "Write Your Caption",
+  "@writeCaptionLabel": {},
+
+  "captionHint2": "Write your post caption here…",
+  "@captionHint2": {},
+
+  "selectedImages": "Selected Images",
+  "@selectedImages": {},
+
+  "chooseImageFirst": "Please choose an image first",
+  "@chooseImageFirst": {},
+
+  "videoStatusAppBarNew": "Video Status",
+  "@videoStatusAppBarNew": {},
+
+  "videoStatusAppBarEdit": "Edit Video",
+  "@videoStatusAppBarEdit": {},
+
+  "videoEditingBanner": "You are continuing to edit the original post. The original video will be kept if you don't choose a new one.",
+  "@videoEditingBanner": {},
+
+  "chooseVideoFirst": "Please choose a video first",
+  "@chooseVideoFirst": {},
+
+  "videoRenderFailed": "Failed to process video: {error}",
+  "@videoRenderFailed": {
+    "placeholders": { "error": { "type": "String" } }
+  },
+
+  "captionTool": "Caption",
+  "@captionTool": {},
+
+  "logoTool": "Logo",
+  "@logoTool": {},
+
+  "musicTool": "Music",
+  "@musicTool": {},
+
+  "quickTagsTool": "Quick Tags",
+  "@quickTagsTool": {},
+
+  "volumeTool": "Volume",
+  "@volumeTool": {},
+
+  "volumeDrawerTitle": "Volume",
+  "@volumeDrawerTitle": {},
+
+  "originalVolumeLabel": "Original Audio",
+  "@originalVolumeLabel": {},
+
+  "musicVolumeLabel": "Music",
+  "@musicVolumeLabel": {},
+
+  "logoWatermarkTitle": "Logo/Watermark",
+  "@logoWatermarkTitle": {},
+
+  "captionDrawerTitle": "Caption",
+  "@captionDrawerTitle": {},
+
+  "videoCaptionHint": "Write your video caption here…",
+  "@videoCaptionHint": {},
+
+  "quickTagsSheetTitle": "Quick Tags",
+  "@quickTagsSheetTitle": {},
+
+  "addTagChip": "Add Tag",
+  "@addTagChip": {},
+
+  "addQuickTagTitle": "Add Quick Tag",
+  "@addQuickTagTitle": {},
+
+  "tagNameLabel": "Name (for chip)",
+  "@tagNameLabel": {},
+
+  "tagContentLabel": "Text to insert",
+  "@tagContentLabel": {},
+
+  "renderPreparing": "Preparing video on device…",
+  "@renderPreparing": {},
+
+  "renderProcessing": "Processing video… {pct}%",
+  "@renderProcessing": {
+    "placeholders": { "pct": { "type": "int" } }
+  },
+
+  "renderWarning": "Do not leave this page — processing on your phone.",
+  "@renderWarning": {},
+
+  "imageDraftsTitle": "Image Drafts",
+  "@imageDraftsTitle": {},
+
+  "noDraftsImage": "No image drafts found",
+  "@noDraftsImage": {},
+
+  "videoDraftsTitle": "Video Drafts",
+  "@videoDraftsTitle": {},
+
+  "noDraftsVideo": "No video drafts found",
+  "@noDraftsVideo": {},
+
+  "deleteDraftTitle": "Delete Draft",
+  "@deleteDraftTitle": {},
+
+  "deleteDraftContent": "Are you sure you want to delete this draft?",
+  "@deleteDraftContent": {},
+
+  "newImageButton": "Create New Image",
+  "@newImageButton": {},
+
+  "newVideoButton": "Create New Video",
+  "@newVideoButton": {},
+
+  "notificationsAppBarTitle": "Notifications",
+  "@notificationsAppBarTitle": {},
+
+  "updateReadyTitle": "New Version Ready",
+  "@updateReadyTitle": {},
+
+  "updateDownloadingTitle": "Downloading New Version...",
+  "@updateDownloadingTitle": {},
+
+  "updateReadySubtitle": "Tap here to update your App now.",
+  "@updateReadySubtitle": {},
+
+  "noNotificationsTitle": "No New Notifications",
+  "@noNotificationsTitle": {},
+
+  "noNotificationsBody": "All notifications about your account will appear here.",
+  "@noNotificationsBody": {},
+
+  "updaterAppBarTitle": "New Version Available",
+  "@updaterAppBarTitle": {},
+
+  "updaterSubtitle": "Velie v{version} is ready. Download now to enjoy these improvements:",
+  "@updaterSubtitle": {
+    "placeholders": { "version": { "type": "String" } }
+  },
+
+  "featurePerformance": "Faster performance",
+  "@featurePerformance": {},
+
+  "featureBugFixes": "Bug fixes",
+  "@featureBugFixes": {},
+
+  "featureNewLook": "New and improved look",
+  "@featureNewLook": {},
+
+  "installButton": "Update Now",
+  "@installButton": {},
+
+  "skipForNow": "Skip for now",
+  "@skipForNow": {},
+
+  "backendOfflineBannerTitle": "Server Unavailable",
+  "@backendOfflineBannerTitle": {},
+
+  "backendOfflineBannerBody": "Cannot connect to the Velie server. Check your network and try again.",
+  "@backendOfflineBannerBody": {},
+
+  "backendOfflineRetry": "Try again",
+  "@backendOfflineRetry": {},
+
+  "networkOfflineTitle": "No Internet Connection",
+  "@networkOfflineTitle": {},
+
+  "networkOfflineBody": "Please check your network settings. Velie will automatically reconnect when online.",
+  "@networkOfflineBody": {},
+
+  "fullCaptionTitle": "Full Caption",
+  "@fullCaptionTitle": {},
+
+  "retryLabel": "Retry",
+  "@retryLabel": {},
+
+  "saveDraftTitle2": "Save as Draft?",
+  "@saveDraftTitle2": {},
+
+  "saveDraftBody2": "You have unsaved changes. Would you like to save as a draft before leaving?",
+  "@saveDraftBody2": {},
+
+  "saveDraftButton": "Save as Draft",
+  "@saveDraftButton": {},
+
+  "validatorNameEmpty": "Please fill in your name",
+  "@validatorNameEmpty": {},
+
+  "validatorNameShort": "Name is too short",
+  "@validatorNameShort": {},
+
+  "validatorPhoneEmpty": "Please fill in your phone number",
+  "@validatorPhoneEmpty": {},
+
+  "validatorPhoneLength": "Phone number must have 9 digits",
+  "@validatorPhoneLength": {},
+
+  "validatorPasswordEmpty": "Please fill in password",
+  "@validatorPasswordEmpty": {},
+
+  "validatorPasswordLength": "Password must be 6 or more characters",
+  "@validatorPasswordLength": {},
+
+  "validatorConfirmEmpty": "Please repeat your password",
+  "@validatorConfirmEmpty": {},
+
+  "validatorConfirmMismatch": "Passwords do not match",
+  "@validatorConfirmMismatch": {},
+
+  "validatorCaptionEmpty": "Please write a caption",
+  "@validatorCaptionEmpty": {},
+
+  "validatorCaptionLong": "Caption exceeds 2200 characters",
+  "@validatorCaptionLong": {}
+}
+

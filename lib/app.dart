@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,11 +13,13 @@ import 'core/theme/app_theme.dart';
 import 'providers/auth_provider.dart';
 import 'providers/dashboard_provider.dart';
 import 'providers/instance_provider.dart';
+import 'providers/locale_provider.dart';
 import 'providers/queue_provider.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 import 'widgets/common/global_network_drawer.dart';
 import 'widgets/common/primary_button.dart';
 
-/// App root — MaterialApp.router wired to the guard-driven GoRouter.
+/// App root â€” MaterialApp.router wired to the guard-driven GoRouter.
 ///
 /// The app is dark-only: it always builds the dark theme and never offers a
 /// light/system toggle.
@@ -163,6 +165,9 @@ class _VelieAppState extends State<VelieApp> {
     return MaterialApp.router(
       title: 'Velie',
       debugShowCheckedModeBanner: false,
+      locale: context.watch<LocaleProvider>().locale,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: AppTheme.dark,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.dark,
@@ -175,7 +180,7 @@ class _VelieAppState extends State<VelieApp> {
 }
 
 /// Unclosable bottom drawer shown when the WhatsApp instance was unlinked from
-/// the phone's "Linked Devices". The only way out is to re-link — the button
+/// the phone's "Linked Devices". The only way out is to re-link â€” the button
 /// routes to the pairing screen, which generates a fresh code for the same
 /// phone number.
 class _ReconnectSheet extends StatelessWidget {
@@ -204,20 +209,19 @@ class _ReconnectSheet extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Muunganisho umekatwa',
+              AppLocalizations.of(context).connectionLostTitle,
               textAlign: TextAlign.center,
               style: AppTextStyles.titleMedium.copyWith(fontSize: 18),
             ),
             const SizedBox(height: 10),
             Text(
-              'WhatsApp iliondolewa kwenye Vifaa Vilivyounganishwa (Linked Devices) kwenye simu yako. '
-              'Unganisha tena ili uendelee kutuma status.',
+              AppLocalizations.of(context).connectionLostBody,
               textAlign: TextAlign.center,
               style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textSecondary),
             ),
             const SizedBox(height: 24),
             PrimaryButton(
-              label: 'Unganisha Tena',
+              label: AppLocalizations.of(context).reconnect,
               icon: Icons.phone_android,
               onPressed: onReconnect,
             ),

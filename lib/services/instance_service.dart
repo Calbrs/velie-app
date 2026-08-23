@@ -32,8 +32,8 @@ class InstanceService {
     try {
       final res = await _api.dio.post('/admin/instances');
       return WhatsAppInstanceModel.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -47,8 +47,8 @@ class InstanceService {
         options: _pairingOptions,
       );
       return WhatsAppInstanceModel.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -59,8 +59,8 @@ class InstanceService {
     try {
       final res = await _api.dio.get('/admin/instances/$id/status');
       return WhatsAppInstanceModel.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -72,7 +72,7 @@ class InstanceService {
       return WhatsAppInstanceModel.fromJson(res.data as Map<String, dynamic>);
     } on DioException catch (e) {
       if (e.response?.statusCode == 404) return null;
-      throw apiErrorMessage(e);
+      rethrow;
     }
   }
 
@@ -82,8 +82,8 @@ class InstanceService {
     if (id <= 0) return;
     try {
       await _api.dio.delete('/admin/instances/$id');
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 }

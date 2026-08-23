@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
+import '../../providers/locale_provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import 'package:dio/dio.dart';
@@ -128,7 +130,10 @@ class ProfileScreen extends StatelessWidget {
       context: context,
       backgroundColor: AppColors.surface,
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-      builder: (context) {
+      builder: (sheetContext) {
+        final l10n = AppLocalizations.of(context);
+        final currentLocale = context.watch<LocaleProvider>().locale.languageCode;
+        
         return SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
@@ -136,23 +141,36 @@ class ProfileScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: Text('Chagua Lugha / Select Language', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(l10n.selectLanguage, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(height: 16),
-                ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-                  title: Text('Kiswahili', style: AppTextStyles.titleMedium),
-                  trailing: const Icon(Icons.check_circle, color: AppColors.primary),
-                  onTap: () => Navigator.pop(context),
-                ),
-                ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-                  title: Text('English', style: AppTextStyles.titleMedium),
+                _LanguageTile(
+                  title: l10n.languageEnglish,
+                  localeCode: 'en',
+                  currentLocale: currentLocale,
                   onTap: () {
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Not implemented yet')));
+                    context.read<LocaleProvider>().setLocale(const Locale('en'));
+                    Navigator.pop(sheetContext);
+                  },
+                ),
+                _LanguageTile(
+                  title: l10n.languageSwahili,
+                  localeCode: 'sw',
+                  currentLocale: currentLocale,
+                  onTap: () {
+                    context.read<LocaleProvider>().setLocale(const Locale('sw'));
+                    Navigator.pop(sheetContext);
+                  },
+                ),
+                _LanguageTile(
+                  title: l10n.languageChinese,
+                  localeCode: 'zh',
+                  currentLocale: currentLocale,
+                  onTap: () {
+                    context.read<LocaleProvider>().setLocale(const Locale('zh'));
+                    Navigator.pop(sheetContext);
                   },
                 ),
               ],
@@ -450,6 +468,31 @@ class _ReportProblemSheetState extends State<_ReportProblemSheet> {
           const SizedBox(height: 24),
         ],
       ),
+    );
+  }
+}
+
+class _LanguageTile extends StatelessWidget {
+  const _LanguageTile({
+    required this.title,
+    required this.localeCode,
+    required this.currentLocale,
+    required this.onTap,
+  });
+
+  final String title;
+  final String localeCode;
+  final String currentLocale;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final isSelected = localeCode == currentLocale;
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+      title: Text(title, style: AppTextStyles.titleMedium),
+      trailing: isSelected ? const Icon(Icons.check_circle, color: AppColors.primary) : null,
+      onTap: onTap,
     );
   }
 }

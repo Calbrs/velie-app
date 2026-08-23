@@ -1,4 +1,4 @@
-import 'dart:io';
+﻿import 'dart:io';
 import 'dart:typed_data';
 
 import '../core/constants/app_constants.dart';
@@ -6,6 +6,7 @@ import '../core/constants/post_channel.dart';
 import '../core/constants/post_media_type.dart';
 import '../core/constants/post_status.dart';
 import '../core/constants/post_repeat.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 
 /// Mirrors the `posts_schedule` table (backend `/api/posts`).
 class PostScheduleModel {
@@ -62,26 +63,26 @@ class PostScheduleModel {
   bool get isDeleted => status == PostStatus.deleted;
   bool get isText => mediaType == PostMediaType.text;
 
-  String get recurrenceSummary {
+  String localizedRecurrenceSummary(AppLocalizations l10n) {
     final rule = recurrenceRule;
-    if (rule == null) return repeat.label;
+    if (rule == null) return repeat.localizedLabel(l10n);
     final type = rule['type']?.toString();
     final interval = rule['interval'] ?? 1;
-    if (type == 'daily') return interval > 1 ? 'Every $interval days' : 'Every day';
+    if (type == 'daily') return interval > 1 ? l10n.everyNDays(interval) : l10n.everyDay;
     if (type == 'weekly') {
       final days = rule['days'];
       if (days is List && days.isNotEmpty) {
         final labels = days.map((d) => d.toString().substring(0, 1).toUpperCase() + d.toString().substring(1)).join(', ');
-        return interval > 1 ? 'Every $interval weeks on $labels' : 'Every week on $labels';
+        return interval > 1 ? l10n.everyNWeeksOnDays(interval, labels) : l10n.everyWeekOn(labels);
       }
-      return interval > 1 ? 'Every $interval weeks' : 'Every week';
+      return interval > 1 ? l10n.everyNWeeks(interval) : l10n.everyWeek;
     }
-    if (type == 'monthly') return interval > 1 ? 'Every $interval months' : 'Every month';
+    if (type == 'monthly') return interval > 1 ? l10n.everyNMonths(interval) : l10n.everyMonth;
     if (type == 'custom') {
-      if (interval > 1) return 'Every $interval days';
-      return 'Custom';
+      if (interval > 1) return l10n.everyNDays(interval);
+      return l10n.customRecurrence;
     }
-    return repeat.label;
+    return repeat.localizedLabel(l10n);
   }
 
   factory PostScheduleModel.fromJson(Map<String, dynamic> json) {

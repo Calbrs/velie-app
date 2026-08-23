@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 
 import '../theme/app_colors.dart';
 
@@ -33,12 +34,12 @@ enum PostStatus {
         PostStatus.unknown => 'unknown',
       };
 
-  String get label => switch (this) {
-        PostStatus.pending => 'Inasubiri',
-        PostStatus.sent => 'Imetumwa',
-        PostStatus.failed => 'Imeshindwa',
-        PostStatus.deleted => 'Imefutwa',
-        PostStatus.unknown => 'Haijulikani',
+  String localizedLabel(AppLocalizations l10n) => switch (this) {
+        PostStatus.pending => l10n.statusPending,
+        PostStatus.sent => l10n.statusSent,
+        PostStatus.failed => l10n.statusFailed,
+        PostStatus.deleted => l10n.statusDeleted,
+        PostStatus.unknown => l10n.statusUnknown,
       };
 
   Color get color => switch (this) {

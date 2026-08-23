@@ -10,6 +10,7 @@ import 'providers/auth_provider.dart';
 import 'providers/create_post_provider.dart';
 import 'providers/dashboard_provider.dart';
 import 'providers/instance_provider.dart';
+import 'providers/locale_provider.dart';
 import 'providers/network_provider.dart';
 import 'providers/onboarding_provider.dart';
 import 'providers/queue_provider.dart';
@@ -37,6 +38,10 @@ Future<void> main() async {
     ),
   );
 
+  // Load persisted locale before the first frame so there is no flash.
+  final localeProvider = LocaleProvider();
+  await localeProvider.load();
+
   final simulate = AppConstants.simulationEnabled;
   final authService = simulate ? MockAuthService() : AuthService();
   final instanceService = simulate ? MockInstanceService() : InstanceService();
@@ -47,6 +52,7 @@ Future<void> main() async {
       authService: authService,
       instanceService: instanceService,
       scheduleService: scheduleService,
+      localeProvider: localeProvider,
     ),
   );
 }
@@ -57,16 +63,19 @@ class VelieRoot extends StatelessWidget {
     required this.authService,
     required this.instanceService,
     required this.scheduleService,
+    required this.localeProvider,
   });
 
   final AuthService authService;
   final InstanceService instanceService;
   final ScheduleService scheduleService;
+  final LocaleProvider localeProvider;
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider.value(value: localeProvider),
         // The single source of truth — registered first so every other
         // provider/screen can ask the session for global data.
         ChangeNotifierProvider(

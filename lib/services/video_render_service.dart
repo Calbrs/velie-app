@@ -68,8 +68,8 @@ class VideoRenderService {
         throw 'Upload haukurejesha URL';
       }
       return url;
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -80,8 +80,8 @@ class VideoRenderService {
       final data = res.data as Map<String, dynamic>;
       final jobId = data['job_id'] ?? data['jobId'];
       return (jobId as num?)?.toInt() ?? 0;
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 
@@ -92,8 +92,8 @@ class VideoRenderService {
         'job_id': jobId,
       });
       return VideoRenderResult.fromJson(res.data as Map<String, dynamic>);
-    } on DioException catch (e) {
-      throw apiErrorMessage(e);
+    } on DioException {
+      rethrow;
     }
   }
 

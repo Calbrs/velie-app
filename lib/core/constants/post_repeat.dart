@@ -1,3 +1,5 @@
+﻿import 'package:velie_app/l10n/app_localizations.dart';
+
 /// Repeat rule for a scheduled post.
 enum PostRepeat {
   once,
@@ -14,20 +16,20 @@ enum PostRepeat {
         PostRepeat.monthly => 'monthly',
       };
 
-  String get label => switch (this) {
-        PostRepeat.once => 'Mara Moja',
-        PostRepeat.weekdays => 'Jumatatu\u2013Ijumaa',
-        PostRepeat.daily => 'Kila Siku',
-        PostRepeat.weekly => 'Kila Wiki',
-        PostRepeat.monthly => 'Kila Mwezi',
+  String localizedLabel(AppLocalizations l10n) => switch (this) {
+        PostRepeat.once => l10n.repeatOnce,
+        PostRepeat.weekdays => l10n.repeatWeekdays,
+        PostRepeat.daily => l10n.repeatDaily,
+        PostRepeat.weekly => l10n.repeatWeekly,
+        PostRepeat.monthly => l10n.repeatMonthly,
       };
 
-  String get subtitle => switch (this) {
-        PostRepeat.once => 'Tuma mara moja tu',
-        PostRepeat.weekdays => 'Tuma Jumatatu hadi Ijumaa kila wiki',
-        PostRepeat.daily => 'Tuma kila siku',
-        PostRepeat.weekly => 'Tuma kila wiki',
-        PostRepeat.monthly => 'Tuma kila mwezi',
+  String localizedSubtitle(AppLocalizations l10n) => switch (this) {
+        PostRepeat.once => l10n.repeatOnceSubtitle,
+        PostRepeat.weekdays => l10n.repeatWeekdaysSubtitle,
+        PostRepeat.daily => l10n.repeatDailySubtitle,
+        PostRepeat.weekly => l10n.repeatWeeklySubtitle,
+        PostRepeat.monthly => l10n.repeatMonthlySubtitle,
       };
 
   static PostRepeat fromApi(String? value) => PostRepeat.values.firstWhere(

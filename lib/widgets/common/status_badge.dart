@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 import '../../core/constants/post_status.dart';
 import '../../core/theme/app_text_styles.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 
 /// Pill-shaped status badge with status-tinted background.
 class StatusBadge extends StatelessWidget {
@@ -33,7 +34,7 @@ class StatusBadge extends StatelessWidget {
           ),
           const SizedBox(width: 4),
           Text(
-            status.label,
+            status.localizedLabel(AppLocalizations.of(context)),
             style: AppTextStyles.caption.copyWith(
               color: color,
               fontWeight: FontWeight.w600,

@@ -1,9 +1,10 @@
-import 'dart:ui';
+﻿import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
 import '../../core/constants/post_repeat.dart';
 import '../../core/theme/app_colors.dart';
+import 'package:velie_app/l10n/app_localizations.dart';
 
 export '../../core/constants/post_repeat.dart' show PostRepeat;
 
@@ -528,7 +529,7 @@ class _CustomDateTimeSheetState extends State<_CustomDateTimeSheet> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          r.label,
+                          r.localizedLabel(AppLocalizations.of(context)),
                           style: TextStyle(
                             color: AppColors.textPrimary,
                             fontSize: 13.5,
@@ -537,7 +538,7 @@ class _CustomDateTimeSheetState extends State<_CustomDateTimeSheet> {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          r.subtitle,
+                          r.localizedSubtitle(AppLocalizations.of(context)),
                           style: TextStyle(color: AppColors.ash, fontSize: 11.5),
                         ),
                       ],
@@ -595,7 +596,7 @@ class _CustomDateTimeSheetState extends State<_CustomDateTimeSheet> {
   }
 }
 
-/// Reusable scrolling wheel column for hour / minute / AM–PM.
+/// Reusable scrolling wheel column for hour / minute / AMâ€“PM.
 class _WheelColumn extends StatefulWidget {
   final int itemCount;
   final int initialIndex;
