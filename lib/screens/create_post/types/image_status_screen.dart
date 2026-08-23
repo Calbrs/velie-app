@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../providers/create_post_provider.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../widgets/post/poster_picker_field.dart';
 import '../../../widgets/post/save_draft_dialog.dart';
 
@@ -37,9 +38,9 @@ class _ImageStatusScreenState extends State<ImageStatusScreen> {
   void _continue() {
     final draft = context.read<CreatePostProvider>();
     if (!draft.hasImage && !draft.isEditing) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Chagua picha kwanza')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context).chooseImageFirst)),
+      );
       return;
     }
     context.push('/post/schedule');
@@ -55,7 +56,7 @@ class _ImageStatusScreenState extends State<ImageStatusScreen> {
     }
 
     return InputDecoration(
-      hintText: 'Andika maandishi ya post yako hapa…',
+      hintText: AppLocalizations.of(context).captionHint2,
       border: getBorder(theme.border),
       enabledBorder: getBorder(theme.enabledBorder),
       focusedBorder: getBorder(theme.focusedBorder),
@@ -68,6 +69,7 @@ class _ImageStatusScreenState extends State<ImageStatusScreen> {
   @override
   Widget build(BuildContext context) {
     final draft = context.watch<CreatePostProvider>();
+    final l10n = AppLocalizations.of(context);
 
     if (draft.currentMultiImageIndex != _lastIndex) {
       _lastIndex = draft.currentMultiImageIndex;
@@ -86,7 +88,7 @@ class _ImageStatusScreenState extends State<ImageStatusScreen> {
             icon: const Icon(Icons.arrow_back),
             onPressed: () => confirmComposerBack(context),
           ),
-          title: Text(draft.isEditing ? 'Hariri Picha' : 'Status ya Picha'),
+          title: Text(draft.isEditing ? l10n.imageStatusAppBarEdit : l10n.imageStatusAppBarNew),
           actions: [
             IconButton(
               icon: const Icon(Icons.crop),
@@ -110,8 +112,8 @@ class _ImageStatusScreenState extends State<ImageStatusScreen> {
                       color: AppColors.statusPending.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    child: const Text(
-                      'Unaendelea kuhariri post ya awali. Picha ya awali itahifadhiwa usipochagua nyingine.',
+                    child: Text(
+                      l10n.imageEditingBanner,
                       style: TextStyle(
                         color: AppColors.statusPending,
                         fontSize: 13,
@@ -137,8 +139,8 @@ class _ImageStatusScreenState extends State<ImageStatusScreen> {
                   onRemoved: draft.clearImage,
                 ),
                 const SizedBox(height: 16),
-                const Text(
-                  'Andika Caption Yako',
+                Text(
+                  l10n.writeCaptionLabel,
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 8),
@@ -152,8 +154,8 @@ class _ImageStatusScreenState extends State<ImageStatusScreen> {
                 const SizedBox(height: 16),
 
                 if (!draft.isEditing && draft.multiImages.isNotEmpty) ...[
-                  const Text(
-                    'Picha Zilizochaguliwa',
+                  Text(
+                    l10n.selectedImages,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
                   ),
                   const SizedBox(height: 8),
@@ -295,8 +297,8 @@ class _ImageStatusScreenState extends State<ImageStatusScreen> {
                       ),
                       child: Text(
                         draft.hasImage
-                            ? 'Endelea kwenye Ratiba'
-                            : 'Chagua Picha',
+                            ? l10n.continueToSchedule
+                            : l10n.chooseImage,
                         style: AppTextStyles.buttonLabel,
                       ),
                     ),

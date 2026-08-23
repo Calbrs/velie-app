@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../providers/create_post_provider.dart';
 import '../../../providers/dashboard_provider.dart';
 
@@ -48,7 +49,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
     }
 
     return InputDecoration(
-      hintText: 'Andika status yako hapa…',
+      hintText: AppLocalizations.of(context).textStatusHint,
       border: getBorder(theme.border),
       enabledBorder: getBorder(theme.enabledBorder),
       focusedBorder: getBorder(theme.focusedBorder),
@@ -61,6 +62,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
   @override
   Widget build(BuildContext context) {
     final draft = context.watch<CreatePostProvider>();
+    final l10n = AppLocalizations.of(context);
 
     return PopScope(
       canPop: false,
@@ -75,7 +77,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
             onPressed: () => confirmComposerBack(context),
           ),
           title: Text(
-            draft.isEditing ? 'Hariri Maandishi' : 'Status ya Maandishi',
+            draft.isEditing ? l10n.editTextStatus : l10n.textStatusAppBarNew,
           ),
         ),
         body: SafeArea(
@@ -92,8 +94,8 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                       color: AppColors.statusPending.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    child: const Text(
-                      'Unaendelea kuhariri post ya awali.',
+                    child: Text(
+                      l10n.editingPreviousPost,
                       style: TextStyle(
                         color: AppColors.statusPending,
                         fontSize: 13,
@@ -122,7 +124,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SectionHeader('Recent text Statuses'),
+                        SectionHeader(l10n.recentTextStatuses),
                         const SizedBox(height: 12),
                         ListView.builder(
                           shrinkWrap: true,
@@ -142,7 +144,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                                   color: AppColors.primary,
                                   width: 20,
                                 ),
-                                tooltip: 'Repost',
+                                tooltip: l10n.repost,
                                 color: AppColors.primary,
                                 onPressed: () {
                                   draft.setCaption(post.caption);
@@ -176,7 +178,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                   ),
                 ),
                 child: Text(
-                  'Endelea kwenye Ratiba',
+                  l10n.continueToSchedule,
                   style: AppTextStyles.buttonLabel,
                 ),
               ),

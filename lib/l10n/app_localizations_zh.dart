@@ -950,6 +950,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get registerAnotherNumber => '注册其他号码';
 
   @override
+  String get editTextStatus => '编辑文字状态';
+
+  @override
+  String get editingPreviousPost => '你正在继续编辑之前的帖子。';
+
+  @override
   String get textStatusAppBarNew => '文字状态';
 
   @override

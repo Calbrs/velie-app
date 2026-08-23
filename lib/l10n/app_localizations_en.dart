@@ -971,6 +971,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registerAnotherNumber => 'Register Another Number';
 
   @override
+  String get editTextStatus => 'Edit Text Status';
+
+  @override
+  String get editingPreviousPost =>
+      "You're continuing to edit the previous post.";
+
+  @override
   String get textStatusAppBarNew => 'Text Status';
 
   @override

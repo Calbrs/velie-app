@@ -1918,6 +1918,18 @@ abstract class AppLocalizations {
   /// **'Register Another Number'**
   String get registerAnotherNumber;
 
+  /// No description provided for @editTextStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Text Status'**
+  String get editTextStatus;
+
+  /// No description provided for @editingPreviousPost.
+  ///
+  /// In en, this message translates to:
+  /// **"You're continuing to edit the previous post."**
+  String get editingPreviousPost;
+
   /// No description provided for @textStatusAppBarNew.
   ///
   /// In en, this message translates to:

@@ -976,6 +976,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get registerAnotherNumber => 'Sajili Nambari Nyingine';
 
   @override
+  String get editTextStatus => 'Hariri Maandishi';
+
+  @override
+  String get editingPreviousPost => 'Unaendelea kuhariri post ya awali.';
+
+  @override
   String get textStatusAppBarNew => 'Status ya Maandishi';
 
   @override
