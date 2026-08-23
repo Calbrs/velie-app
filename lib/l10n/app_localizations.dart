@@ -664,18 +664,6 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get profileTitle;
 
-  /// No description provided for @logoutAction.
-  ///
-  /// In en, this message translates to:
-  /// **'Sign out of account'**
-  String get logoutAction;
-
-  /// No description provided for @businessFallback.
-  ///
-  /// In en, this message translates to:
-  /// **'Business'**
-  String get businessFallback;
-
   /// No description provided for @logoutButton.
   ///
   /// In en, this message translates to:
@@ -1534,60 +1522,6 @@ abstract class AppLocalizations {
   /// **'Ends:'**
   String get endsPrefix;
 
-  /// No description provided for @postDetails.
-  ///
-  /// In en, this message translates to:
-  /// **'Post Details'**
-  String get postDetails;
-
-  /// No description provided for @scheduleTime.
-  ///
-  /// In en, this message translates to:
-  /// **'Schedule Time'**
-  String get scheduleTime;
-
-  /// No description provided for @publishedAt.
-  ///
-  /// In en, this message translates to:
-  /// **'Published At'**
-  String get publishedAt;
-
-  /// No description provided for @viewers.
-  ///
-  /// In en, this message translates to:
-  /// **'Viewers'**
-  String get viewers;
-
-  /// No description provided for @retriesLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Retries'**
-  String get retriesLabel;
-
-  /// No description provided for @createdAtLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Created At'**
-  String get createdAtLabel;
-
-  /// No description provided for @channelLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Channel'**
-  String get channelLabel;
-
-  /// No description provided for @deleteAction.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete'**
-  String get deleteAction;
-
-  /// No description provided for @statusLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Status'**
-  String get statusLabel;
-
   /// No description provided for @schedulePastTimeError.
   ///
   /// In en, this message translates to:
@@ -1696,36 +1630,6 @@ abstract class AppLocalizations {
   /// **'Every week on {days}'**
   String everyWeekOn(String days);
 
-  /// No description provided for @everyNDays.
-  ///
-  /// In en, this message translates to:
-  /// **'Every {n} days'**
-  String everyNDays(int n);
-
-  /// No description provided for @everyNWeeks.
-  ///
-  /// In en, this message translates to:
-  /// **'Every {n} weeks'**
-  String everyNWeeks(int n);
-
-  /// No description provided for @everyNWeeksOnDays.
-  ///
-  /// In en, this message translates to:
-  /// **'Every {n} weeks on {days}'**
-  String everyNWeeksOnDays(int n, String days);
-
-  /// No description provided for @everyNMonths.
-  ///
-  /// In en, this message translates to:
-  /// **'Every {n} months'**
-  String everyNMonths(int n);
-
-  /// No description provided for @customRecurrence.
-  ///
-  /// In en, this message translates to:
-  /// **'Custom recurrence'**
-  String get customRecurrence;
-
   /// No description provided for @textStatusAppBarNew.
   ///
   /// In en, this message translates to:
@@ -1767,66 +1671,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue to Schedule'**
   String get continueToSchedule;
-
-  /// No description provided for @filterAll.
-  ///
-  /// In en, this message translates to:
-  /// **'All'**
-  String get filterAll;
-
-  /// No description provided for @filterPending.
-  ///
-  /// In en, this message translates to:
-  /// **'Pending'**
-  String get filterPending;
-
-  /// No description provided for @filterSent.
-  ///
-  /// In en, this message translates to:
-  /// **'Sent'**
-  String get filterSent;
-
-  /// No description provided for @filterFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Failed'**
-  String get filterFailed;
-
-  /// No description provided for @searchByCaptionHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Search by caption...'**
-  String get searchByCaptionHint;
-
-  /// No description provided for @queueLoadFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not load the queue'**
-  String get queueLoadFailed;
-
-  /// No description provided for @noPostsYet.
-  ///
-  /// In en, this message translates to:
-  /// **"You haven't scheduled any posts yet"**
-  String get noPostsYet;
-
-  /// No description provided for @noPostsForStatus.
-  ///
-  /// In en, this message translates to:
-  /// **'No posts with this status'**
-  String get noPostsForStatus;
-
-  /// No description provided for @createFirstPost.
-  ///
-  /// In en, this message translates to:
-  /// **'Start by creating your first post'**
-  String get createFirstPost;
-
-  /// No description provided for @changeFilterAbove.
-  ///
-  /// In en, this message translates to:
-  /// **'Try changing the filter above'**
-  String get changeFilterAbove;
 
   /// No description provided for @imageStatusAppBarNew.
   ///
@@ -1978,42 +1822,6 @@ abstract class AppLocalizations {
   /// **'Add Tag'**
   String get addTagChip;
 
-  /// No description provided for @codeResent.
-  ///
-  /// In en, this message translates to:
-  /// **'A new code has been sent.'**
-  String get codeResent;
-
-  /// No description provided for @videoFinalizing.
-  ///
-  /// In en, this message translates to:
-  /// **'Finishing video… {pct}%'**
-  String videoFinalizing(Object pct);
-
-  /// No description provided for @preparingVideoOnDevice.
-  ///
-  /// In en, this message translates to:
-  /// **'Preparing video on device…'**
-  String get preparingVideoOnDevice;
-
-  /// No description provided for @continueLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue'**
-  String get continueLabel;
-
-  /// No description provided for @editingPreviousPost.
-  ///
-  /// In en, this message translates to:
-  /// **"You're continuing to edit the previous post."**
-  String get editingPreviousPost;
-
-  /// No description provided for @editTextStatus.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Text Status'**
-  String get editTextStatus;
-
   /// No description provided for @addQuickTagTitle.
   ///
   /// In en, this message translates to:
@@ -2049,18 +1857,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Do not leave this page — processing on your phone.'**
   String get renderWarning;
-
-  /// No description provided for @renderFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Render failed'**
-  String get renderFailed;
-
-  /// No description provided for @dontLeavePageRendering.
-  ///
-  /// In en, this message translates to:
-  /// **'Don't leave this page — rendering on your device.'**
-  String get dontLeavePageRendering;
 
   /// No description provided for @imageDraftsTitle.
   ///
@@ -2230,126 +2026,6 @@ abstract class AppLocalizations {
   /// **'Retry'**
   String get retryLabel;
 
-  /// No description provided for @audioUploadFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not upload audio. Please try again.'**
-  String get audioUploadFailed;
-
-  /// No description provided for @addMusic.
-  ///
-  /// In en, this message translates to:
-  /// **'Add Music'**
-  String get addMusic;
-
-  /// No description provided for @audioFormats.
-  ///
-  /// In en, this message translates to:
-  /// **'Audio only · mp3/m4a/wav'**
-  String get audioFormats;
-
-  /// No description provided for @changeMusic.
-  ///
-  /// In en, this message translates to:
-  /// **'Change Music'**
-  String get changeMusic;
-
-  /// No description provided for @removeMusic.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove Music'**
-  String get removeMusic;
-
-  /// No description provided for @selectedMusic.
-  ///
-  /// In en, this message translates to:
-  /// **'Selected Music'**
-  String get selectedMusic;
-
-  /// No description provided for @imageUploadFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not upload image. Please try again.'**
-  String get imageUploadFailed;
-
-  /// No description provided for @cropImageFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not crop image. Please try again.'**
-  String get cropImageFailed;
-
-  /// No description provided for @cropImageTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Crop Image'**
-  String get cropImageTitle;
-
-  /// No description provided for @noImage.
-  ///
-  /// In en, this message translates to:
-  /// **'No Image'**
-  String get noImage;
-
-  /// No description provided for @aspectRatioHint.
-  ///
-  /// In en, this message translates to:
-  /// **'1:1 (WhatsApp Status)'**
-  String get aspectRatioHint;
-
-  /// No description provided for @permissionDeniedAudio.
-  ///
-  /// In en, this message translates to:
-  /// **'Permission to read audio denied. Enable it in Settings.'**
-  String get permissionDeniedAudio;
-
-  /// No description provided for @selectSong.
-  ///
-  /// In en, this message translates to:
-  /// **'Select Song'**
-  String get selectSong;
-
-  /// No description provided for @searchSong.
-  ///
-  /// In en, this message translates to:
-  /// **'Search song…'**
-  String get searchSong;
-
-  /// No description provided for @loadSongsFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Failed to load songs. Please try again.'**
-  String get loadSongsFailed;
-
-  /// No description provided for @noSongsOnDevice.
-  ///
-  /// In en, this message translates to:
-  /// **'No songs on device.'**
-  String get noSongsOnDevice;
-
-  /// No description provided for @noSearchResults.
-  ///
-  /// In en, this message translates to:
-  /// **'No search results.'**
-  String get noSearchResults;
-
-  /// No description provided for @retryButton.
-  ///
-  /// In en, this message translates to:
-  /// **'Try Again'**
-  String get retryButton;
-
-  /// No description provided for @originalAudio.
-  ///
-  /// In en, this message translates to:
-  /// **'Original Audio'**
-  String get originalAudio;
-
-  /// No description provided for @musicLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Music'**
-  String get musicLabel;
-
   /// No description provided for @saveDraftTitle2.
   ///
   /// In en, this message translates to:
@@ -2415,6 +2091,320 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match'**
   String get validatorConfirmMismatch;
+
+  /// No description provided for @everyNDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Every {n} days'**
+  String everyNDays(int n);
+
+  /// No description provided for @everyNWeeksOnDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Every {n} weeks on {days}'**
+  String everyNWeeksOnDays(int n, String days);
+
+  /// No description provided for @everyNWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'Every {n} weeks'**
+  String everyNWeeks(int n);
+
+  /// No description provided for @everyNMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'Every {n} months'**
+  String everyNMonths(int n);
+
+  /// No description provided for @customRecurrence.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom recurrence'**
+  String get customRecurrence;
+
+  /// No description provided for @preparingVideoOnDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing video on device…'**
+  String get preparingVideoOnDevice;
+
+  /// No description provided for @videoFinalizing.
+  ///
+  /// In en, this message translates to:
+  /// **'Finishing video… {pct}%'**
+  String videoFinalizing(int pct);
+
+  /// No description provided for @dontLeavePageRendering.
+  ///
+  /// In en, this message translates to:
+  /// **"Don't leave this page — rendering on your device."**
+  String get dontLeavePageRendering;
+
+  /// No description provided for @renderFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Render failed'**
+  String get renderFailed;
+
+  /// No description provided for @editTextStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Text Status'**
+  String get editTextStatus;
+
+  /// No description provided for @editingPreviousPost.
+  ///
+  /// In en, this message translates to:
+  /// **"You're continuing to edit the previous post."**
+  String get editingPreviousPost;
+
+  /// No description provided for @continueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueLabel;
+
+  /// No description provided for @musicLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Music'**
+  String get musicLabel;
+
+  /// No description provided for @codeResent.
+  ///
+  /// In en, this message translates to:
+  /// **'A new code has been sent.'**
+  String get codeResent;
+
+  /// No description provided for @logoutAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of account'**
+  String get logoutAction;
+
+  /// No description provided for @businessFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get businessFallback;
+
+  /// No description provided for @deleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteAction;
+
+  /// No description provided for @postDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Post Details'**
+  String get postDetails;
+
+  /// No description provided for @channelLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Channel'**
+  String get channelLabel;
+
+  /// No description provided for @scheduleTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule Time'**
+  String get scheduleTime;
+
+  /// No description provided for @publishedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Published At'**
+  String get publishedAt;
+
+  /// No description provided for @statusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get statusLabel;
+
+  /// No description provided for @viewers.
+  ///
+  /// In en, this message translates to:
+  /// **'Viewers'**
+  String get viewers;
+
+  /// No description provided for @retriesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Retries'**
+  String get retriesLabel;
+
+  /// No description provided for @createdAtLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Created At'**
+  String get createdAtLabel;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @filterPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get filterPending;
+
+  /// No description provided for @filterSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent'**
+  String get filterSent;
+
+  /// No description provided for @filterFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get filterFailed;
+
+  /// No description provided for @searchByCaptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by caption...'**
+  String get searchByCaptionHint;
+
+  /// No description provided for @queueLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load the queue'**
+  String get queueLoadFailed;
+
+  /// No description provided for @noPostsYet.
+  ///
+  /// In en, this message translates to:
+  /// **"You haven't scheduled any posts yet"**
+  String get noPostsYet;
+
+  /// No description provided for @noPostsForStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'No posts with this status'**
+  String get noPostsForStatus;
+
+  /// No description provided for @createFirstPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Start by creating your first post'**
+  String get createFirstPost;
+
+  /// No description provided for @changeFilterAbove.
+  ///
+  /// In en, this message translates to:
+  /// **'Try changing the filter above'**
+  String get changeFilterAbove;
+
+  /// No description provided for @audioUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not upload audio. Please try again.'**
+  String get audioUploadFailed;
+
+  /// No description provided for @addMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Music'**
+  String get addMusic;
+
+  /// No description provided for @audioFormats.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio only · mp3/m4a/wav'**
+  String get audioFormats;
+
+  /// No description provided for @selectedMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Music'**
+  String get selectedMusic;
+
+  /// No description provided for @changeMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Music'**
+  String get changeMusic;
+
+  /// No description provided for @removeMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Music'**
+  String get removeMusic;
+
+  /// No description provided for @permissionDeniedAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission to read audio denied. Enable it in Settings.'**
+  String get permissionDeniedAudio;
+
+  /// No description provided for @selectSong.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Song'**
+  String get selectSong;
+
+  /// No description provided for @searchSong.
+  ///
+  /// In en, this message translates to:
+  /// **'Search song...'**
+  String get searchSong;
+
+  /// No description provided for @retryButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get retryButton;
+
+  /// No description provided for @noSongsOnDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'No songs on device.'**
+  String get noSongsOnDevice;
+
+  /// No description provided for @noSearchResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No search results.'**
+  String get noSearchResults;
+
+  /// No description provided for @imageUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not upload image. Please try again.'**
+  String get imageUploadFailed;
+
+  /// No description provided for @cropImageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop Image'**
+  String get cropImageTitle;
+
+  /// No description provided for @cropImageFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not crop image. Please try again.'**
+  String get cropImageFailed;
+
+  /// No description provided for @noImage.
+  ///
+  /// In en, this message translates to:
+  /// **'No Image'**
+  String get noImage;
+
+  /// No description provided for @aspectRatioHint.
+  ///
+  /// In en, this message translates to:
+  /// **'1:1 (WhatsApp Status)'**
+  String get aspectRatioHint;
+
+  /// No description provided for @validatorConfirmMismatch.
 
   /// No description provided for @validatorCaptionEmpty.
   ///

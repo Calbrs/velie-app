@@ -312,12 +312,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get profileTitle => 'Wasifu';
 
   @override
-  String get logoutAction => 'Toka kwenye akaunti';
-
-  @override
-  String get businessFallback => 'Biashara';
-
-  @override
   String get logoutButton => 'Toka kwenye akaunti';
 
   @override
@@ -764,33 +758,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get endsPrefix => 'Inaisha:';
 
   @override
-  String get postDetails => 'Maelezo ya Post';
-
-  @override
-  String get scheduleTime => 'Muda wa Kutuma';
-
-  @override
-  String get publishedAt => 'Muda Uliotumwa';
-
-  @override
-  String get viewers => 'Waliotazama';
-
-  @override
-  String get retriesLabel => 'Majaribio';
-
-  @override
-  String get createdAtLabel => 'Iliundwa';
-
-  @override
-  String get channelLabel => 'Chaneli';
-
-  @override
-  String get deleteAction => 'Futa';
-
-  @override
-  String get statusLabel => 'Hali';
-
-  @override
   String get schedulePastTimeError => 'Weka muda wa baadaye';
 
   @override
@@ -851,29 +818,6 @@ class AppLocalizationsSw extends AppLocalizations {
   }
 
   @override
-  String everyNDays(int n) {
-    return 'Kila siku $n';
-  }
-
-  @override
-  String everyNWeeks(int n) {
-    return 'Kila wiki $n';
-  }
-
-  @override
-  String everyNWeeksOnDays(int n, String days) {
-    return 'Kila wiki $n siku $days';
-  }
-
-  @override
-  String everyNMonths(int n) {
-    return 'Kila mwezi $n';
-  }
-
-  @override
-  String get customRecurrence => 'Mpangilio maalum wa kurudia';
-
-  @override
   String get textStatusAppBarNew => 'Status ya Maandishi';
 
   @override
@@ -893,36 +837,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get continueToSchedule => 'Endelea kwenye Ratiba';
-
-  @override
-  String get filterAll => 'Zote';
-
-  @override
-  String get filterPending => 'Zinazosubiri';
-
-  @override
-  String get filterSent => 'Zilizotumwa';
-
-  @override
-  String get filterFailed => 'Zimeshindwa';
-
-  @override
-  String get searchByCaptionHint => 'Tafuta kwa caption...';
-
-  @override
-  String get queueLoadFailed => 'Haikuweza kupakia foleni';
-
-  @override
-  String get noPostsYet => 'Bado hujapanga post yoyote';
-
-  @override
-  String get noPostsForStatus => 'Hakuna post za hali hii';
-
-  @override
-  String get createFirstPost => 'Anza kutengeneza post yako ya kwanza';
-
-  @override
-  String get changeFilterAbove => 'Badilisha kichujio juu';
 
   @override
   String get imageStatusAppBarNew => 'Status ya Picha';
@@ -1004,24 +918,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get addTagChip => 'Ongeza Tag';
 
   @override
-  String get codeResent => 'Msimbo mpya umetumwa.';
-
-  @override
-  String videoFinalizing(Object pct) => 'Inakamilisha video… $pct%';
-
-  @override
-  String get preparingVideoOnDevice => 'Inatayarisha video kwenye kifaa…';
-
-  @override
-  String get continueLabel => 'Endelea';
-
-  @override
-  String get editingPreviousPost => 'Unaendelea kuhariri post ya awali.';
-
-  @override
-  String get editTextStatus => 'Hariri Maandishi';
-
-  @override
   String get addQuickTagTitle => 'Ongeza Quick Tag';
 
   @override
@@ -1041,12 +937,6 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get renderWarning =>
       'Usiondoke ukurasa huu — inachakatwa kwenye simu yako.';
-
-  @override
-  String get renderFailed => 'Render haijakamilika';
-
-  @override
-  String get dontLeavePageRendering => 'Usiondoke ukurasa huu — inachakatwa kwenye kifaa.';
 
   @override
   String get imageDraftsTitle => 'Rasimu za Picha';
@@ -1138,66 +1028,6 @@ class AppLocalizationsSw extends AppLocalizations {
   String get retryLabel => 'Jaribu Tena';
 
   @override
-  String get audioUploadFailed => 'Haikuweza kupakia muziki. Jaribu tena.';
-
-  @override
-  String get addMusic => 'Ongeza Muziki';
-
-  @override
-  String get audioFormats => 'Audio pekee · mp3/m4a/wav';
-
-  @override
-  String get changeMusic => 'Badilisha Muziki';
-
-  @override
-  String get removeMusic => 'Ondoa Muziki';
-
-  @override
-  String get selectedMusic => 'Muziki Uliochaguliwa';
-
-  @override
-  String get imageUploadFailed => 'Haikuweza kupakia picha. Jaribu tena.';
-
-  @override
-  String get cropImageFailed => 'Haikuweza kukata picha. Jaribu tena.';
-
-  @override
-  String get cropImageTitle => 'Kata Picha';
-
-  @override
-  String get noImage => 'Hakuna Picha';
-
-  @override
-  String get aspectRatioHint => '1:1 (WhatsApp Status)';
-
-  @override
-  String get permissionDeniedAudio => 'Ruhusa ya kusoma audio imeikataaliwa. Iwekeshe Mipangilio.';
-
-  @override
-  String get selectSong => 'Chagua Wimbo';
-
-  @override
-  String get searchSong => 'Tafuta wimbo…';
-
-  @override
-  String get loadSongsFailed => 'Imeshindikana kupakia wimbo. Jaribu tena.';
-
-  @override
-  String get noSongsOnDevice => 'Hakuna wimbo kwenye kifaa.';
-
-  @override
-  String get noSearchResults => 'Hakuna matokeo ya tafuta.';
-
-  @override
-  String get retryButton => 'Jaribu Tena';
-
-  @override
-  String get originalAudio => 'Sauti Halisi';
-
-  @override
-  String get musicLabel => 'Muziki';
-
-  @override
   String get saveDraftTitle2 => 'Hifadhi kama Rasimu?';
 
   @override
@@ -1237,4 +1067,160 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get validatorCaptionLong => 'Caption imezidi herufi 2200';
+
+  @override
+  String everyNDays(int n) => 'Kila siku $n';
+
+  @override
+  String everyNWeeksOnDays(int n, String days) => 'Kila wiki $n siku $days';
+
+  @override
+  String everyNWeeks(int n) => 'Kila wiki $n';
+
+  @override
+  String everyNMonths(int n) => 'Kila mwezi $n';
+
+  @override
+  String get customRecurrence => 'Mpangilio maalum wa kurudia';
+
+  @override
+  String get preparingVideoOnDevice => 'Inatayarisha video kwenye kifaa…';
+
+  @override
+  String videoFinalizing(int pct) => 'Inakamilisha video… $pct%';
+
+  @override
+  String get dontLeavePageRendering => 'Usiondoke ukurasa huu — inachakatwa kwenye simu yako.';
+
+  @override
+  String get renderFailed => 'Render haijakamilika';
+
+  @override
+  String get editTextStatus => 'Hariri Maandishi';
+
+  @override
+  String get editingPreviousPost => 'Unaendelea kuhariri post ya awali.';
+
+  @override
+  String get continueLabel => 'Endelea';
+
+  @override
+  String get musicLabel => 'Muziki';
+
+  @override
+  String get codeResent => 'Msimbo mpya umetumwa.';
+
+  @override
+  String get logoutAction => 'Toka kwenye akaunti';
+
+  @override
+  String get businessFallback => 'Biashara';
+
+  @override
+  String get deleteAction => 'Futa';
+
+  @override
+  String get postDetails => 'Maelezo ya Post';
+
+  @override
+  String get channelLabel => 'Chaneli';
+
+  @override
+  String get scheduleTime => 'Muda wa Kutuma';
+
+  @override
+  String get publishedAt => 'Muda Uliotumwa';
+
+  @override
+  String get statusLabel => 'Hali';
+
+  @override
+  String get viewers => 'Waliotazama';
+
+  @override
+  String get retriesLabel => 'Majaribio';
+
+  @override
+  String get createdAtLabel => 'Iliundwa';
+
+  @override
+  String get filterAll => 'Zote';
+
+  @override
+  String get filterPending => 'Zinazosubiri';
+
+  @override
+  String get filterSent => 'Zilizotumwa';
+
+  @override
+  String get filterFailed => 'Zimeshindwa';
+
+  @override
+  String get searchByCaptionHint => 'Tafuta kwa caption...';
+
+  @override
+  String get queueLoadFailed => 'Haikuweza kupakia foleni';
+
+  @override
+  String get noPostsYet => 'Bado hujapanga post yoyote';
+
+  @override
+  String get noPostsForStatus => 'Hakuna post za hali hii';
+
+  @override
+  String get createFirstPost => 'Anza kutengeneza post yako ya kwanza';
+
+  @override
+  String get changeFilterAbove => 'Badilisha kichujio juu';
+
+  @override
+  String get audioUploadFailed => 'Haikuweza kupakia muziki. Jaribu tena.';
+
+  @override
+  String get addMusic => 'Ongeza Muziki';
+
+  @override
+  String get audioFormats => 'Audio pekee · mp3/m4a/wav';
+
+  @override
+  String get selectedMusic => 'Muziki Uliochaguliwa';
+
+  @override
+  String get changeMusic => 'Badilisha Muziki';
+
+  @override
+  String get removeMusic => 'Ondoa Muziki';
+
+  @override
+  String get permissionDeniedAudio => 'Ruhusa ya kusoma audio imeikataaliwa. Iwekeshe Mipangilio.';
+
+  @override
+  String get selectSong => 'Chagua Wimbo';
+
+  @override
+  String get searchSong => 'Tafuta wimbo…';
+
+  @override
+  String get retryButton => 'Jaribu Tena';
+
+  @override
+  String get noSongsOnDevice => 'Hakuna wimbo kwenye kifaa.';
+
+  @override
+  String get noSearchResults => 'Hakuna matokeo ya tafuta.';
+
+  @override
+  String get imageUploadFailed => 'Haikuweza kupakia picha. Jaribu tena.';
+
+  @override
+  String get cropImageTitle => 'Kata Picha';
+
+  @override
+  String get cropImageFailed => 'Haikuweza kukata picha. Jaribu tena.';
+
+  @override
+  String get noImage => 'Hakuna Picha';
+
+  @override
+  String get aspectRatioHint => '1:1 (WhatsApp Status)';
 }

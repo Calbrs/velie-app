@@ -310,12 +310,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileTitle => 'Profile';
 
   @override
-  String get logoutAction => 'Sign out of account';
-
-  @override
-  String get businessFallback => 'Business';
-
-  @override
   String get logoutButton => 'Sign out of account';
 
   @override
@@ -762,33 +756,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get endsPrefix => 'Ends:';
 
   @override
-  String get postDetails => 'Post Details';
-
-  @override
-  String get scheduleTime => 'Schedule Time';
-
-  @override
-  String get publishedAt => 'Published At';
-
-  @override
-  String get viewers => 'Viewers';
-
-  @override
-  String get retriesLabel => 'Retries';
-
-  @override
-  String get createdAtLabel => 'Created At';
-
-  @override
-  String get channelLabel => 'Channel';
-
-  @override
-  String get deleteAction => 'Delete';
-
-  @override
-  String get statusLabel => 'Status';
-
-  @override
   String get schedulePastTimeError => 'Set a future time';
 
   @override
@@ -849,29 +816,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String everyNDays(int n) {
-    return 'Every $n days';
-  }
-
-  @override
-  String everyNWeeks(int n) {
-    return 'Every $n weeks';
-  }
-
-  @override
-  String everyNWeeksOnDays(int n, String days) {
-    return 'Every $n weeks on $days';
-  }
-
-  @override
-  String everyNMonths(int n) {
-    return 'Every $n months';
-  }
-
-  @override
-  String get customRecurrence => 'Custom recurrence';
-
-  @override
   String get textStatusAppBarNew => 'Text Status';
 
   @override
@@ -891,36 +835,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueToSchedule => 'Continue to Schedule';
-
-  @override
-  String get filterAll => 'All';
-
-  @override
-  String get filterPending => 'Pending';
-
-  @override
-  String get filterSent => 'Sent';
-
-  @override
-  String get filterFailed => 'Failed';
-
-  @override
-  String get searchByCaptionHint => 'Search by caption...';
-
-  @override
-  String get queueLoadFailed => 'Could not load the queue';
-
-  @override
-  String get noPostsYet => "You haven't scheduled any posts yet";
-
-  @override
-  String get noPostsForStatus => 'No posts with this status';
-
-  @override
-  String get createFirstPost => 'Start by creating your first post';
-
-  @override
-  String get changeFilterAbove => 'Try changing the filter above';
 
   @override
   String get imageStatusAppBarNew => 'Image Status';
@@ -1002,25 +916,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addTagChip => 'Add Tag';
 
   @override
-  String get codeResent => 'A new code has been sent.';
-
-  @override
-  String videoFinalizing(Object pct) => 'Finishing video… $pct%';
-
-  @override
-  String get preparingVideoOnDevice => 'Preparing video on device…';
-
-  @override
-  String get continueLabel => 'Continue';
-
-  @override
-  String get editingPreviousPost =>
-      "You're continuing to edit the previous post.";
-
-  @override
-  String get editTextStatus => 'Edit Text Status';
-
-  @override
   String get addQuickTagTitle => 'Add Quick Tag';
 
   @override
@@ -1040,12 +935,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get renderWarning =>
       'Do not leave this page — processing on your phone.';
-
-  @override
-  String get renderFailed => 'Render failed';
-
-  @override
-  String get dontLeavePageRendering => "Don't leave this page — rendering on your device.";
 
   @override
   String get imageDraftsTitle => 'Image Drafts';
@@ -1138,66 +1027,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get retryLabel => 'Retry';
 
   @override
-  String get audioUploadFailed => 'Could not upload audio. Please try again.';
-
-  @override
-  String get addMusic => 'Add Music';
-
-  @override
-  String get audioFormats => 'Audio only · mp3/m4a/wav';
-
-  @override
-  String get changeMusic => 'Change Music';
-
-  @override
-  String get removeMusic => 'Remove Music';
-
-  @override
-  String get selectedMusic => 'Selected Music';
-
-  @override
-  String get imageUploadFailed => 'Could not upload image. Please try again.';
-
-  @override
-  String get cropImageFailed => 'Could not crop image. Please try again.';
-
-  @override
-  String get cropImageTitle => 'Crop Image';
-
-  @override
-  String get noImage => 'No Image';
-
-  @override
-  String get aspectRatioHint => '1:1 (WhatsApp Status)';
-
-  @override
-  String get permissionDeniedAudio => 'Permission to read audio denied. Enable it in Settings.';
-
-  @override
-  String get selectSong => 'Select Song';
-
-  @override
-  String get searchSong => 'Search song…';
-
-  @override
-  String get loadSongsFailed => 'Failed to load songs. Please try again.';
-
-  @override
-  String get noSongsOnDevice => 'No songs on device.';
-
-  @override
-  String get noSearchResults => 'No search results.';
-
-  @override
-  String get retryButton => 'Try Again';
-
-  @override
-  String get originalAudio => 'Original Audio';
-
-  @override
-  String get musicLabel => 'Music';
-
-  @override
   String get saveDraftTitle2 => 'Save as Draft?';
 
   @override
@@ -1236,4 +1065,161 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validatorCaptionLong => 'Caption exceeds 2200 characters';
+
+  @override
+  String everyNDays(int n) => 'Every $n days';
+
+  @override
+  String everyNWeeksOnDays(int n, String days) => 'Every $n weeks on $days';
+
+  @override
+  String everyNWeeks(int n) => 'Every $n weeks';
+
+  @override
+  String everyNMonths(int n) => 'Every $n months';
+
+  @override
+  String get customRecurrence => 'Custom recurrence';
+
+  @override
+  String get preparingVideoOnDevice => 'Preparing video on device…';
+
+  @override
+  String videoFinalizing(int pct) => 'Finishing video… $pct%';
+
+  @override
+  String get dontLeavePageRendering => "Don't leave this page — rendering on your device.";
+
+  @override
+  String get renderFailed => 'Render failed';
+
+  @override
+  String get editTextStatus => 'Edit Text Status';
+
+  @override
+  String get editingPreviousPost =>
+      "You're continuing to edit the previous post.";
+
+  @override
+  String get continueLabel => 'Continue';
+
+  @override
+  String get musicLabel => 'Music';
+
+  @override
+  String get codeResent => 'A new code has been sent.';
+
+  @override
+  String get logoutAction => 'Sign out of account';
+
+  @override
+  String get businessFallback => 'Business';
+
+  @override
+  String get deleteAction => 'Delete';
+
+  @override
+  String get postDetails => 'Post Details';
+
+  @override
+  String get channelLabel => 'Channel';
+
+  @override
+  String get scheduleTime => 'Schedule Time';
+
+  @override
+  String get publishedAt => 'Published At';
+
+  @override
+  String get statusLabel => 'Status';
+
+  @override
+  String get viewers => 'Viewers';
+
+  @override
+  String get retriesLabel => 'Retries';
+
+  @override
+  String get createdAtLabel => 'Created At';
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterPending => 'Pending';
+
+  @override
+  String get filterSent => 'Sent';
+
+  @override
+  String get filterFailed => 'Failed';
+
+  @override
+  String get searchByCaptionHint => 'Search by caption...';
+
+  @override
+  String get queueLoadFailed => 'Could not load the queue';
+
+  @override
+  String get noPostsYet => "You haven't scheduled any posts yet";
+
+  @override
+  String get noPostsForStatus => 'No posts with this status';
+
+  @override
+  String get createFirstPost => 'Start by creating your first post';
+
+  @override
+  String get changeFilterAbove => 'Try changing the filter above';
+
+  @override
+  String get audioUploadFailed => 'Could not upload audio. Please try again.';
+
+  @override
+  String get addMusic => 'Add Music';
+
+  @override
+  String get audioFormats => 'Audio only · mp3/m4a/wav';
+
+  @override
+  String get selectedMusic => 'Selected Music';
+
+  @override
+  String get changeMusic => 'Change Music';
+
+  @override
+  String get removeMusic => 'Remove Music';
+
+  @override
+  String get permissionDeniedAudio => 'Permission to read audio denied. Enable it in Settings.';
+
+  @override
+  String get selectSong => 'Select Song';
+
+  @override
+  String get searchSong => 'Search song...';
+
+  @override
+  String get retryButton => 'Try Again';
+
+  @override
+  String get noSongsOnDevice => 'No songs on device.';
+
+  @override
+  String get noSearchResults => 'No search results.';
+
+  @override
+  String get imageUploadFailed => 'Could not upload image. Please try again.';
+
+  @override
+  String get cropImageTitle => 'Crop Image';
+
+  @override
+  String get cropImageFailed => 'Could not crop image. Please try again.';
+
+  @override
+  String get noImage => 'No Image';
+
+  @override
+  String get aspectRatioHint => '1:1 (WhatsApp Status)';
 }
