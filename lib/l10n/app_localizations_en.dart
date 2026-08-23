@@ -1084,6 +1084,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get preparingVideoOnDevice => 'Preparing video on device…';
 
   @override
+  String get renderFailed => 'Render failed';
+
+  @override
+  String get dontLeavePageRendering => "Don't leave this page — rendering on your device.";
+
+  @override
   String get addQuickTagTitle => 'Add Quick Tag';
 
   @override

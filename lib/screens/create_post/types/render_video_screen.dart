@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../models/video_composition_model.dart';
 import '../../../providers/create_post_provider.dart';
 import '../../../services/local_video_render_service.dart';
@@ -46,24 +47,27 @@ class RenderVideoScreen extends StatefulWidget {
 
 class _RenderVideoScreenState extends State<RenderVideoScreen> {
   final LocalVideoRenderService _service = LocalVideoRenderService();
-  String _statusLabel = 'Inaandaa render…';
+  late final String _preparingLabel;
+  String _statusLabel = '';
   String? _error;
   double? _progress;
 
   @override
   void initState() {
     super.initState();
+    _preparingLabel = AppLocalizations.of(context).preparingVideoOnDevice;
+    _statusLabel = _preparingLabel;
     _run();
   }
 
   Future<void> _run() async {
     final draft = context.read<CreatePostProvider>();
     if (draft.imageBytes == null) {
-      setState(() => _error = 'Hakuna video iliyochaguliwa');
+      setState(() => _error = AppLocalizations.of(context).chooseVideoFirst);
       return;
     }
     setState(() {
-      _statusLabel = 'Inatayarisha video kwenye kifaa…';
+      _statusLabel = AppLocalizations.of(context).preparingVideoOnDevice;
       _progress = null;
       _error = null;
     });
@@ -83,7 +87,7 @@ class _RenderVideoScreenState extends State<RenderVideoScreen> {
           if (!mounted) return;
           setState(() {
             _progress = progress;
-            _statusLabel = 'Inakamilisha video… ${(progress * 100).round()}%';
+            _statusLabel = AppLocalizations.of(context).videoFinalizing((progress * 100).round());
           });
         },
       );
@@ -141,7 +145,7 @@ class _RenderVideoScreenState extends State<RenderVideoScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Usiondoke ukurasa huu — inachakatwa kwenye simu yako.',
+                  AppLocalizations.of(context).dontLeavePageRendering,
                   textAlign: TextAlign.center,
                   style: AppTextStyles.caption,
                 ),
@@ -149,7 +153,7 @@ class _RenderVideoScreenState extends State<RenderVideoScreen> {
                 Icon(Icons.error_outline, color: AppColors.statusFailed, size: 56),
                 const SizedBox(height: 20),
                 Text(
-                  'Render haijakamilika',
+                  AppLocalizations.of(context).renderFailed,
                   style: AppTextStyles.titleMedium.copyWith(color: AppColors.textPrimary),
                 ),
                 const SizedBox(height: 8),
@@ -164,7 +168,7 @@ class _RenderVideoScreenState extends State<RenderVideoScreen> {
                   children: [
                     TextButton(
                       onPressed: () => context.pop(),
-                      child: const Text('Rudi'),
+                      child: Text(AppLocalizations.of(context).cancel),
                     ),
                     const SizedBox(width: 12),
                     FilledButton(
@@ -173,7 +177,7 @@ class _RenderVideoScreenState extends State<RenderVideoScreen> {
                         foregroundColor: AppColors.textOnButton,
                       ),
                       onPressed: _run,
-                      child: const Text('Jaribu Tena'),
+                      child: Text(AppLocalizations.of(context).retry),
                     ),
                   ],
                 ),

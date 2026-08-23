@@ -2134,6 +2134,18 @@ abstract class AppLocalizations {
   /// **'Preparing video on device…'**
   String get preparingVideoOnDevice;
 
+  /// No description provided for @renderFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Render failed'**
+  String get renderFailed;
+
+  /// No description provided for @dontLeavePageRendering.
+  ///
+  /// In en, this message translates to:
+  /// **'Don't leave this page — rendering on your device.'**
+  String get dontLeavePageRendering;
+
   /// No description provided for @addQuickTagTitle.
   ///
   /// In en, this message translates to:

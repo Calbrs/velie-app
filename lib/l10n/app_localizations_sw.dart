@@ -1088,6 +1088,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get preparingVideoOnDevice => 'Inatayarisha video kwenye kifaa…';
 
   @override
+  String get renderFailed => 'Render haijakamilika';
+
+  @override
+  String get dontLeavePageRendering => 'Usiondoke ukurasa huu — inachakatwa kwenye simu yako.';
+
+  @override
   String get addQuickTagTitle => 'Ongeza Quick Tag';
 
   @override

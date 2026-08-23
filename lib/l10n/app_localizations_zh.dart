@@ -1060,6 +1060,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get preparingVideoOnDevice => '正在设备上准备视频…';
 
   @override
+  String get renderFailed => '渲染失败';
+
+  @override
+  String get dontLeavePageRendering => '请勿离开此页面 — 正在设备上渲染。';
+
+  @override
   String get addQuickTagTitle => '添加快速标签';
 
   @override
