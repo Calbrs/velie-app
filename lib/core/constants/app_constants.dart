@@ -2,10 +2,18 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Global app constants and configuration.
 abstract class AppConstants {
+  /// Compile-time override (--dart-define=API_BASE_URL=...). Wins over .env so
+  /// release APKs bake the production URL without ever editing a config file.
+  static const _compileTimeApiBaseUrl = String.fromEnvironment('API_BASE_URL');
+
   static String get apiBaseUrl {
+    if (_compileTimeApiBaseUrl.isNotEmpty) return _compileTimeApiBaseUrl;
     final fromEnv = dotenv.env['API_BASE_URL'];
     if (fromEnv != null && fromEnv.isNotEmpty) return fromEnv;
-    return 'https://velie.calbrs.com/api';
+    // Default = persistent DEV runtime on OCI, so plain `flutter run` targets
+    // DEV (scheduler keeps running even when the laptop is off). Production
+    // APKs override this at build time via deploy_apk.ps1 --dart-define.
+    return 'https://dev.velie.calbrs.com/api';
   }
 
   /// Origin (scheme + host) used to build absolute media URLs from the
