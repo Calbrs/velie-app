@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 import '../../widgets/common/primary_button.dart';
 import '../../providers/auth_provider.dart';
 
@@ -41,13 +42,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Password reset successfully!')),
+        SnackBar(content: Text(AppLocalizations.of(context).passwordResetSuccess)),
       );
       if (mounted) context.go('/dashboard');
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Imeshindikana kubadilisha nenosiri: $e')),
+        SnackBar(
+          content: Text(AppLocalizations.of(context).passwordResetFailed(e.toString())),
+        ),
       );
     } finally {
       if (mounted) setState(() => _submitting = false);
@@ -74,9 +77,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Password'),
+        title: Text(l10n.newPasswordTitle),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -90,13 +94,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               children: [
                 const Spacer(),
                 Text(
-                  'Set New Password',
+                  l10n.setNewPassword,
                   style: AppTextStyles.displayLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Make sure it is at least 6 characters.',
+                  l10n.passwordMinLength,
                   style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textSecondary),
                   textAlign: TextAlign.center,
                 ),
@@ -104,9 +108,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscurePass,
-                  validator: (v) => v == null || v.length < 6 ? 'Too short' : null,
+                  validator: (v) =>
+                      v == null || v.length < 6 ? l10n.passwordTooShort : null,
                   decoration: _pillDecoration(
-                    context, 'New Password',
+                    context, l10n.newPassword,
                     suffixIcon: IconButton(
                       icon: Icon(_obscurePass ? Icons.visibility : Icons.visibility_off),
                       onPressed: () => setState(() => _obscurePass = !_obscurePass),
@@ -118,11 +123,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   controller: _confirmController,
                   obscureText: _obscureConfirm,
                   validator: (v) {
-                    if (v != _passwordController.text) return 'Passwords do not match';
+                    if (v != _passwordController.text) return l10n.passwordsDoNotMatch;
                     return null;
                   },
                   decoration: _pillDecoration(
-                    context, 'Confirm Password',
+                    context, l10n.confirmPassword,
                     suffixIcon: IconButton(
                       icon: Icon(_obscureConfirm ? Icons.visibility : Icons.visibility_off),
                       onPressed: () => setState(() => _obscureConfirm = !_obscureConfirm),
@@ -131,7 +136,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 const SizedBox(height: 32),
                 PrimaryButton(
-                  label: 'Reset & Login',
+                  label: l10n.resetAndLogin,
                   onPressed: _submitting ? null : _submit,
                   loading: _submitting,
                 ),

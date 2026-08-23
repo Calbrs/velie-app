@@ -440,7 +440,13 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Code not accepted: {error}'**
-  String otpInvalid(String error);
+  String otpInvalid(Object error);
+
+  /// No description provided for @codeResent.
+  ///
+  /// In en, this message translates to:
+  /// **'A new code has been sent.'**
+  String get codeResent;
 
   /// No description provided for @newPasswordTitle.
   ///
@@ -1887,6 +1893,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **"We can't connect to the server"**
   String get cannotConnectServer;
+
+  /// No description provided for @numberNotLinkedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Number Not Linked'**
+  String get numberNotLinkedTitle;
+
+  /// No description provided for @numberNotLinkedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your number is registered but not linked to WhatsApp yet. Continue linking it or register a different number?'**
+  String get numberNotLinkedBody;
+
+  /// No description provided for @continueLinking.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Linking'**
+  String get continueLinking;
+
+  /// No description provided for @registerAnotherNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Another Number'**
+  String get registerAnotherNumber;
 
   /// No description provided for @textStatusAppBarNew.
   ///

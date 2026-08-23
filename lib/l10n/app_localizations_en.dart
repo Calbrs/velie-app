@@ -189,9 +189,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resend => 'Resend';
 
   @override
-  String otpInvalid(String error) {
-    return 'Code not accepted: $error';
-  }
+  String otpInvalid(Object error) => 'Code not accepted: $error';
+
+  @override
+  String get codeResent => 'A new code has been sent.';
 
   @override
   String get newPasswordTitle => 'New Password';
@@ -955,6 +956,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cannotConnectServer => "We can't connect to the server";
+
+  @override
+  String get numberNotLinkedTitle => 'Number Not Linked';
+
+  @override
+  String get numberNotLinkedBody =>
+      'Your number is registered but not linked to WhatsApp yet. Continue linking it or register a different number?';
+
+  @override
+  String get continueLinking => 'Continue Linking';
+
+  @override
+  String get registerAnotherNumber => 'Register Another Number';
 
   @override
   String get textStatusAppBarNew => 'Text Status';

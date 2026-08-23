@@ -189,9 +189,10 @@ class AppLocalizationsSw extends AppLocalizations {
   String get resend => 'Tuma Tena';
 
   @override
-  String otpInvalid(String error) {
-    return 'Msimbo haukubaliwi: $error';
-  }
+  String otpInvalid(Object error) => 'Msimbo haukubaliwi: $error';
+
+  @override
+  String get codeResent => 'Msimbo mpya umetumwa.';
 
   @override
   String get newPasswordTitle => 'Nywila Mpya';
@@ -960,6 +961,19 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get cannotConnectServer => 'Hatuwezi kuunganishwa na seva';
+
+  @override
+  String get numberNotLinkedTitle => 'Nambari Haijaunganishwa';
+
+  @override
+  String get numberNotLinkedBody =>
+      'Nambari yako imesajiliwa lakini haijaunganishwa na WhatsApp. Endelea na kuunganisha au sajili nambari nyingine?';
+
+  @override
+  String get continueLinking => 'Endelea na Kuunganisha';
+
+  @override
+  String get registerAnotherNumber => 'Sajili Nambari Nyingine';
 
   @override
   String get textStatusAppBarNew => 'Status ya Maandishi';

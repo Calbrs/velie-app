@@ -7,6 +7,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/utils/phone_formatter.dart';
 import '../../core/utils/validators.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
 import '../../widgets/common/primary_button.dart';
 
@@ -41,7 +42,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Haiwezekani kutuma msimbo: $e')),
+        SnackBar(
+          content: Text(AppLocalizations.of(context).cannotSendCode(e.toString())),
+        ),
       );
     } finally {
       if (mounted) setState(() => _submitting = false);
@@ -70,9 +73,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Forgot Password'),
+        title: Text(l10n.forgotPassword),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -86,13 +90,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               children: [
                 const Spacer(),
                 Text(
-                  'Recover Account',
+                  l10n.recoverAccount,
                   style: AppTextStyles.displayLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Enter your username/phone number to receive an OTP via WhatsApp.',
+                  l10n.recoverAccountBody,
                   style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textSecondary),
                   textAlign: TextAlign.center,
                 ),
@@ -104,7 +108,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   decoration: _pillDecoration(
                     context,
-                    'Phone Number / Username',
+                    l10n.phoneNumberOrUsername,
                     prefixText: '+255 ',
                     hint: '712 345 678',
                   ),
@@ -122,7 +126,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 ),
                 const SizedBox(height: 32),
                 PrimaryButton(
-                  label: 'Send OTP',
+                  label: l10n.sendOtp,
                   onPressed: _submitting ? null : _submit,
                   loading: _submitting,
                 ),

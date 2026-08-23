@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
 import '../../widgets/common/primary_button.dart';
 
@@ -66,7 +67,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Msimbo haukubaliwi: $e')),
+        SnackBar(content: Text(AppLocalizations.of(context).otpInvalid(e))),
       );
     } finally {
       if (mounted) setState(() => _submitting = false);
@@ -79,12 +80,14 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
       if (!mounted) return;
       _startTimer();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Msimbo mpya umetumwa.')),
+        SnackBar(content: Text(AppLocalizations.of(context).codeResent)),
       );
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Haiwezekani kutuma msimbo: $e')),
+        SnackBar(
+          content: Text(AppLocalizations.of(context).cannotSendCode(e.toString())),
+        ),
       );
     }
   }
@@ -109,9 +112,10 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Verify OTP'),
+        title: Text(l10n.verifyOtpTitle),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -123,13 +127,13 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
             children: [
               const Spacer(),
               Text(
-                'Enter OTP',
+                l10n.enterOtp,
                 style: AppTextStyles.displayLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
               Text(
-                'We sent a code to ${widget.phone} via WhatsApp.',
+                l10n.otpSentTo(widget.phone),
                 style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textSecondary),
                 textAlign: TextAlign.center,
               ),
@@ -140,12 +144,12 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                 maxLength: 6,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 24, letterSpacing: 8, fontWeight: FontWeight.bold),
-                decoration: _pillDecoration(context, 'OTP Code'),
+                decoration: _pillDecoration(context, l10n.otpCode),
                 onFieldSubmitted: (_) => _submit(),
               ),
               const SizedBox(height: 32),
               PrimaryButton(
-                label: 'Verify',
+                label: l10n.verify,
                 onPressed: _submitting ? null : _submit,
                 loading: _submitting,
               ),
@@ -155,8 +159,8 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                 children: [
                   Text(
                     _secondsLeft > 0
-                        ? 'Code expires in $_secondsLeft s'
-                        : 'Code expired.',
+                        ? l10n.codeExpiresIn(_secondsLeft)
+                        : l10n.codeExpired,
                     style: AppTextStyles.caption.copyWith(
                       color: _secondsLeft > 0 ? AppColors.textSecondary : Colors.redAccent,
                     ),
@@ -165,7 +169,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                     const SizedBox(width: 8),
                     TextButton(
                       onPressed: _resend,
-                      child: const Text('Resend', style: TextStyle(color: AppColors.primary)),
+                      child: Text(l10n.resend, style: TextStyle(color: AppColors.primary)),
                     )
                   ]
                 ],

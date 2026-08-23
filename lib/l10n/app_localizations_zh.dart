@@ -187,9 +187,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get resend => '重新发送';
 
   @override
-  String otpInvalid(String error) {
-    return '验证码无效：$error';
-  }
+  String otpInvalid(Object error) => '验证码未被接受：$error';
+
+  @override
+  String get codeResent => '新验证码已发送。';
 
   @override
   String get newPasswordTitle => '新密码';
@@ -934,6 +935,19 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get cannotConnectServer => '无法连接服务器';
+
+  @override
+  String get numberNotLinkedTitle => '号码未关联';
+
+  @override
+  String get numberNotLinkedBody =>
+      '你的号码已注册，但尚未关联 WhatsApp。继续关联，还是注册其他号码？';
+
+  @override
+  String get continueLinking => '继续关联';
+
+  @override
+  String get registerAnotherNumber => '注册其他号码';
 
   @override
   String get textStatusAppBarNew => '文字状态';

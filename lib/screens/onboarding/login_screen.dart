@@ -83,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _showUnlinkedSheet() {
+    final l10n = AppLocalizations.of(context);
     showModalBottomSheet<void>(
       context: context,
       isDismissible: false,
@@ -123,13 +124,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                'Nambari Haijaunganishwa',
+                l10n.numberNotLinkedTitle,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.titleMedium,
               ),
               const SizedBox(height: 8),
               Text(
-                'Nambari yako imesajiliwa lakini haijaunganishwa na WhatsApp. Endelea na kuunganisha au sajili nambari nyingine?',
+                l10n.numberNotLinkedBody,
                 textAlign: TextAlign.center,
                 style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
               ),
@@ -148,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(999),
                     ),
                   ),
-                  child: Text('Endelea na Kuunganisha', style: AppTextStyles.buttonLabel),
+                  child: Text(l10n.continueLinking, style: AppTextStyles.buttonLabel),
                 ),
               ),
               const SizedBox(height: 10),
@@ -168,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(999),
                     ),
                   ),
-                  child: Text('Sajili Nambari Nyingine', style: AppTextStyles.buttonLabel),
+                  child: Text(l10n.registerAnotherNumber, style: AppTextStyles.buttonLabel),
                 ),
               ),
             ],
@@ -200,6 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -228,7 +230,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 24),
                         Text(
-                          'Ingia Velie',
+                          l10n.loginTitle,
                           textAlign: TextAlign.center,
                           style: AppTextStyles.displayLarge,
                         ),
@@ -246,7 +248,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                           decoration: _pillDecoration(
                             context,
-                            'Namba ya Simu',
+                            l10n.phoneNumber,
                             prefixText: PhoneFormatter.prefix,
                             hint: '712 345 678',
                           ),
@@ -270,7 +272,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           textInputAction: TextInputAction.done,
                           decoration: _pillDecoration(
                             context,
-                            'Password',
+                            l10n.password,
                             suffixIcon: IconButton(
                               icon: Icon(
                                 _obscurePassword
@@ -292,7 +294,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: TextButton(
                             onPressed: () => context.push('/forgot-password'),
                             child: Text(
-                              'Umesahau password?',
+                              l10n.forgotPassword,
                               style: TextStyle(
                                 color: AppColors.buttonPrimary,
                                 fontWeight: FontWeight.w600,
@@ -323,7 +325,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       color: AppColors.textOnButton,
                                     ),
                                   )
-                                : Text('Ingia', style: AppTextStyles.buttonLabel),
+                                : Text(l10n.signIn, style: AppTextStyles.buttonLabel),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -331,13 +333,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Huna akaunti?',
+                              l10n.noAccount,
                               style: AppTextStyles.bodyMedium,
                             ),
                             TextButton(
                               onPressed: () => context.go('/auth'),
                               child: Text(
-                                'Sajili',
+                                l10n.register,
                                 style: TextStyle(
                                   color: AppColors.buttonPrimary,
                                   fontWeight: FontWeight.w700,

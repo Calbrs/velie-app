@@ -7,6 +7,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/utils/phone_formatter.dart';
 import '../../core/utils/validators.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
 import '../../widgets/common/backend_offline_banner.dart';
 
@@ -70,7 +71,7 @@ class _AuthScreenState extends State<AuthScreen> {
       _checkBackend();
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Usajili haukufaulu: $e')));
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).registerFailed(e.toString()))));
     } finally {
       if (mounted) setState(() => _submitting = false);
     }
@@ -98,6 +99,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
         child: LayoutBuilder(
@@ -125,7 +127,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         const SizedBox(height: 24),
                         Text(
-                          'Tengeneza account',
+                          l10n.registerTitle,
                           textAlign: TextAlign.center,
                           style: AppTextStyles.displayLarge,
                         ),
@@ -137,7 +139,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         TextFormField(
                           controller: _nameController,
                           textInputAction: TextInputAction.next,
-                          decoration: _pillDecoration(context, 'Jina lako'),
+                          decoration: _pillDecoration(context, l10n.yourName),
                           validator: Validators.validateName,
                         ),
                         const SizedBox(height: 16),
@@ -150,7 +152,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           ],
                           decoration: _pillDecoration(
                             context,
-                            'Namba ya Simu',
+                            l10n.phoneNumber,
                             prefixText: PhoneFormatter.prefix,
                             hint: '712 345 678',
                           ),
@@ -174,7 +176,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           textInputAction: TextInputAction.next,
                           decoration: _pillDecoration(
                             context,
-                            'Password',
+                            l10n.password,
                             suffixIcon: IconButton(
                               icon: Icon(
                                 _obscurePassword
@@ -196,7 +198,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           textInputAction: TextInputAction.done,
                           decoration: _pillDecoration(
                             context,
-                            'Rudia Password',
+                            l10n.repeatPassword,
                             suffixIcon: IconButton(
                               icon: Icon(
                                 _obscureConfirm
@@ -238,7 +240,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                       color: AppColors.textOnButton,
                                     ),
                                   )
-                                : Text('Sajili', style: AppTextStyles.buttonLabel),
+                                : Text(l10n.register, style: AppTextStyles.buttonLabel),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -246,13 +248,13 @@ class _AuthScreenState extends State<AuthScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Una akaunti tayari?',
+                              l10n.alreadyHaveAccount,
                               style: AppTextStyles.bodyMedium,
                             ),
                             TextButton(
                               onPressed: () => context.go('/login'),
                               child: Text(
-                                'Ingia',
+                                l10n.signIn,
                                 style: TextStyle(
                                   color: AppColors.buttonPrimary,
                                   fontWeight: FontWeight.w700,
