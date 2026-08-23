@@ -1082,6 +1082,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get addTagChip => 'Ongeza Tag';
 
   @override
+  String videoFinalizing(Object pct) => 'Inakamilisha video… $pct%';
+
+  @override
+  String get preparingVideoOnDevice => 'Inatayarisha video kwenye kifaa…';
+
+  @override
   String get addQuickTagTitle => 'Ongeza Quick Tag';
 
   @override

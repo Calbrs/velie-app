@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../../models/video_composition_model.dart';
 import '../../../providers/create_post_provider.dart';
 import '../../../providers/quick_tags_provider.dart';
@@ -215,9 +216,9 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
   Future<void> _continue() async {
     final draft = context.read<CreatePostProvider>();
     if (!draft.hasImage && !draft.isEditing) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Chagua video kwanza')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context).chooseVideoFirst)),
+      );
       return;
     }
     await _renderVideo();
@@ -274,9 +275,13 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
       setState(() {
         _isRendering = false;
       });
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Imeshindwa kuchakata video: $e')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            AppLocalizations.of(context).videoRenderFailed(e.toString()),
+          ),
+        ),
+      );
     } finally {
       if (mounted) setState(() => _isRendering = false);
     }
@@ -322,6 +327,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
   @override
   Widget build(BuildContext context) {
     final draft = context.watch<CreatePostProvider>();
+    final l10n = AppLocalizations.of(context);
 
     return PopScope(
       canPop: false,
@@ -345,7 +351,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
             onPressed: () => confirmComposerBack(context),
           ),
           title: Text(
-            draft.isEditing ? 'Hariri Video' : 'Status ya Video',
+            draft.isEditing ? l10n.videoStatusAppBarEdit : l10n.videoStatusAppBarNew,
             style: const TextStyle(
               color: Colors.white70,
               fontSize: 14,
@@ -367,9 +373,9 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(24),
                   ),
-                  child: const Text(
-                    'Endelea',
-                    style: TextStyle(
+                  child: Text(
+                    l10n.continueLabel,
+                    style: const TextStyle(
                       color: Color(0xFF1B1917),
                       fontWeight: FontWeight.w700,
                       fontSize: 13,
@@ -520,8 +526,8 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
         color: AppColors.statusPending.withValues(alpha: 0.12),
         borderRadius: BorderRadius.circular(14),
       ),
-      child: const Text(
-        'Unaendelea kuhariri post ya awali. Video ya awali itahifadhiwa usipochagua nyingine.',
+      child: Text(
+        AppLocalizations.of(context).videoEditingBanner,
         style: TextStyle(
           color: AppColors.statusPending,
           fontSize: 13,
@@ -740,15 +746,15 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                     ),
                   ),
                 ),
-                const Text(
-                  'Sauti',
+                Text(
+                  AppLocalizations.of(context).volumeDrawerTitle,
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                 ),
                 const SizedBox(height: 32),
                 Column(
                   children: [
                     _volumeSliderRow(
-                      label: 'Sauti Halisi',
+                      label: AppLocalizations.of(context).originalVolumeLabel,
                       value: _originalVolume,
                       onChanged: (val) {
                         setModalState(() => _originalVolume = val);
@@ -759,7 +765,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                     ),
                     const SizedBox(height: 24),
                     _volumeSliderRow(
-                      label: 'Muziki',
+                      label: AppLocalizations.of(context).musicVolumeLabel,
                       value: _musicVolume,
                       onChanged: (val) {
                         setModalState(() => _musicVolume = val);
@@ -1207,8 +1213,8 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
               maxLength: 700,
               autofocus: true,
               onChanged: draft.setCaption,
-              decoration: const InputDecoration(
-                hintText: 'Andika maelezo ya video yako hapa…',
+              decoration: InputDecoration(
+                hintText: AppLocalizations.of(context).videoCaptionHint,
                 border: OutlineInputBorder(),
               ),
             ),
@@ -1270,7 +1276,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
         children: [
           ActionChip(
             avatar: const Icon(Icons.add, size: 18),
-            label: const Text('Ongeza Tag'),
+            label: Text(AppLocalizations.of(context).addTagChip),
             onPressed: () => _openAddQuickTagDrawer(),
           ),
           ...tags.tags.map(
@@ -1361,7 +1367,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                   );
                   if (ctx.mounted) Navigator.pop(ctx);
                 },
-                child: const Text('Hifadhi'),
+                child: Text(AppLocalizations.of(context).save),
               ),
             ),
           ],
@@ -1559,8 +1565,8 @@ Future<void> showRenderProgressDialog({
                   const SizedBox(height: 20),
                   Text(
                     value == null
-                        ? 'Inatayarisha video kwenye kifaa…'
-                        : 'Inakamilisha video… $pct%',
+                        ? AppLocalizations.of(context).preparingVideoOnDevice
+                        : AppLocalizations.of(context).videoFinalizing(pct!),
                     style: AppTextStyles.bodyMedium.copyWith(
                       color: AppColors.textPrimary,
                     ),

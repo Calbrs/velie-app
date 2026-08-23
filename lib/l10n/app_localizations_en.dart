@@ -1078,6 +1078,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addTagChip => 'Add Tag';
 
   @override
+  String videoFinalizing(Object pct) => 'Finishing video… $pct%';
+
+  @override
+  String get preparingVideoOnDevice => 'Preparing video on device…';
+
+  @override
   String get addQuickTagTitle => 'Add Quick Tag';
 
   @override

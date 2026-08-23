@@ -2122,6 +2122,18 @@ abstract class AppLocalizations {
   /// **'Add Tag'**
   String get addTagChip;
 
+  /// No description provided for @videoFinalizing.
+  ///
+  /// In en, this message translates to:
+  /// **'Finishing video… {pct}%'**
+  String videoFinalizing(Object pct);
+
+  /// No description provided for @preparingVideoOnDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing video on device…'**
+  String get preparingVideoOnDevice;
+
   /// No description provided for @addQuickTagTitle.
   ///
   /// In en, this message translates to:

@@ -1054,6 +1054,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get addTagChip => '添加标签';
 
   @override
+  String videoFinalizing(Object pct) => '正在完成视频… $pct%';
+
+  @override
+  String get preparingVideoOnDevice => '正在设备上准备视频…';
+
+  @override
   String get addQuickTagTitle => '添加快速标签';
 
   @override
