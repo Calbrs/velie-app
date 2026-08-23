@@ -440,13 +440,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Code not accepted: {error}'**
-  String otpInvalid(Object error);
-
-  /// No description provided for @codeResent.
-  ///
-  /// In en, this message translates to:
-  /// **'A new code has been sent.'**
-  String get codeResent;
+  String otpInvalid(String error);
 
   /// No description provided for @newPasswordTitle.
   ///
@@ -1666,6 +1660,48 @@ abstract class AppLocalizations {
   /// **'Custom recurrence'**
   String get customRecurrence;
 
+  /// No description provided for @textStatusAppBarNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Text Status'**
+  String get textStatusAppBarNew;
+
+  /// No description provided for @textStatusAppBarEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Text'**
+  String get textStatusAppBarEdit;
+
+  /// No description provided for @editingBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'You are continuing to edit the original post.'**
+  String get editingBanner;
+
+  /// No description provided for @textStatusHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write your status here…'**
+  String get textStatusHint;
+
+  /// No description provided for @recentTextStatuses.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Text Statuses'**
+  String get recentTextStatuses;
+
+  /// No description provided for @repost.
+  ///
+  /// In en, this message translates to:
+  /// **'Repost'**
+  String get repost;
+
+  /// No description provided for @continueToSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Schedule'**
+  String get continueToSchedule;
+
   /// No description provided for @filterAll.
   ///
   /// In en, this message translates to:
@@ -1725,252 +1761,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Try changing the filter above'**
   String get changeFilterAbove;
-
-  /// No description provided for @onb1Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Open the WhatsApp Menu'**
-  String get onb1Title;
-
-  /// No description provided for @onb1Body.
-  ///
-  /// In en, this message translates to:
-  /// **'Open WhatsApp on your phone, then tap the three-dot menu (⋮) at the top right of the screen.'**
-  String get onb1Body;
-
-  /// No description provided for @onb2Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Tap "Linked Devices"'**
-  String get onb2Title;
-
-  /// No description provided for @onb2Body.
-  ///
-  /// In en, this message translates to:
-  /// **'In the menu that opens, select "Linked Devices".'**
-  String get onb2Body;
-
-  /// No description provided for @onb3Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Tap "Link a Device"'**
-  String get onb3Title;
-
-  /// No description provided for @onb3Body.
-  ///
-  /// In en, this message translates to:
-  /// **'On the Linked Devices screen, tap the green button labeled "Link a Device".'**
-  String get onb3Body;
-
-  /// No description provided for @onb4Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Link with Phone Number'**
-  String get onb4Title;
-
-  /// No description provided for @onb4Body.
-  ///
-  /// In en, this message translates to:
-  /// **'On your WhatsApp screen, choose "Link with phone number instead" instead of using a QR code.'**
-  String get onb4Body;
-
-  /// No description provided for @onb5Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter the Code You Receive'**
-  String get onb5Title;
-
-  /// No description provided for @onb5Body.
-  ///
-  /// In en, this message translates to:
-  /// **'Type the code shown by Velie where indicated. Never enter a code you did not request yourself.'**
-  String get onb5Body;
-
-  /// No description provided for @languagePickerTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Language'**
-  String get languagePickerTitle;
-
-  /// No description provided for @swahiliLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Swahili (SW)'**
-  String get swahiliLabel;
-
-  /// No description provided for @englishLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'English (EN)'**
-  String get englishLabel;
-
-  /// No description provided for @continueLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue'**
-  String get continueLabel;
-
-  /// No description provided for @connectedSnack.
-  ///
-  /// In en, this message translates to:
-  /// **'Connected! ✓'**
-  String get connectedSnack;
-
-  /// No description provided for @refreshCodeFailed.
-  ///
-  /// In en, this message translates to:
-  /// **'Could not get a new code: {error}'**
-  String refreshCodeFailed(Object error);
-
-  /// No description provided for @howToConnectTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'How to Connect'**
-  String get howToConnectTitle;
-
-  /// No description provided for @helpStep1.
-  ///
-  /// In en, this message translates to:
-  /// **'Open WhatsApp on your phone'**
-  String get helpStep1;
-
-  /// No description provided for @helpStep2.
-  ///
-  /// In en, this message translates to:
-  /// **'Go to: Settings → Linked Devices'**
-  String get helpStep2;
-
-  /// No description provided for @helpStep3.
-  ///
-  /// In en, this message translates to:
-  /// **'Tap "Link a Device"'**
-  String get helpStep3;
-
-  /// No description provided for @helpStep4.
-  ///
-  /// In en, this message translates to:
-  /// **'Choose "Link with Phone Number"'**
-  String get helpStep4;
-
-  /// No description provided for @helpStep5.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter the code shown here into WhatsApp'**
-  String get helpStep5;
-
-  /// No description provided for @pairingTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Connect WhatsApp'**
-  String get pairingTitle;
-
-  /// No description provided for @helpLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Help'**
-  String get helpLabel;
-
-  /// No description provided for @connectedTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Connected ✓'**
-  String get connectedTitle;
-
-  /// No description provided for @copyLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy'**
-  String get copyLabel;
-
-  /// No description provided for @rateLimitedMsg.
-  ///
-  /// In en, this message translates to:
-  /// **'You have reached the limit'**
-  String get rateLimitedMsg;
-
-  /// No description provided for @cannotConnectServer.
-  ///
-  /// In en, this message translates to:
-  /// **"We can't connect to the server"**
-  String get cannotConnectServer;
-
-  /// No description provided for @numberNotLinkedTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Number Not Linked'**
-  String get numberNotLinkedTitle;
-
-  /// No description provided for @numberNotLinkedBody.
-  ///
-  /// In en, this message translates to:
-  /// **'Your number is registered but not linked to WhatsApp yet. Continue linking it or register a different number?'**
-  String get numberNotLinkedBody;
-
-  /// No description provided for @continueLinking.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue Linking'**
-  String get continueLinking;
-
-  /// No description provided for @registerAnotherNumber.
-  ///
-  /// In en, this message translates to:
-  /// **'Register Another Number'**
-  String get registerAnotherNumber;
-
-  /// No description provided for @editTextStatus.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Text Status'**
-  String get editTextStatus;
-
-  /// No description provided for @editingPreviousPost.
-  ///
-  /// In en, this message translates to:
-  /// **"You're continuing to edit the previous post."**
-  String get editingPreviousPost;
-
-  /// No description provided for @textStatusAppBarNew.
-  ///
-  /// In en, this message translates to:
-  /// **'Text Status'**
-  String get textStatusAppBarNew;
-
-  /// No description provided for @textStatusAppBarEdit.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Text'**
-  String get textStatusAppBarEdit;
-
-  /// No description provided for @editingBanner.
-  ///
-  /// In en, this message translates to:
-  /// **'You are continuing to edit the original post.'**
-  String get editingBanner;
-
-  /// No description provided for @textStatusHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Write your status here…'**
-  String get textStatusHint;
-
-  /// No description provided for @recentTextStatuses.
-  ///
-  /// In en, this message translates to:
-  /// **'Recent Text Statuses'**
-  String get recentTextStatuses;
-
-  /// No description provided for @repost.
-  ///
-  /// In en, this message translates to:
-  /// **'Repost'**
-  String get repost;
-
-  /// No description provided for @continueToSchedule.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue to Schedule'**
-  String get continueToSchedule;
 
   /// No description provided for @imageStatusAppBarNew.
   ///
@@ -2122,6 +1912,12 @@ abstract class AppLocalizations {
   /// **'Add Tag'**
   String get addTagChip;
 
+  /// No description provided for @codeResent.
+  ///
+  /// In en, this message translates to:
+  /// **'A new code has been sent.'**
+  String get codeResent;
+
   /// No description provided for @videoFinalizing.
   ///
   /// In en, this message translates to:
@@ -2134,17 +1930,23 @@ abstract class AppLocalizations {
   /// **'Preparing video on device…'**
   String get preparingVideoOnDevice;
 
-  /// No description provided for @renderFailed.
+  /// No description provided for @continueLabel.
   ///
   /// In en, this message translates to:
-  /// **'Render failed'**
-  String get renderFailed;
+  /// **'Continue'**
+  String get continueLabel;
 
-  /// No description provided for @dontLeavePageRendering.
+  /// No description provided for @editingPreviousPost.
   ///
   /// In en, this message translates to:
-  /// **'Don't leave this page — rendering on your device.'**
-  String get dontLeavePageRendering;
+  /// **"You're continuing to edit the previous post."**
+  String get editingPreviousPost;
+
+  /// No description provided for @editTextStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Text Status'**
+  String get editTextStatus;
 
   /// No description provided for @addQuickTagTitle.
   ///
@@ -2181,6 +1983,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Do not leave this page — processing on your phone.'**
   String get renderWarning;
+
+  /// No description provided for @renderFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Render failed'**
+  String get renderFailed;
+
+  /// No description provided for @dontLeavePageRendering.
+  ///
+  /// In en, this message translates to:
+  /// **'Don't leave this page — rendering on your device.'**
+  String get dontLeavePageRendering;
 
   /// No description provided for @imageDraftsTitle.
   ///

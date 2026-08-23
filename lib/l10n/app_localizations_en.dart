@@ -189,10 +189,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resend => 'Resend';
 
   @override
-  String otpInvalid(Object error) => 'Code not accepted: $error';
-
-  @override
-  String get codeResent => 'A new code has been sent.';
+  String otpInvalid(String error) {
+    return 'Code not accepted: $error';
+  }
 
   @override
   String get newPasswordTitle => 'New Password';
@@ -840,6 +839,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customRecurrence => 'Custom recurrence';
 
   @override
+  String get textStatusAppBarNew => 'Text Status';
+
+  @override
+  String get textStatusAppBarEdit => 'Edit Text';
+
+  @override
+  String get editingBanner => 'You are continuing to edit the original post.';
+
+  @override
+  String get textStatusHint => 'Write your status here…';
+
+  @override
+  String get recentTextStatuses => 'Recent Text Statuses';
+
+  @override
+  String get repost => 'Repost';
+
+  @override
+  String get continueToSchedule => 'Continue to Schedule';
+
+  @override
   String get filterAll => 'All';
 
   @override
@@ -868,135 +888,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get changeFilterAbove => 'Try changing the filter above';
-
-  @override
-  String get onb1Title => 'Open the WhatsApp Menu';
-
-  @override
-  String get onb1Body =>
-      'Open WhatsApp on your phone, then tap the three-dot menu (⋮) at the top right of the screen.';
-
-  @override
-  String get onb2Title => 'Tap "Linked Devices"';
-
-  @override
-  String get onb2Body => 'In the menu that opens, select "Linked Devices".';
-
-  @override
-  String get onb3Title => 'Tap "Link a Device"';
-
-  @override
-  String get onb3Body =>
-      'On the Linked Devices screen, tap the green button labeled "Link a Device".';
-
-  @override
-  String get onb4Title => 'Link with Phone Number';
-
-  @override
-  String get onb4Body =>
-      'On your WhatsApp screen, choose "Link with phone number instead" instead of using a QR code.';
-
-  @override
-  String get onb5Title => 'Enter the Code You Receive';
-
-  @override
-  String get onb5Body =>
-      'Type the code shown by Velie where indicated. Never enter a code you did not request yourself.';
-
-  @override
-  String get languagePickerTitle => 'Language';
-
-  @override
-  String get swahiliLabel => 'Swahili (SW)';
-
-  @override
-  String get englishLabel => 'English (EN)';
-
-  @override
-  String get continueLabel => 'Continue';
-
-  @override
-  String get connectedSnack => 'Connected! ✓';
-
-  @override
-  String refreshCodeFailed(Object error) => 'Could not get a new code: $error';
-
-  @override
-  String get howToConnectTitle => 'How to Connect';
-
-  @override
-  String get helpStep1 => 'Open WhatsApp on your phone';
-
-  @override
-  String get helpStep2 => 'Go to: Settings → Linked Devices';
-
-  @override
-  String get helpStep3 => 'Tap "Link a Device"';
-
-  @override
-  String get helpStep4 => 'Choose "Link with Phone Number"';
-
-  @override
-  String get helpStep5 => 'Enter the code shown here into WhatsApp';
-
-  @override
-  String get pairingTitle => 'Connect WhatsApp';
-
-  @override
-  String get helpLabel => 'Help';
-
-  @override
-  String get connectedTitle => 'Connected ✓';
-
-  @override
-  String get copyLabel => 'Copy';
-
-  @override
-  String get rateLimitedMsg => 'You have reached the limit';
-
-  @override
-  String get cannotConnectServer => "We can't connect to the server";
-
-  @override
-  String get numberNotLinkedTitle => 'Number Not Linked';
-
-  @override
-  String get numberNotLinkedBody =>
-      'Your number is registered but not linked to WhatsApp yet. Continue linking it or register a different number?';
-
-  @override
-  String get continueLinking => 'Continue Linking';
-
-  @override
-  String get registerAnotherNumber => 'Register Another Number';
-
-  @override
-  String get editTextStatus => 'Edit Text Status';
-
-  @override
-  String get editingPreviousPost =>
-      "You're continuing to edit the previous post.";
-
-  @override
-  String get textStatusAppBarNew => 'Text Status';
-
-  @override
-  String get textStatusAppBarEdit => 'Edit Text';
-
-  @override
-  String get editingBanner => 'You are continuing to edit the original post.';
-
-  @override
-  String get textStatusHint => 'Write your status here…';
-
-  @override
-  String get recentTextStatuses => 'Recent Text Statuses';
-
-  @override
-  String get repost => 'Repost';
-
-  @override
-  String get continueToSchedule => 'Continue to Schedule';
 
   @override
   String get imageStatusAppBarNew => 'Image Status';
@@ -1078,16 +969,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addTagChip => 'Add Tag';
 
   @override
+  String get codeResent => 'A new code has been sent.';
+
+  @override
   String videoFinalizing(Object pct) => 'Finishing video… $pct%';
 
   @override
   String get preparingVideoOnDevice => 'Preparing video on device…';
 
   @override
-  String get renderFailed => 'Render failed';
+  String get continueLabel => 'Continue';
 
   @override
-  String get dontLeavePageRendering => "Don't leave this page — rendering on your device.";
+  String get editingPreviousPost =>
+      "You're continuing to edit the previous post.";
+
+  @override
+  String get editTextStatus => 'Edit Text Status';
 
   @override
   String get addQuickTagTitle => 'Add Quick Tag';
@@ -1109,6 +1007,12 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get renderWarning =>
       'Do not leave this page — processing on your phone.';
+
+  @override
+  String get renderFailed => 'Render failed';
+
+  @override
+  String get dontLeavePageRendering => "Don't leave this page — rendering on your device.";
 
   @override
   String get imageDraftsTitle => 'Image Drafts';

@@ -187,10 +187,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get resend => '重新发送';
 
   @override
-  String otpInvalid(Object error) => '验证码未被接受：$error';
-
-  @override
-  String get codeResent => '新验证码已发送。';
+  String otpInvalid(String error) {
+    return '验证码无效：$error';
+  }
 
   @override
   String get newPasswordTitle => '新密码';
@@ -823,6 +822,27 @@ class AppLocalizationsZh extends AppLocalizations {
   String get customRecurrence => '自定义重复';
 
   @override
+  String get textStatusAppBarNew => '文字状态';
+
+  @override
+  String get textStatusAppBarEdit => '编辑文字';
+
+  @override
+  String get editingBanner => '您正在继续编辑原始帖子。';
+
+  @override
+  String get textStatusHint => '在此写下您的状态…';
+
+  @override
+  String get recentTextStatuses => '最近的文字状态';
+
+  @override
+  String get repost => '重新发布';
+
+  @override
+  String get continueToSchedule => '继续安排';
+
+  @override
   String get filterAll => '全部';
 
   @override
@@ -851,130 +871,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get changeFilterAbove => '尝试更改上方的筛选条件';
-
-  @override
-  String get onb1Title => '打开 WhatsApp 菜单';
-
-  @override
-  String get onb1Body => '在手机上打开 WhatsApp，然后点击屏幕右上角的三点菜单（⋮）。';
-
-  @override
-  String get onb2Title => '点击"已关联的设备"';
-
-  @override
-  String get onb2Body => '在打开的菜单中，选择"已关联的设备"。';
-
-  @override
-  String get onb3Title => '点击"关联设备"';
-
-  @override
-  String get onb3Body => '在已关联设备的界面中，点击绿色的"关联设备"按钮。';
-
-  @override
-  String get onb4Title => '使用手机号关联';
-
-  @override
-  String get onb4Body => '在你的 WhatsApp 界面中，选择"改用手机号关联"，而不是使用二维码。';
-
-  @override
-  String get onb5Title => '输入你收到的验证码';
-
-  @override
-  String get onb5Body => '在指定位置输入 Velie 显示的验证码。切勿输入非你本人请求的验证码。';
-
-  @override
-  String get languagePickerTitle => '语言';
-
-  @override
-  String get swahiliLabel => '斯瓦希里语 (SW)';
-
-  @override
-  String get englishLabel => '英语 (EN)';
-
-  @override
-  String get continueLabel => '继续';
-
-  @override
-  String get connectedSnack => '已连接！✓';
-
-  @override
-  String refreshCodeFailed(Object error) => '获取新验证码失败：$error';
-
-  @override
-  String get howToConnectTitle => '如何连接';
-
-  @override
-  String get helpStep1 => '在手机上打开 WhatsApp';
-
-  @override
-  String get helpStep2 => '前往：设置 → 已关联的设备';
-
-  @override
-  String get helpStep3 => '点击"关联设备"';
-
-  @override
-  String get helpStep4 => '选择"使用手机号关联"';
-
-  @override
-  String get helpStep5 => '将此处显示的验证码输入 WhatsApp';
-
-  @override
-  String get pairingTitle => '连接 WhatsApp';
-
-  @override
-  String get helpLabel => '帮助';
-
-  @override
-  String get connectedTitle => '已连接 ✓';
-
-  @override
-  String get copyLabel => '复制';
-
-  @override
-  String get rateLimitedMsg => '已达上限';
-
-  @override
-  String get cannotConnectServer => '无法连接服务器';
-
-  @override
-  String get numberNotLinkedTitle => '号码未关联';
-
-  @override
-  String get numberNotLinkedBody =>
-      '你的号码已注册，但尚未关联 WhatsApp。继续关联，还是注册其他号码？';
-
-  @override
-  String get continueLinking => '继续关联';
-
-  @override
-  String get registerAnotherNumber => '注册其他号码';
-
-  @override
-  String get editTextStatus => '编辑文字状态';
-
-  @override
-  String get editingPreviousPost => '你正在继续编辑之前的帖子。';
-
-  @override
-  String get textStatusAppBarNew => '文字状态';
-
-  @override
-  String get textStatusAppBarEdit => '编辑文字';
-
-  @override
-  String get editingBanner => '您正在继续编辑原始帖子。';
-
-  @override
-  String get textStatusHint => '在此写下您的状态…';
-
-  @override
-  String get recentTextStatuses => '最近的文字状态';
-
-  @override
-  String get repost => '重新发布';
-
-  @override
-  String get continueToSchedule => '继续安排';
 
   @override
   String get imageStatusAppBarNew => '图片状态';
@@ -1054,16 +950,22 @@ class AppLocalizationsZh extends AppLocalizations {
   String get addTagChip => '添加标签';
 
   @override
+  String get codeResent => '新验证码已发送。';
+
+  @override
   String videoFinalizing(Object pct) => '正在完成视频… $pct%';
 
   @override
   String get preparingVideoOnDevice => '正在设备上准备视频…';
 
   @override
-  String get renderFailed => '渲染失败';
+  String get continueLabel => '继续';
 
   @override
-  String get dontLeavePageRendering => '请勿离开此页面 — 正在设备上渲染。';
+  String get editingPreviousPost => '你正在继续编辑之前的帖子。';
+
+  @override
+  String get editTextStatus => '编辑文字状态';
 
   @override
   String get addQuickTagTitle => '添加快速标签';
@@ -1084,6 +986,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get renderWarning => '请勿离开此页面 — 正在您的手机上处理。';
+
+  @override
+  String get renderFailed => '渲染失败';
+
+  @override
+  String get dontLeavePageRendering => '请勿离开此页面 — 正在设备上渲染。';
 
   @override
   String get imageDraftsTitle => '图片草稿';

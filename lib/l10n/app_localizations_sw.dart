@@ -189,10 +189,9 @@ class AppLocalizationsSw extends AppLocalizations {
   String get resend => 'Tuma Tena';
 
   @override
-  String otpInvalid(Object error) => 'Msimbo haukubaliwi: $error';
-
-  @override
-  String get codeResent => 'Msimbo mpya umetumwa.';
+  String otpInvalid(String error) {
+    return 'Msimbo haukubaliwi: $error';
+  }
 
   @override
   String get newPasswordTitle => 'Nywila Mpya';
@@ -842,6 +841,27 @@ class AppLocalizationsSw extends AppLocalizations {
   String get customRecurrence => 'Mpangilio maalum wa kurudia';
 
   @override
+  String get textStatusAppBarNew => 'Status ya Maandishi';
+
+  @override
+  String get textStatusAppBarEdit => 'Hariri Maandishi';
+
+  @override
+  String get editingBanner => 'Unaendelea kuhariri post ya awali.';
+
+  @override
+  String get textStatusHint => 'Andika status yako hapa…';
+
+  @override
+  String get recentTextStatuses => 'Status za Maandishi za Hivi Karibuni';
+
+  @override
+  String get repost => 'Tuma Tena';
+
+  @override
+  String get continueToSchedule => 'Endelea kwenye Ratiba';
+
+  @override
   String get filterAll => 'Zote';
 
   @override
@@ -870,137 +890,6 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get changeFilterAbove => 'Badilisha kichujio juu';
-
-  @override
-  String get onb1Title => 'Fungua Menyu ya WhatsApp';
-
-  @override
-  String get onb1Body =>
-      'Fungua WhatsApp kwenye simu yako, kisha bonyeza alama ya nukta tatu (⋮) juu kulia mwa skrini.';
-
-  @override
-  String get onb2Title => 'Chagua "Linked Devices"';
-
-  @override
-  String get onb2Body =>
-      'Kwenye menyu itakayofunguka, chagua "Linked Devices" (Vifaa Vilivyounganishwa).';
-
-  @override
-  String get onb3Title => 'Bonyeza "Link a Device"';
-
-  @override
-  String get onb3Body =>
-      'Kwenye skrini ya Linked Devices, bonyeza kitufe cha kijani kilichoandikwa "Link a Device".';
-
-  @override
-  String get onb4Title => 'Unganisha kwa Namba';
-
-  @override
-  String get onb4Body =>
-      'Kwenye skrini ya WhatsApp yako, bonyeza "Link with phone number instead" badala ya kutumia QR Code.';
-
-  @override
-  String get onb5Title => 'Weka Msimbo Utakaopewa';
-
-  @override
-  String get onb5Body =>
-      'Andika msimbo unaoonyeshwa na Velie mahali palipoainishwa. Usiingize msimbo kama hukuuomba wewe mwenyewe.';
-
-  @override
-  String get languagePickerTitle => 'Lugha / Language';
-
-  @override
-  String get swahiliLabel => 'Kiswahili (SW)';
-
-  @override
-  String get englishLabel => 'English (EN)';
-
-  @override
-  String get continueLabel => 'Endelea';
-
-  @override
-  String get connectedSnack => 'Imeunganishwa! ✓';
-
-  @override
-  String refreshCodeFailed(Object error) => 'Haikupata msimbo mpya: $error';
-
-  @override
-  String get howToConnectTitle => 'Jinsi ya Kuunganisha';
-
-  @override
-  String get helpStep1 => 'Fungua WhatsApp kwenye simu yako';
-
-  @override
-  String get helpStep2 =>
-      'Nenda kwenye: Mipangilio → Vifaa Vilivyounganishwa (Linked Devices)';
-
-  @override
-  String get helpStep3 => 'Bonyeza "Unganisha Kifaa" (Link a Device)';
-
-  @override
-  String get helpStep4 =>
-      'Chagua "Unganisha kwa Namba ya Simu" (Link with Phone Number)';
-
-  @override
-  String get helpStep5 => 'Ingiza msimbo ulioko hapa kwenye WhatsApp';
-
-  @override
-  String get pairingTitle => 'Unganisha WhatsApp';
-
-  @override
-  String get helpLabel => 'Msaada';
-
-  @override
-  String get connectedTitle => 'Imeunganishwa ✓';
-
-  @override
-  String get copyLabel => 'Nakili';
-
-  @override
-  String get rateLimitedMsg => 'Umefikia kikomo';
-
-  @override
-  String get cannotConnectServer => 'Hatuwezi kuunganishwa na seva';
-
-  @override
-  String get numberNotLinkedTitle => 'Nambari Haijaunganishwa';
-
-  @override
-  String get numberNotLinkedBody =>
-      'Nambari yako imesajiliwa lakini haijaunganishwa na WhatsApp. Endelea na kuunganisha au sajili nambari nyingine?';
-
-  @override
-  String get continueLinking => 'Endelea na Kuunganisha';
-
-  @override
-  String get registerAnotherNumber => 'Sajili Nambari Nyingine';
-
-  @override
-  String get editTextStatus => 'Hariri Maandishi';
-
-  @override
-  String get editingPreviousPost => 'Unaendelea kuhariri post ya awali.';
-
-  @override
-  String get textStatusAppBarNew => 'Status ya Maandishi';
-
-  @override
-  String get textStatusAppBarEdit => 'Hariri Maandishi';
-
-  @override
-  String get editingBanner => 'Unaendelea kuhariri post ya awali.';
-
-  @override
-  String get textStatusHint => 'Andika status yako hapa…';
-
-  @override
-  String get recentTextStatuses => 'Status za Maandishi za Hivi Karibuni';
-
-  @override
-  String get repost => 'Tuma Tena';
-
-  @override
-  String get continueToSchedule => 'Endelea kwenye Ratiba';
 
   @override
   String get imageStatusAppBarNew => 'Status ya Picha';
@@ -1082,16 +971,22 @@ class AppLocalizationsSw extends AppLocalizations {
   String get addTagChip => 'Ongeza Tag';
 
   @override
+  String get codeResent => 'Msimbo mpya umetumwa.';
+
+  @override
   String videoFinalizing(Object pct) => 'Inakamilisha video… $pct%';
 
   @override
   String get preparingVideoOnDevice => 'Inatayarisha video kwenye kifaa…';
 
   @override
-  String get renderFailed => 'Render haijakamilika';
+  String get continueLabel => 'Endelea';
 
   @override
-  String get dontLeavePageRendering => 'Usiondoke ukurasa huu — inachakatwa kwenye simu yako.';
+  String get editingPreviousPost => 'Unaendelea kuhariri post ya awali.';
+
+  @override
+  String get editTextStatus => 'Hariri Maandishi';
 
   @override
   String get addQuickTagTitle => 'Ongeza Quick Tag';
@@ -1113,6 +1008,12 @@ class AppLocalizationsSw extends AppLocalizations {
   @override
   String get renderWarning =>
       'Usiondoke ukurasa huu — inachakatwa kwenye simu yako.';
+
+  @override
+  String get renderFailed => 'Render haijakamilika';
+
+  @override
+  String get dontLeavePageRendering => 'Usiondoke ukurasa huu — inachakatwa kwenye kifaa.';
 
   @override
   String get imageDraftsTitle => 'Rasimu za Picha';

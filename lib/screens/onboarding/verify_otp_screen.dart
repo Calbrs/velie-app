@@ -67,7 +67,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(AppLocalizations.of(context).otpInvalid(e))),
+        SnackBar(content: Text(AppLocalizations.of(context).otpInvalid(e.toString()))),
       );
     } finally {
       if (mounted) setState(() => _submitting = false);
