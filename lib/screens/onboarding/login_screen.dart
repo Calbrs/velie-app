@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -64,12 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final hasInstance = await inst.checkHasInstance();
       if (!mounted) return;
 
-      if (hasInstance) {
-        context.go('/dashboard');
-      } else {
-        // Registered but not linked â€” ask what they want to do
-        _showUnlinkedSheet();
-      }
+      context.go('/dashboard');
     } catch (e) {
       if (!mounted) return;
       _checkBackend();

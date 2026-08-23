@@ -65,7 +65,7 @@ class _AuthScreenState extends State<AuthScreen> {
             password: _passwordController.text,
           );
       if (!mounted) return;
-      context.go('/connect');
+      context.go('/dashboard');
     } catch (e) {
       if (!mounted) return;
       _checkBackend();

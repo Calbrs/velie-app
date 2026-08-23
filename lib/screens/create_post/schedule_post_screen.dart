@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../core/constants/post_media_type.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/create_post_provider.dart';
 import '../../widgets/common/primary_button.dart';
@@ -104,6 +105,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (context) {
+        final l10n = AppLocalizations.of(context);
         return StatefulBuilder(builder: (context, setModalState) {
           return Padding(
             padding: EdgeInsets.only(
@@ -117,24 +119,24 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                Text('Repeat this schedule', style: AppTextStyles.titleMedium),
+                Text(l10n.repeatSheetTitle, style: AppTextStyles.titleMedium),
                 const SizedBox(height: 24),
 
                 DropdownButtonFormField<String>(
                   initialValue: _repeatType,
-                  decoration: const InputDecoration(labelText: 'Repeat'),
-                  items: const [
-                    DropdownMenuItem(value: 'once', child: Text('Does not repeat')),
-                    DropdownMenuItem(value: 'daily', child: Text('Every day')),
-                    DropdownMenuItem(value: 'weekly', child: Text('Every week')),
-                    DropdownMenuItem(value: 'monthly', child: Text('Every month')),
+                  decoration: InputDecoration(labelText: l10n.repeatLabel),
+                  items: [
+                    DropdownMenuItem(value: 'once', child: Text(l10n.doesNotRepeat)),
+                    DropdownMenuItem(value: 'daily', child: Text(l10n.everyDay)),
+                    DropdownMenuItem(value: 'weekly', child: Text(l10n.everyWeek)),
+                    DropdownMenuItem(value: 'monthly', child: Text(l10n.everyMonth)),
                   ],
                   onChanged: (v) => setModalState(() => _repeatType = v!),
                 ),
                 const SizedBox(height: 16),
 
                 if (_repeatType == 'weekly') ...[
-                  Text('Repeat on', style: AppTextStyles.sectionHeader),
+                  Text(l10n.repeatOnDays, style: AppTextStyles.sectionHeader),
                   const SizedBox(height: 8),
                   Wrap(
                     spacing: 8,
@@ -165,7 +167,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
                 if (_repeatType != 'once') ...[
                   const Divider(),
                   const SizedBox(height: 16),
-                  Text('Ends', style: AppTextStyles.sectionHeader),
+                  Text(l10n.endsSection, style: AppTextStyles.sectionHeader),
                   RadioGroup<String>(
                     groupValue: _endsType,
                     onChanged: (v) {
@@ -189,17 +191,17 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
                       }
                     },
                     child: Column(
-                      children: const [
+                      children: [
                         RadioListTile<String>(
-                          title: Text('Never'),
+                          title: Text(l10n.endsNever),
                           value: 'never',
                         ),
                         RadioListTile<String>(
-                          title: Text('On a date'),
+                          title: Text(l10n.endsOnDate),
                           value: 'date',
                         ),
                         RadioListTile<String>(
-                          title: Text('After a number of times'),
+                          title: Text(l10n.endsAfterCount),
                           value: 'count',
                         ),
                       ],
@@ -209,9 +211,9 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
-                        children: [
-                          const Text('Times: '),
-                          SizedBox(
+children: [
+                            Text(l10n.timesLabel),
+                            SizedBox(
                             width: 60,
                             child: TextFormField(
                               initialValue: '$_endsCount',
@@ -229,7 +231,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
 
                 const SizedBox(height: 24),
                 PrimaryButton(
-                  label: 'Save',
+                  label: l10n.save,
                   onPressed: () {
                     setState(() {});
                     Navigator.pop(context);
@@ -244,26 +246,26 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
     );
   }
 
-  String _getRepeatSummary() {
-    if (_repeatType == 'once') return 'Does not repeat';
-    if (_repeatType == 'daily') return 'Every day';
+  String _getRepeatSummary(AppLocalizations l10n) {
+    if (_repeatType == 'once') return l10n.doesNotRepeat;
+    if (_repeatType == 'daily') return l10n.everyDay;
     if (_repeatType == 'weekly') {
-      if (_repeatDays.isEmpty) return 'Every week';
+      if (_repeatDays.isEmpty) return l10n.everyWeek;
       const dayNames = {1: 'Mon', 2: 'Tue', 3: 'Wed', 4: 'Thu', 5: 'Fri', 6: 'Sat', 7: 'Sun'};
       final selected = _repeatDays.map((d) => dayNames[d] ?? '').join(', ');
-      return 'Every week on $selected';
+      return l10n.everyWeekOn(selected);
     }
-    if (_repeatType == 'monthly') return 'Every month';
+    if (_repeatType == 'monthly') return l10n.everyMonth;
     return '';
   }
 
-  String _getEndsSummary() {
+  String _getEndsSummary(AppLocalizations l10n) {
     if (_repeatType == 'once') return '';
-    if (_endsType == 'never') return 'Never ends';
+    if (_endsType == 'never') return l10n.neverEnds;
     if (_endsType == 'date' && _endsDate != null) {
-      return 'Ends ${DateFormat('MMM dd, yyyy').format(_endsDate!)}';
+      return '${l10n.endsPrefix} ${DateFormat('MMM dd, yyyy').format(_endsDate!)}';
     }
-    if (_endsType == 'count') return 'Ends after $_endsCount times';
+    if (_endsType == 'count') return l10n.endsAfterN(_endsCount);
     return '';
   }
 
@@ -271,7 +273,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
     final draft = context.read<CreatePostProvider>();
     if (_selectedTime.isBefore(DateTime.now())) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Weka muda wa baadaye')),
+        SnackBar(content: Text(l10n.schedulePastTimeError)),
       );
       return;
     }
@@ -290,13 +292,13 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
       await draft.releaseAutoDraft();
       draft.reset();
       messenger.showSnackBar(
-        const SnackBar(content: Text('Post imepangwa ✓')),
+        SnackBar(content: Text(l10n.scheduleSuccess)),
       );
       router.go('/queue');
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Kosa: $e')),
+        SnackBar(content: Text(l10n.scheduleError(e.toString()))),
       );
     } finally {
       if (mounted) setState(() => _submitting = false);
@@ -375,7 +377,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Text('Post Preview', style: AppTextStyles.caption.copyWith(color: AppColors.textSecondary)),
+                   Text(l10n.postPreview, style: AppTextStyles.caption.copyWith(color: AppColors.textSecondary)),
                    const SizedBox(height: 8),
                    Text(draft.mediaType.name.toUpperCase(), style: AppTextStyles.bodyMedium),
                 ],
@@ -389,12 +391,13 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final dateFormat = DateFormat('EEE, MMM dd');
     final timeFormat = DateFormat('hh:mm a');
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Schedule Post'),
+        title: Text(l10n.scheduleAppBarTitle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => GoRouter.of(context).pop(),
@@ -409,7 +412,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
               _buildPreviewBox(),
               const SizedBox(height: 32),
 
-              Text('Schedule', style: AppTextStyles.sectionHeader),
+              Text(l10n.scheduleSection, style: AppTextStyles.sectionHeader),
               const SizedBox(height: 16),
 
               InkWell(
@@ -461,7 +464,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
                         children: [
                           Text('Repeats', style: AppTextStyles.caption),
                           const SizedBox(height: 4),
-                          Text(_getRepeatSummary(), style: AppTextStyles.titleMedium),
+                          Text(_getRepeatSummary(l10n), style: AppTextStyles.titleMedium),
                         ],
                       ),
                       Icon(Icons.repeat, color: AppColors.textSecondary),
@@ -482,18 +485,18 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Schedule Summary',
+                        l10n.scheduleSummarySection,
                         style: AppTextStyles.sectionHeader.copyWith(color: AppColors.primary),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'First post: ${DateFormat('MMM dd, hh:mm a').format(_selectedTime)}',
+                        '${l10n.firstPost} ${DateFormat('MMM dd, hh:mm a').format(_selectedTime)}',
                         style: AppTextStyles.caption,
                       ),
                       const SizedBox(height: 4),
-                      Text('Repeats: ${_getRepeatSummary()}', style: AppTextStyles.caption),
+                      Text('${l10n.repeatsPrefix} ${_getRepeatSummary(l10n)}', style: AppTextStyles.caption),
                       const SizedBox(height: 4),
-                      Text('Ends: ${_getEndsSummary()}', style: AppTextStyles.caption),
+                      Text('${l10n.endsPrefix} ${_getEndsSummary(l10n)}', style: AppTextStyles.caption),
                     ],
                   ),
                 ),
@@ -509,7 +512,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
             height: 52,
             width: double.infinity,
             child: PrimaryButton(
-              label: 'PANGA',
+              label: l10n.scheduleButton,
               onPressed: _submitting ? null : _schedule,
               loading: _submitting,
             ),
