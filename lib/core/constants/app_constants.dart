@@ -13,7 +13,7 @@ abstract class AppConstants {
     // Default = persistent DEV runtime on OCI, so plain `flutter run` targets
     // DEV (scheduler keeps running even when the laptop is off). Production
     // APKs override this at build time via deploy_apk.ps1 --dart-define.
-    return 'https://dev.velie.calbrs.com/api';
+    return 'https://dev-velie.calbrs.com/api';
   }
 
   /// Origin (scheme + host) used to build absolute media URLs from the
