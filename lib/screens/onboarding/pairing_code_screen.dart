@@ -3,21 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/constants/app_constants.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
-import '../../l10n/app_localizations.dart';
-import '../../providers/auth_provider.dart';
 import '../../providers/instance_provider.dart';
 import '../../widgets/common/primary_button.dart';
 import '../../widgets/common/shimmer_box.dart';
 
-/// Onboarding, hatua 2 — connect WhatsApp via a pairing code.
-///
-/// Displays:
-///   - Shimmer while waiting for worker + code generation
-///   - Code card when code is ready (user copies & enters on phone)
-///   - Connected card on success, then navigates to dashboard
+/// Onboarding: Guided Connection Wizard
 class PairingCodeScreen extends StatefulWidget {
   const PairingCodeScreen({super.key});
 
@@ -28,6 +20,7 @@ class PairingCodeScreen extends StatefulWidget {
 class _PairingCodeScreenState extends State<PairingCodeScreen> {
   InstanceProvider? _instanceProvider;
   bool _wasConnected = false;
+  int _step = 0; // 0 = Intro, 1 = Guide & Code, 2 = Success
 
   @override
   void didChangeDependencies() {
@@ -38,14 +31,6 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
       _instanceProvider = provider;
       provider.addListener(_onInstanceChanged);
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) _ensure();
-    });
   }
 
   @override
@@ -60,19 +45,16 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
 
     if (inst.isConnected && !_wasConnected) {
       _wasConnected = true;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context).connectedSnack),
-          backgroundColor: AppColors.statusSent,
-        ),
-      );
-      Future.delayed(AppConstants.connectedCelebrationDelay, () {
-        if (mounted) context.go('/dashboard');
+      setState(() {
+        _step = 2; // Success
       });
     }
   }
 
-  Future<void> _ensure() async {
+  Future<void> _startConnection() async {
+    setState(() {
+      _step = 1;
+    });
     final inst = context.read<InstanceProvider>();
     if (inst.isConnected) return;
     try {
@@ -80,98 +62,31 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
     } catch (_) {}
   }
 
-  Future<void> _refresh() async {
-    final inst = context.read<InstanceProvider>();
-    try {
-      await inst.refreshPairingCode();
-    } catch (e) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context).refreshCodeFailed(e)),
-        ),
-      );
-    }
-  }
-
-  Future<void> _copy(String code) async {
-    await Clipboard.setData(ClipboardData(text: code.replaceAll(' ', '')));
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(AppLocalizations.of(context).codeCopied)),
-    );
-  }
-
-  void _showHelp() {
-    final l10n = AppLocalizations.of(context);
-    showModalBottomSheet<void>(
-      context: context,
-      backgroundColor: AppColors.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) => SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(l10n.howToConnectTitle, style: AppTextStyles.titleMedium),
-              const SizedBox(height: 16),
-              _HelpStep(index: 1, text: l10n.helpStep1),
-              _HelpStep(index: 2, text: l10n.helpStep2),
-              _HelpStep(index: 3, text: l10n.helpStep3),
-              _HelpStep(index: 4, text: l10n.helpStep4),
-              _HelpStep(index: 5, text: l10n.helpStep5),
-              const SizedBox(height: 20),
-              PrimaryButton(
-                label: l10n.understood,
-                onPressed: () => Navigator.pop(context),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Future<void> _logout() async {
-    final l10n = AppLocalizations.of(context);
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(l10n.logoutConfirmTitle),
-        content: Text(l10n.logoutConfirmContent),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: Text(l10n.signOut, style: TextStyle(color: AppColors.statusFailed)),
-          ),
-        ],
-      ),
-    );
-    if (confirmed == true && mounted) {
-      await context.read<AuthProvider>().logout();
+  void _finish() {
+    if (context.canPop()) {
+      context.pop(true);
+    } else {
+      context.go('/dashboard');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final inst = context.watch<InstanceProvider>();
-    final code = inst.pairingCode;
-    final l10n = AppLocalizations.of(context);
-
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text(l10n.pairingTitle),
-        actions: [
-          TextButton(
-            onPressed: _logout,
-            child: Text(l10n.signOut, style: TextStyle(color: AppColors.ash)),
-          ),
-        ],
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop(false);
+            } else {
+              context.go('/dashboard');
+            }
+          },
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -179,33 +94,13 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Spacer(),
-
-              // Main content area: connected, code, or loading
-              if (inst.isConnected)
-                _connectedCard()
-              else if (code != null && code.isNotEmpty)
-                _codeCard(code)
-              else
-                _loadingOrError(inst),
-
-              const Spacer(),
-
-              // Bottom actions
-              if (!inst.isConnected) ...[
-                PrimaryButton(
-                  label: l10n.getNewCode,
-                  loading: inst.isLoading,
-                  onPressed: inst.isLoading ? null : _refresh,
-                ),
-                const SizedBox(height: 20),
-                Center(
-                  child: TextButton(
-                    onPressed: _showHelp,
-                    child: Text(l10n.helpLabel, style: TextStyle(color: AppColors.ash)),
+              Expanded(
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: _buildStepContent(),
                   ),
                 ),
-              ],
+              ),
             ],
           ),
         ),
@@ -213,139 +108,193 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
     );
   }
 
-  Widget _connectedCard() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.statusSent.withValues(alpha: 0.4)),
-      ),
-      child: Column(
-        children: [
-          Container(
-            width: 64,
-            height: 64,
-            decoration: BoxDecoration(
-              color: AppColors.statusSent.withValues(alpha: 0.15),
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(Icons.check, color: AppColors.statusSent, size: 34),
-          ),
-          const SizedBox(height: 12),
-          Text(AppLocalizations.of(context).connectedTitle, style: AppTextStyles.titleMedium),
-          const SizedBox(height: 4),
-          Text(
-            AppLocalizations.of(context).redirectingToDashboard,
-            style: TextStyle(color: AppColors.textSecondary, fontSize: 12),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _codeCard(String code) {
-    final l10n = AppLocalizations.of(context);
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.border),
-      ),
-      child: Column(
-        children: [
-          Text(
-            l10n.pairingCodeLabel,
-            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1),
-          ),
-          const SizedBox(height: 16),
-          SelectableText(
-            code,
-            style: AppTextStyles.pairingCode,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 14),
-          TextButton.icon(
-            onPressed: () => _copy(code),
-            icon: const Icon(Icons.copy, size: 16),
-            label: Text(l10n.copyLabel),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _loadingOrError(InstanceProvider inst) {
-    final l10n = AppLocalizations.of(context);
-    if (inst.error != null || inst.isRateLimited) {
-      return Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: AppColors.surface,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.statusFailed.withValues(alpha: 0.4)),
-        ),
-        child: Column(
-          children: [
-            const Icon(Icons.cloud_off, color: AppColors.statusFailed, size: 36),
-            const SizedBox(height: 12),
-            Text(
-              inst.isRateLimited ? l10n.rateLimitedMsg : l10n.cannotConnectServer,
-              style: const TextStyle(fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              '${inst.error}',
-              style: AppTextStyles.caption,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-            PrimaryButton(label: l10n.retry, onPressed: _ensure),
-          ],
-        ),
-      );
+  Widget _buildStepContent() {
+    switch (_step) {
+      case 0:
+        return _buildIntro();
+      case 1:
+        return _buildGuide();
+      case 2:
+        return _buildSuccess();
+      default:
+        return const SizedBox();
     }
-
-    // Loading shimmer while worker boots + code generates
-    return const PairingCodeShimmer();
   }
-}
 
-class _HelpStep extends StatelessWidget {
-  const _HelpStep({required this.index, required this.text});
+  Widget _buildIntro() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 72,
+          height: 72,
+          decoration: BoxDecoration(
+            color: AppColors.primary.withValues(alpha: 0.12),
+            shape: BoxShape.circle,
+          ),
+          child: const Icon(Icons.rocket_launch, color: AppColors.primary, size: 36),
+        ),
+        const SizedBox(height: 24),
+        Text('Almost there 🚀', style: AppTextStyles.displayLarge),
+        const SizedBox(height: 12),
+        Text(
+          'Velie needs to connect to your WhatsApp before it can publish your scheduled status.\n\nThis only takes about a minute.',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: AppColors.textSecondary, fontSize: 16, height: 1.5),
+        ),
+        const SizedBox(height: 48),
+        PrimaryButton(
+          label: 'Connect WhatsApp',
+          onPressed: _startConnection,
+        ),
+      ],
+    );
+  }
 
-  final int index;
-  final String text;
+  Widget _buildGuide() {
+    final inst = context.watch<InstanceProvider>();
+    final code = inst.pairingCode;
+    final isWaiting = inst.isLoading || inst.isStarting || code == null || code.isEmpty;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 22,
-            height: 22,
-            decoration: BoxDecoration(
-              color: AppColors.buttonPrimary,
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: Text(
-                '$index',
-                style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Connect WhatsApp', style: AppTextStyles.displayLarge),
+        const SizedBox(height: 32),
+        _buildGuideStep('1 / 3', 'Open WhatsApp on your phone'),
+        const SizedBox(height: 20),
+        _buildGuideStep('2 / 3', 'Go to Settings → Linked Devices → Link a Device'),
+        const SizedBox(height: 20),
+        _buildGuideStep('3 / 3', 'Enter this connection code:'),
+        const SizedBox(height: 24),
+
+        if (isWaiting)
+          Column(
+            children: [
+              const ShimmerBox(width: double.infinity, height: 72, borderRadius: 16),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.primary),
+                  ),
+                  SizedBox(width: 12),
+                  Text('Connecting securely...', style: TextStyle(color: AppColors.primary, fontSize: 14)),
+                ],
+              ),
+            ],
+          )
+        else
+          GestureDetector(
+            onTap: () {
+              Clipboard.setData(ClipboardData(text: code.replaceAll(' ', '')));
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Code copied!')),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+              decoration: BoxDecoration(
+                color: AppColors.surfaceMuted,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: AppColors.border),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    code,
+                    style: AppTextStyles.displayLarge.copyWith(
+                      letterSpacing: 4,
+                      fontSize: 32,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Icon(Icons.copy, size: 24, color: AppColors.textSecondary),
+                ],
               ),
             ),
           ),
-          const SizedBox(width: 10),
-          Expanded(child: Text(text, style: AppTextStyles.bodyMedium)),
-        ],
-      ),
+
+        const SizedBox(height: 48),
+        if (inst.error != null) ...[
+          Center(
+            child: Text(inst.error!, style: TextStyle(color: AppColors.statusFailed, fontSize: 13), textAlign: TextAlign.center),
+          ),
+          const SizedBox(height: 16),
+          PrimaryButton(
+            label: 'Try Again',
+            onPressed: () => inst.refreshPairingCode(),
+          ),
+        ] else if (!isWaiting)
+          Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.primary),
+                  ),
+                  const SizedBox(width: 12),
+                  Text('Waiting for WhatsApp...', style: TextStyle(color: AppColors.primary, fontSize: 14)),
+                ],
+              ),
+            ),
+      ],
+    );
+  }
+
+  Widget _buildGuideStep(String step, String instruction) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          step,
+          style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: Text(
+            instruction,
+            style: TextStyle(color: AppColors.textPrimary, fontSize: 16, fontWeight: FontWeight.w500),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSuccess() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+            color: AppColors.statusSent.withValues(alpha: 0.15),
+            shape: BoxShape.circle,
+          ),
+          child: const Icon(Icons.check, color: AppColors.statusSent, size: 40),
+        ),
+        const SizedBox(height: 24),
+        Text('WhatsApp Connected ✓', style: AppTextStyles.displayLarge),
+        const SizedBox(height: 12),
+        Text(
+          "You're ready. Velie will handle the rest.",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: AppColors.textSecondary, fontSize: 16),
+        ),
+        const SizedBox(height: 48),
+        PrimaryButton(
+          label: 'Continue',
+          onPressed: _finish,
+        ),
+      ],
     );
   }
 }

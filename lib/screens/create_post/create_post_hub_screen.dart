@@ -6,6 +6,7 @@ import '../../core/constants/post_media_type.dart';
 import '../../core/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/create_post_provider.dart';
 
 /// Tengeneza hub — the landing screen for the bottom-nav "Tengeneza" tab and a
@@ -23,6 +24,7 @@ class CreatePostHubScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -34,7 +36,7 @@ class CreatePostHubScreen extends StatelessWidget {
           onPressed: () => AppRouter.back(context),
         ),
         title: Text(
-          'Tengeneza',
+          l10n.createPostAppBarTitle,
           style: TextStyle(color: AppColors.textPrimary, fontSize: 16, fontWeight: FontWeight.w600),
         ),
         centerTitle: true,
@@ -43,18 +45,18 @@ class CreatePostHubScreen extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(20),
           children: [
-            Text('Chagua Aina ya Status', style: AppTextStyles.titleMedium),
+            Text(l10n.selectStatusType, style: AppTextStyles.titleMedium),
             const SizedBox(height: 6),
             Text(
-              'Tengeneza status mpya ya video, maandishi au picha.',
+              l10n.createPostSubtitle,
               style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textSecondary),
             ),
             const SizedBox(height: 20),
             _option(
               context,
               icon: Icons.videocam_outlined,
-              title: 'Video Status',
-              subtitle: 'Tengeneza au hariri video yenye muziki na majina ya maji.',
+              title: l10n.videoStatus,
+              subtitle: l10n.videoStatusSubtitle,
               color: AppColors.primary,
               onTap: () => _open(context, PostMediaType.video, '/post/create/video'),
             ),
@@ -62,8 +64,8 @@ class CreatePostHubScreen extends StatelessWidget {
             _option(
               context,
               icon: Icons.text_fields,
-              title: 'Text Status',
-              subtitle: 'Chapisha mana\u2019 yako kwa rangi na fonti.',
+              title: l10n.textStatus,
+              subtitle: l10n.textStatusSubtitle,
               color: AppColors.statusSent,
               onTap: () => _open(context, PostMediaType.text, '/post/create/text'),
             ),
@@ -71,8 +73,8 @@ class CreatePostHubScreen extends StatelessWidget {
             _option(
               context,
               icon: Icons.image_outlined,
-              title: 'Image Status',
-              subtitle: 'Pakia picha yenye caption yako.',
+              title: l10n.imageStatus,
+              subtitle: l10n.imageStatusSubtitle,
               color: AppColors.statusPending,
               onTap: () => _open(context, PostMediaType.image, '/post/create/image'),
             ),

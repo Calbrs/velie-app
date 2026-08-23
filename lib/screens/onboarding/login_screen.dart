@@ -59,9 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
             password: _passwordController.text,
           );
       if (!mounted) return;
-
       final inst = context.read<InstanceProvider>();
-      final hasInstance = await inst.checkHasInstance();
+      await inst.checkHasInstance();
       if (!mounted) return;
 
       context.go('/dashboard');
@@ -77,102 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _showUnlinkedSheet() {
-    final l10n = AppLocalizations.of(context);
-    showModalBottomSheet<void>(
-      context: context,
-      isDismissible: false,
-      backgroundColor: AppColors.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) => SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Center(
-                child: Container(
-                  width: 36,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: AppColors.border,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                width: 56,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: AppColors.statusPending.withValues(alpha: 0.12),
-                  shape: BoxShape.circle,
-                ),
-                child: const Icon(
-                  Icons.link_off,
-                  color: AppColors.statusPending,
-                  size: 28,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                l10n.numberNotLinkedTitle,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.titleMedium,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                l10n.numberNotLinkedBody,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                height: 48,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    context.go('/connect');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.buttonPrimary,
-                    foregroundColor: AppColors.textOnButton,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(999),
-                    ),
-                  ),
-                  child: Text(l10n.continueLinking, style: AppTextStyles.buttonLabel),
-                ),
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 48,
-                child: OutlinedButton(
-                  onPressed: () async {
-                    final router = GoRouter.of(context);
-                    Navigator.pop(context);
-                    await context.read<AuthProvider>().logout();
-                    router.go('/auth');
-                  },
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: AppColors.buttonPrimary,
-                    side: BorderSide(color: AppColors.border),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(999),
-                    ),
-                  ),
-                  child: Text(l10n.registerAnotherNumber, style: AppTextStyles.buttonLabel),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+
 
   InputDecoration _pillDecoration(BuildContext context, String label, {String? hint, String? prefixText, Widget? suffixIcon}) {
     final theme = Theme.of(context).inputDecorationTheme;

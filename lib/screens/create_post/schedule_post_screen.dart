@@ -124,7 +124,7 @@ class _SchedulePostScreenState extends State<SchedulePostScreen> {
 
                 DropdownButtonFormField<String>(
                   initialValue: _repeatType,
-                  decoration: InputDecoration(labelText: l10n.repeatLabel),
+                  decoration: InputDecoration(labelText: l10n.repeatsLabel),
                   items: [
                     DropdownMenuItem(value: 'once', child: Text(l10n.doesNotRepeat)),
                     DropdownMenuItem(value: 'daily', child: Text(l10n.everyDay)),
@@ -271,6 +271,7 @@ children: [
 
   Future<void> _schedule() async {
     final draft = context.read<CreatePostProvider>();
+    final l10n = AppLocalizations.of(context);
     if (_selectedTime.isBefore(DateTime.now())) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(l10n.schedulePastTimeError)),
@@ -305,7 +306,7 @@ children: [
     }
   }
 
-   Widget _buildPreviewBox() {
+   Widget _buildPreviewBox(AppLocalizations l10n) {
     final draft = context.watch<CreatePostProvider>();
     Widget previewImage;
 
@@ -409,7 +410,7 @@ children: [
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _buildPreviewBox(),
+              _buildPreviewBox(l10n),
               const SizedBox(height: 32),
 
               Text(l10n.scheduleSection, style: AppTextStyles.sectionHeader),
