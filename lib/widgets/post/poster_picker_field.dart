@@ -66,21 +66,14 @@ class PosterPickerFieldState extends State<PosterPickerField> {
   Future<void> _pickFrom(ImageSource source) async {
     if (_busy) return;
     try {
-      if (Platform.isAndroid && source == ImageSource.gallery) {
-        // On Android, request storage/photos permissions before picking.
-        // The permissions_handler plugin may not detect all manifest permissions
-        // on Android 13+, so we request them explicitly and handle the result.
-        final storagePermission = await Permission.storage.request();
-        final photosPermission = await Permission.photos.request();
-
-        if (!storagePermission.isGranted || !photosPermission.isGranted) {
-          if (!mounted) return;
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Permission denied for accessing photos. Please enable in settings.')),
-          );
-          return;
-        }
-      } else if (Platform.isAndroid && source == ImageSource.camera) {
+      // Gallery picking needs NO runtime permission on any Android version:
+      // image_picker uses the system Photo Picker (SAF), which hands us a
+      // temporary grant to just the picked file. Do NOT request storage or
+      // media permissions here — one of them is always ungrantable
+      // (READ_EXTERNAL_STORAGE is capped at maxSdkVersion=32 in the manifest;
+      // READ_MEDIA_IMAGES does not exist below API 33), so a combined check
+      // can never pass and would block the picker from ever opening.
+      if (Platform.isAndroid && source == ImageSource.camera) {
         await Permission.camera.request();
       }
 

@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:provider/provider.dart';
 
@@ -1393,21 +1392,9 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
   }
 
   Future<void> _pickWatermark() async {
-    // On Android, request storage/photos permissions before picking.
-    // The permissions_handler plugin may not detect all manifest permissions
-    // on Android 13+, so we request them explicitly and handle the result.
-    if (Platform.isAndroid) {
-      final storagePermission = await Permission.storage.request();
-      final photosPermission = await Permission.photos.request();
-      
-      if (!storagePermission.isGranted || !photosPermission.isGranted) {
-        if (!mounted) return;
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Permission denied for accessing photos. Please enable in settings.')),
-        );
-        return;
-      }
-    }
+    // No permission gate: image_picker uses the system Photo Picker, which
+    // requires no runtime permissions on any Android version (requesting
+    // storage/media permissions here dead-ends on every API level).
     final picked = await _picker.pickImage(source: ImageSource.gallery);
     if (picked != null) {
       final dir = await getApplicationDocumentsDirectory();
