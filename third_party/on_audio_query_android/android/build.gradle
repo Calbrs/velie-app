@@ -1,0 +1,70 @@
+group 'com.lucasjosino.on_audio_query'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        kotlin_version = '2.3.20'
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.5.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+def isAgp9OrAbove = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0].toInteger() >= 9
+// AGP 9+ compiles Kotlin itself when built-in Kotlin is enabled (the default),
+// but Flutter templates disable it via android.builtInKotlin=false. In that case
+// the KGP must be applied here so the plugin's .kt sources are compiled.
+def builtInKotlin = isAgp9OrAbove &&
+    (rootProject.findProperty('android.builtInKotlin') ?: 'true').toString().toBoolean()
+
+apply plugin: 'com.android.library'
+if (!builtInKotlin) {
+    apply plugin: 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk flutter.compileSdkVersion
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        minSdk 16
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    if (!builtInKotlin) {
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_17.toString()
+        }
+    }
+
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.lucasjosino.on_audio_query'
+    }
+}
+
+dependencies {
+    def lifecycle_version = "2.3.1"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+}

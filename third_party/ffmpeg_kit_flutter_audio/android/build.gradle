@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    // Conditional for compatibility with AGP <4.2.
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.arthenica.ffmpegkit.flutter'
+    }
+
+    compileSdk flutter.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdk 33
+        versionCode 603
+        versionName "6.0.3"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    lintOptions {
+        disable 'GradleCompatible'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.5.0'
+    // Full-GPL build: adds libx264 (H.264 encode), overlay/scale/amix filters,
+    // letting video be composed on-device. See pubspec.yaml override notes.
+    implementation 'dev.ffmpegkit-maintained:ffmpeg-kit-full-gpl:6.0.3'
+    // The maintained fork omits its smart-exception dependency from the POM.
+    // FFmpegKitConfig.<clinit> references com.arthenica.smartexception.java.Exceptions,
+    // which is a NoClassDefFoundError if absent, aborting ALL plugin registration.
+    implementation 'com.arthenica:smart-exception-java:0.2.1'
+}
