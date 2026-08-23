@@ -310,6 +310,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileTitle => 'Profile';
 
   @override
+  String get logoutAction => 'Sign out of account';
+
+  @override
+  String get businessFallback => 'Business';
+
+  @override
   String get logoutButton => 'Sign out of account';
 
   @override
@@ -754,6 +760,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get endsPrefix => 'Ends:';
+
+  @override
+  String get postDetails => 'Post Details';
+
+  @override
+  String get scheduleTime => 'Schedule Time';
+
+  @override
+  String get publishedAt => 'Published At';
+
+  @override
+  String get viewers => 'Viewers';
+
+  @override
+  String get retriesLabel => 'Retries';
+
+  @override
+  String get createdAtLabel => 'Created At';
+
+  @override
+  String get channelLabel => 'Channel';
+
+  @override
+  String get deleteAction => 'Delete';
+
+  @override
+  String get statusLabel => 'Status';
 
   @override
   String get schedulePastTimeError => 'Set a future time';

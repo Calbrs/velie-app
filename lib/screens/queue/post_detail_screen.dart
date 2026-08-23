@@ -86,20 +86,21 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
   }
 
   Future<void> _delete(PostScheduleModel post) async {
+    final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Futa Post?'),
+        title: Text(l10n.deletePostConfirmTitle),
         content: Text(
           post.isPending || post.isFailed
-              ? 'Post hii itaondolewa kwenye foleni. Utendo huu hauwezi kutenduliwa.'
-              : 'Status hii itafutwa pia kwenye WhatsApp. Utendo huu hauwezi kutenduliwa.',
+              ? l10n.deletePostPendingContent
+              : l10n.deletePostSentContent,
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Ghairi')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Futa', style: TextStyle(color: AppColors.statusFailed)),
+            child: Text(l10n.deleteAction, style: TextStyle(color: AppColors.statusFailed)),
           ),
         ],
       ),
@@ -111,6 +112,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final queue = context.watch<QueueProvider>();
     final post = _post(queue);
 
@@ -124,11 +126,11 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.go('/queue'),
         ),
-        title: const Text('Maelezo ya Post'),
+        title: Text(l10n.postDetails),
       ),
-      body: post == null
+body: post == null
           ? (queue.isLoading
-              ? const LoadingView(label: 'Inapakiaâ€¦')
+              ? LoadingView(label: l10n.loading)
               : _notFound(context))
           : RefreshIndicator(
               onRefresh: () => queue.refreshOne(widget.postId),
@@ -148,15 +150,16 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
   }
 
   Widget _notFound(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.search_off, color: AppColors.ash, size: 40),
           const SizedBox(height: 12),
-          const Text('Post haikupatikana'),
+          Text(l10n.postNotFound),
           const SizedBox(height: 16),
-          TextButton(onPressed: () => context.go('/queue'), child: const Text('Rudi Foleni')),
+          TextButton(onPressed: () => context.go('/queue'), child: Text(l10n.backToQueue)),
         ],
       ),
     );
@@ -308,6 +311,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
   }
 
   Widget _infoCard(BuildContext context, PostScheduleModel post) {
+    final l10n = AppLocalizations.of(context);
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -318,10 +322,10 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-          Text(post.caption.isEmpty ? '(Bila caption)' : post.caption, style: AppTextStyles.bodyMedium),
+          Text(post.caption.isEmpty ? l10n.noCaption : post.caption, style: AppTextStyles.bodyMedium),
           const SizedBox(height: 12),
           Divider(color: AppColors.border, height: 1),
-          _infoRow(context, 'Channel', Row(
+          _infoRow(context, l10n.channelLabel, Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               ChannelIcon(post.channel, size: 16, enabled: true),
@@ -329,23 +333,23 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
               Text(post.channel.label),
             ],
           )),
-          _infoRow(context, 'Muda wa Kutuma', Text(DateTimeFormatter.full(post.scheduledTime))),
-          _infoRow(context, 'Kurudia', Text(post.localizedRecurrenceSummary(AppLocalizations.of(context)))),
+          _infoRow(context, l10n.scheduleTime, Text(DateTimeFormatter.full(post.scheduledTime))),
+          _infoRow(context, l10n.repeatsLabel, Text(post.localizedRecurrenceSummary(l10n))),
           if (post.status == PostStatus.sent && post.publishedAt != null)
             _infoRow(
               context,
-              'Muda Umelitumwa',
+              l10n.publishedAt,
               Text(DateTimeFormatter.full(post.publishedAt)),
             ),
-          _infoRow(context, 'Status', StatusBadge(status: post.status, trailingCheck: true)),
+          _infoRow(context, l10n.statusLabel, StatusBadge(status: post.status, trailingCheck: true)),
           if (post.status == PostStatus.sent && post.viewerCount != null)
             _infoRow(
               context,
-              'Waliotazama (Viewers)',
+              l10n.viewers,
               Text('${post.viewerCount}'),
             ),
-          _infoRow(context, 'Majaribio (Retries)', Text('${post.retries}')),
-          _infoRow(context, 'Iliundwa', Text(DateTimeFormatter.full(post.createdAt)), showDivider: false),
+          _infoRow(context, l10n.retriesLabel, Text('${post.retries}')),
+          _infoRow(context, l10n.createdAtLabel, Text(DateTimeFormatter.full(post.createdAt)), showDivider: false),
         ],
       ),
     );
@@ -371,6 +375,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
   }
 
   Widget _actions(BuildContext context, PostScheduleModel post, QueueProvider queue) {
+    final l10n = AppLocalizations.of(context);
     final canEdit = post.isPending;
     final canRetry = post.isFailed;
 
@@ -378,7 +383,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
       children: [
         if (canRetry)
           PrimaryButton(
-            label: 'Jaribu Tena',
+            label: l10n.retryLabel,
             icon: Icons.refresh,
             loading: queue.isBusy(post.id),
             onPressed: queue.isBusy(post.id) ? null : () => queue.retry(post.id),
@@ -395,7 +400,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                 side: BorderSide(color: AppColors.border),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
               ),
-              child: const Text('Hariri'),
+              child: Text(l10n.edit),
             ),
           ),
           const SizedBox(height: 10),
@@ -411,7 +416,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                 side: const BorderSide(color: AppColors.statusFailed),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
               ),
-              child: const Text('Futa'),
+              child: Text(l10n.deleteAction),
             ),
           ),
         ],

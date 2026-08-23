@@ -21,16 +21,17 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   Future<void> _logout(BuildContext context) async {
+    final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Toka?'),
-        content: const Text('Utaondolewa kwenye akaunti yako ya Velie.'),
+        title: Text(l10n.logoutConfirmTitle),
+        content: Text(l10n.logoutConfirmContent),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Ghairi')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Toka', style: TextStyle(color: AppColors.statusFailed)),
+            child: Text(l10n.logoutAction, style: TextStyle(color: AppColors.statusFailed)),
           ),
         ],
       ),
@@ -43,16 +44,17 @@ class ProfileScreen extends StatelessWidget {
   }
 
   Future<void> _disconnect(BuildContext context) async {
+    final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Tenganisha WhatsApp?'),
-        content: const Text('Namba hii ya WhatsApp itakatwa kwenye Velie. Posts zilizopangwa zitasimama.'),
+        title: Text(l10n.disconnectWhatsappTitle),
+        content: Text(l10n.disconnectWhatsappContent),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Ghairi')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Tenganisha', style: TextStyle(color: AppColors.statusFailed)),
+            child: Text(l10n.disconnect, style: TextStyle(color: AppColors.statusFailed)),
           ),
         ],
       ),
@@ -62,6 +64,7 @@ class ProfileScreen extends StatelessWidget {
   }
 
   void _showLinkedAccountsDrawer(BuildContext context, InstanceProvider inst) {
+    final l10n = AppLocalizations.of(context);
     showModalBottomSheet(
       context: context,
       backgroundColor: AppColors.surface,
@@ -74,14 +77,14 @@ class ProfileScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: Text('Linked Accounts', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  child: Text(l10n.linkedAccounts, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 ),
                 const SizedBox(height: 16),
                 _linkTile(
                   context: context,
-                  title: 'WhatsApp (Primary number)',
+                  title: l10n.whatsappPrimaryNumber,
                   icon: Icons.chat_bubble_outline,
                   isLinked: inst.isConnected,
                   onTap: () {
@@ -193,6 +196,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final auth = context.watch<AuthProvider>();
     final inst = context.watch<InstanceProvider>();
     final business = auth.business;
@@ -209,7 +213,7 @@ class ProfileScreen extends StatelessWidget {
             }
           },
         ),
-        title: const Text('Wasifu'),
+        title: Text(l10n.profileTitle),
       ),
       body: SafeArea(
         child: Column(
@@ -239,7 +243,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     icon: const Icon(Icons.logout, size: 22),
-                    label: Text('Toka kwenye akaunti', style: AppTextStyles.buttonLabel.copyWith(color: AppColors.statusFailed)),
+                    label: Text(l10n.logoutAction, style: AppTextStyles.buttonLabel.copyWith(color: AppColors.statusFailed)),
                   ),
                 ),
             ),
@@ -265,6 +269,7 @@ class ProfileScreen extends StatelessWidget {
   }
 
   Widget _businessHero(BuildContext context, BusinessModel? business) {
+    final l10n = AppLocalizations.of(context);
     return Column(
       children: [
         Container(
@@ -295,14 +300,14 @@ class ProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(business?.name ?? 'Biashara', style: AppTextStyles.titleMedium.copyWith(fontSize: 22, fontWeight: FontWeight.bold)),
+            Text(business?.name ?? l10n.businessFallback, style: AppTextStyles.titleMedium.copyWith(fontSize: 22, fontWeight: FontWeight.bold)),
           ],
         ),
         const SizedBox(height: 4),
         Text(business?.ownerPhone ?? '-', style: AppTextStyles.caption.copyWith(fontSize: 14)),
         const SizedBox(height: 4),
         Text(
-          'Created: ${business?.createdAt != null ? DateTimeFormatter.dayMonth(business!.createdAt) : 'Unknown'}',
+          'Created: ${business?.createdAt != null ? DateTimeFormatter.dayMonth(business!.createdAt) : l10n.unknownValue}',
           style: AppTextStyles.caption.copyWith(fontSize: 12, color: AppColors.ash),
         ),
       ],
@@ -310,6 +315,7 @@ class ProfileScreen extends StatelessWidget {
   }
 
   Widget _settingsList(BuildContext context, BusinessModel? business, InstanceProvider inst) {
+    final l10n = AppLocalizations.of(context);
     return AppCard(
       padding: EdgeInsets.zero,
       child: Column(
@@ -317,14 +323,14 @@ class ProfileScreen extends StatelessWidget {
           _settingsTile(
             icon: Icons.language,
             iconColor: AppColors.primary,
-            title: 'Lugha / Language',
+            title: l10n.selectLanguage,
             onTap: () => _showLanguageDrawer(context),
           ),
           Divider(height: 1, color: AppColors.border),
           _settingsTile(
             icon: Icons.bug_report_outlined,
             iconColor: AppColors.statusPending,
-            title: 'Ripoti Tatizo / Report a problem',
+            title: l10n.reportProblemTitle,
             hideChevron: true,
             onTap: () => _showReportProblemDrawer(context, business),
           ),
@@ -332,8 +338,8 @@ class ProfileScreen extends StatelessWidget {
           _settingsTile(
             icon: Icons.link,
             iconColor: inst.isConnected ? AppColors.statusSent : AppColors.ash,
-            title: 'Linked Accounts',
-            subtitle: inst.isConnected ? 'WhatsApp imeunganishwa' : 'Haijaunganishwa',
+            title: l10n.linkedAccounts,
+            subtitle: inst.isConnected ? l10n.whatsappConnected : l10n.notConnected,
             onTap: () => _showLinkedAccountsDrawer(context, inst),
           ),
         ],
@@ -409,17 +415,17 @@ class _ReportProblemSheetState extends State<_ReportProblemSheet> {
     try {
       await Dio().post('${AppConstants.apiBaseUrl}/contacts', data: {
         'source': 'app',
-        'name': widget.business?.name ?? 'Unknown',
-        'contactInfo': widget.business?.ownerPhone ?? 'Unknown',
+        'name': widget.business?.name ?? AppLocalizations.of(context).unknownValue,
+        'contactInfo': widget.business?.ownerPhone ?? AppLocalizations.of(context).unknownValue,
         'message': _controller.text,
         'metadata': {'businessId': widget.business?.id}
       });
       if (!mounted) return;
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Ujumbe wako umetumwa kikamilifu.')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).messageSentSuccess)));
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Imeshindwa kutuma ujumbe.')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context).messageSentFailed)));
     } finally {
       if (mounted) setState(() => _isSubmitting = false);
     }
@@ -427,6 +433,7 @@ class _ReportProblemSheetState extends State<_ReportProblemSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Padding(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -438,13 +445,13 @@ class _ReportProblemSheetState extends State<_ReportProblemSheet> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Ripoti Tatizo / Feedback', style: AppTextStyles.displayLarge.copyWith(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(l10n.reportProblemTitle, style: AppTextStyles.displayLarge.copyWith(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           TextField(
             controller: _controller,
             maxLines: 5,
             decoration: InputDecoration(
-              hintText: 'Eleza tatizo lako hapa...',
+              hintText: l10n.describeProblem,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(24),
               ),
@@ -461,7 +468,7 @@ class _ReportProblemSheetState extends State<_ReportProblemSheet> {
           ),
           const SizedBox(height: 24),
           PrimaryButton(
-            label: 'Tuma Ujumbe',
+            label: l10n.sendMessage,
             onPressed: _isSubmitting ? null : _submit,
             loading: _isSubmitting,
           ),

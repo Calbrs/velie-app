@@ -312,6 +312,12 @@ class AppLocalizationsSw extends AppLocalizations {
   String get profileTitle => 'Wasifu';
 
   @override
+  String get logoutAction => 'Toka kwenye akaunti';
+
+  @override
+  String get businessFallback => 'Biashara';
+
+  @override
   String get logoutButton => 'Toka kwenye akaunti';
 
   @override
@@ -756,6 +762,33 @@ class AppLocalizationsSw extends AppLocalizations {
 
   @override
   String get endsPrefix => 'Inaisha:';
+
+  @override
+  String get postDetails => 'Maelezo ya Post';
+
+  @override
+  String get scheduleTime => 'Muda wa Kutuma';
+
+  @override
+  String get publishedAt => 'Muda Uliotumwa';
+
+  @override
+  String get viewers => 'Waliotazama';
+
+  @override
+  String get retriesLabel => 'Majaribio';
+
+  @override
+  String get createdAtLabel => 'Iliundwa';
+
+  @override
+  String get channelLabel => 'Chaneli';
+
+  @override
+  String get deleteAction => 'Futa';
+
+  @override
+  String get statusLabel => 'Hali';
 
   @override
   String get schedulePastTimeError => 'Weka muda wa baadaye';

@@ -664,6 +664,18 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get profileTitle;
 
+  /// No description provided for @logoutAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of account'**
+  String get logoutAction;
+
+  /// No description provided for @businessFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get businessFallback;
+
   /// No description provided for @logoutButton.
   ///
   /// In en, this message translates to:
@@ -1521,6 +1533,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ends:'**
   String get endsPrefix;
+
+  /// No description provided for @postDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Post Details'**
+  String get postDetails;
+
+  /// No description provided for @scheduleTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule Time'**
+  String get scheduleTime;
+
+  /// No description provided for @publishedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Published At'**
+  String get publishedAt;
+
+  /// No description provided for @viewers.
+  ///
+  /// In en, this message translates to:
+  /// **'Viewers'**
+  String get viewers;
+
+  /// No description provided for @retriesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Retries'**
+  String get retriesLabel;
+
+  /// No description provided for @createdAtLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Created At'**
+  String get createdAtLabel;
+
+  /// No description provided for @channelLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Channel'**
+  String get channelLabel;
+
+  /// No description provided for @deleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteAction;
+
+  /// No description provided for @statusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get statusLabel;
 
   /// No description provided for @schedulePastTimeError.
   ///

@@ -307,6 +307,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get profileTitle => '个人资料';
 
   @override
+  String get logoutAction => '退出账户';
+
+  @override
+  String get businessFallback => '商家';
+
+  @override
   String get logoutButton => '退出账户';
 
   @override
@@ -737,6 +743,33 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get endsPrefix => '结束：';
+
+  @override
+  String get postDetails => '帖子详情';
+
+  @override
+  String get scheduleTime => '安排时间';
+
+  @override
+  String get publishedAt => '发布时间';
+
+  @override
+  String get viewers => '观看者';
+
+  @override
+  String get retriesLabel => '重试次数';
+
+  @override
+  String get createdAtLabel => '创建时间';
+
+  @override
+  String get channelLabel => '渠道';
+
+  @override
+  String get deleteAction => '删除';
+
+  @override
+  String get statusLabel => '状态';
 
   @override
   String get schedulePastTimeError => '请设置未来的时间';
