@@ -822,6 +822,120 @@ class AppLocalizationsZh extends AppLocalizations {
   String get customRecurrence => '自定义重复';
 
   @override
+  String get filterAll => '全部';
+
+  @override
+  String get filterPending => '等待中';
+
+  @override
+  String get filterSent => '已发送';
+
+  @override
+  String get filterFailed => '失败';
+
+  @override
+  String get searchByCaptionHint => '按说明文字搜索...';
+
+  @override
+  String get queueLoadFailed => '无法加载队列';
+
+  @override
+  String get noPostsYet => '你还没有安排任何帖子';
+
+  @override
+  String get noPostsForStatus => '该状态下没有帖子';
+
+  @override
+  String get createFirstPost => '创建你的第一篇帖子开始使用';
+
+  @override
+  String get changeFilterAbove => '尝试更改上方的筛选条件';
+
+  @override
+  String get onb1Title => '打开 WhatsApp 菜单';
+
+  @override
+  String get onb1Body => '在手机上打开 WhatsApp，然后点击屏幕右上角的三点菜单（⋮）。';
+
+  @override
+  String get onb2Title => '点击"已关联的设备"';
+
+  @override
+  String get onb2Body => '在打开的菜单中，选择"已关联的设备"。';
+
+  @override
+  String get onb3Title => '点击"关联设备"';
+
+  @override
+  String get onb3Body => '在已关联设备的界面中，点击绿色的"关联设备"按钮。';
+
+  @override
+  String get onb4Title => '使用手机号关联';
+
+  @override
+  String get onb4Body => '在你的 WhatsApp 界面中，选择"改用手机号关联"，而不是使用二维码。';
+
+  @override
+  String get onb5Title => '输入你收到的验证码';
+
+  @override
+  String get onb5Body => '在指定位置输入 Velie 显示的验证码。切勿输入非你本人请求的验证码。';
+
+  @override
+  String get languagePickerTitle => '语言';
+
+  @override
+  String get swahiliLabel => '斯瓦希里语 (SW)';
+
+  @override
+  String get englishLabel => '英语 (EN)';
+
+  @override
+  String get continueLabel => '继续';
+
+  @override
+  String get connectedSnack => '已连接！✓';
+
+  @override
+  String refreshCodeFailed(Object error) => '获取新验证码失败：$error';
+
+  @override
+  String get howToConnectTitle => '如何连接';
+
+  @override
+  String get helpStep1 => '在手机上打开 WhatsApp';
+
+  @override
+  String get helpStep2 => '前往：设置 → 已关联的设备';
+
+  @override
+  String get helpStep3 => '点击"关联设备"';
+
+  @override
+  String get helpStep4 => '选择"使用手机号关联"';
+
+  @override
+  String get helpStep5 => '将此处显示的验证码输入 WhatsApp';
+
+  @override
+  String get pairingTitle => '连接 WhatsApp';
+
+  @override
+  String get helpLabel => '帮助';
+
+  @override
+  String get connectedTitle => '已连接 ✓';
+
+  @override
+  String get copyLabel => '复制';
+
+  @override
+  String get rateLimitedMsg => '已达上限';
+
+  @override
+  String get cannotConnectServer => '无法连接服务器';
+
+  @override
   String get textStatusAppBarNew => '文字状态';
 
   @override

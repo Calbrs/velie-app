@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/instance_provider.dart';
 import '../../widgets/common/primary_button.dart';
@@ -60,8 +61,8 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
     if (inst.isConnected && !_wasConnected) {
       _wasConnected = true;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Imeunganishwa! ✓'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context).connectedSnack),
           backgroundColor: AppColors.statusSent,
         ),
       );
@@ -86,7 +87,9 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Haikupata msimbo mpya: $e')),
+        SnackBar(
+          content: Text(AppLocalizations.of(context).refreshCodeFailed(e)),
+        ),
       );
     }
   }
@@ -95,11 +98,12 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
     await Clipboard.setData(ClipboardData(text: code.replaceAll(' ', '')));
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Msimbo umenakiliwa')),
+      SnackBar(content: Text(AppLocalizations.of(context).codeCopied)),
     );
   }
 
   void _showHelp() {
+    final l10n = AppLocalizations.of(context);
     showModalBottomSheet<void>(
       context: context,
       backgroundColor: AppColors.surface,
@@ -113,16 +117,16 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Jinsi ya Kuunganisha', style: AppTextStyles.titleMedium),
+              Text(l10n.howToConnectTitle, style: AppTextStyles.titleMedium),
               const SizedBox(height: 16),
-              const _HelpStep(index: 1, text: 'Fungua WhatsApp kwenye simu yako'),
-              const _HelpStep(index: 2, text: 'Nenda kwenye: Mipangilio → Vifaa Vilivyounganishwa (Linked Devices)'),
-              const _HelpStep(index: 3, text: 'Bonyeza "Unganisha Kifaa" (Link a Device)'),
-              const _HelpStep(index: 4, text: 'Chagua "Unganisha kwa Namba ya Simu" (Link with Phone Number)'),
-              const _HelpStep(index: 5, text: 'Ingiza msimbo ulioko hapa kwenye WhatsApp'),
+              _HelpStep(index: 1, text: l10n.helpStep1),
+              _HelpStep(index: 2, text: l10n.helpStep2),
+              _HelpStep(index: 3, text: l10n.helpStep3),
+              _HelpStep(index: 4, text: l10n.helpStep4),
+              _HelpStep(index: 5, text: l10n.helpStep5),
               const SizedBox(height: 20),
               PrimaryButton(
-                label: 'Nimeelewa',
+                label: l10n.understood,
                 onPressed: () => Navigator.pop(context),
               ),
             ],
@@ -133,16 +137,17 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
   }
 
   Future<void> _logout() async {
+    final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Toka?'),
-        content: const Text('Je, una uhakika unataka kufuta usajili na kurudi mwanzoni?'),
+        title: Text(l10n.logoutConfirmTitle),
+        content: Text(l10n.logoutConfirmContent),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Ghairi')),
+          TextButton(onPressed: () => Navigator.pop(context, false), child: Text(l10n.cancel)),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Toka', style: TextStyle(color: AppColors.statusFailed)),
+            child: Text(l10n.signOut, style: TextStyle(color: AppColors.statusFailed)),
           ),
         ],
       ),
@@ -156,14 +161,15 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
   Widget build(BuildContext context) {
     final inst = context.watch<InstanceProvider>();
     final code = inst.pairingCode;
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Unganisha WhatsApp'),
+        title: Text(l10n.pairingTitle),
         actions: [
           TextButton(
             onPressed: _logout,
-            child: Text('Toka', style: TextStyle(color: AppColors.ash)),
+            child: Text(l10n.signOut, style: TextStyle(color: AppColors.ash)),
           ),
         ],
       ),
@@ -188,7 +194,7 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
               // Bottom actions
               if (!inst.isConnected) ...[
                 PrimaryButton(
-                  label: 'Pata Msimbo Mpya',
+                  label: l10n.getNewCode,
                   loading: inst.isLoading,
                   onPressed: inst.isLoading ? null : _refresh,
                 ),
@@ -196,7 +202,7 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
                 Center(
                   child: TextButton(
                     onPressed: _showHelp,
-                    child: Text('Msaada', style: TextStyle(color: AppColors.ash)),
+                    child: Text(l10n.helpLabel, style: TextStyle(color: AppColors.ash)),
                   ),
                 ),
               ],
@@ -228,10 +234,10 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
             child: const Icon(Icons.check, color: AppColors.statusSent, size: 34),
           ),
           const SizedBox(height: 12),
-          Text('Imeunganishwa ✓', style: AppTextStyles.titleMedium),
+          Text(AppLocalizations.of(context).connectedTitle, style: AppTextStyles.titleMedium),
           const SizedBox(height: 4),
           Text(
-            'Unaelekezwa kwenye dashibodi…',
+            AppLocalizations.of(context).redirectingToDashboard,
             style: TextStyle(color: AppColors.textSecondary, fontSize: 12),
           ),
         ],
@@ -240,6 +246,7 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
   }
 
   Widget _codeCard(String code) {
+    final l10n = AppLocalizations.of(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -250,8 +257,8 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
       ),
       child: Column(
         children: [
-          const Text(
-            'MSIMBO WA KUUNGANISHA',
+          Text(
+            l10n.pairingCodeLabel,
             style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1),
           ),
           const SizedBox(height: 16),
@@ -264,7 +271,7 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
           TextButton.icon(
             onPressed: () => _copy(code),
             icon: const Icon(Icons.copy, size: 16),
-            label: const Text('Nakili'),
+            label: Text(l10n.copyLabel),
           ),
         ],
       ),
@@ -272,6 +279,7 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
   }
 
   Widget _loadingOrError(InstanceProvider inst) {
+    final l10n = AppLocalizations.of(context);
     if (inst.error != null || inst.isRateLimited) {
       return Container(
         width: double.infinity,
@@ -286,7 +294,7 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
             const Icon(Icons.cloud_off, color: AppColors.statusFailed, size: 36),
             const SizedBox(height: 12),
             Text(
-              inst.isRateLimited ? 'Umefikia kikomo' : 'Hatuwezi kuunganishwa na seva',
+              inst.isRateLimited ? l10n.rateLimitedMsg : l10n.cannotConnectServer,
               style: const TextStyle(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 6),
@@ -296,7 +304,7 @@ class _PairingCodeScreenState extends State<PairingCodeScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
-            PrimaryButton(label: 'Jaribu Tena', onPressed: _ensure),
+            PrimaryButton(label: l10n.retry, onPressed: _ensure),
           ],
         ),
       );

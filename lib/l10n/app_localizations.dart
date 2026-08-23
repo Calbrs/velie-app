@@ -1660,6 +1660,234 @@ abstract class AppLocalizations {
   /// **'Custom recurrence'**
   String get customRecurrence;
 
+  /// No description provided for @filterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// No description provided for @filterPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get filterPending;
+
+  /// No description provided for @filterSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent'**
+  String get filterSent;
+
+  /// No description provided for @filterFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get filterFailed;
+
+  /// No description provided for @searchByCaptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by caption...'**
+  String get searchByCaptionHint;
+
+  /// No description provided for @queueLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load the queue'**
+  String get queueLoadFailed;
+
+  /// No description provided for @noPostsYet.
+  ///
+  /// In en, this message translates to:
+  /// **"You haven't scheduled any posts yet"**
+  String get noPostsYet;
+
+  /// No description provided for @noPostsForStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'No posts with this status'**
+  String get noPostsForStatus;
+
+  /// No description provided for @createFirstPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Start by creating your first post'**
+  String get createFirstPost;
+
+  /// No description provided for @changeFilterAbove.
+  ///
+  /// In en, this message translates to:
+  /// **'Try changing the filter above'**
+  String get changeFilterAbove;
+
+  /// No description provided for @onb1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the WhatsApp Menu'**
+  String get onb1Title;
+
+  /// No description provided for @onb1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Open WhatsApp on your phone, then tap the three-dot menu (⋮) at the top right of the screen.'**
+  String get onb1Body;
+
+  /// No description provided for @onb2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap "Linked Devices"'**
+  String get onb2Title;
+
+  /// No description provided for @onb2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'In the menu that opens, select "Linked Devices".'**
+  String get onb2Body;
+
+  /// No description provided for @onb3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap "Link a Device"'**
+  String get onb3Title;
+
+  /// No description provided for @onb3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'On the Linked Devices screen, tap the green button labeled "Link a Device".'**
+  String get onb3Body;
+
+  /// No description provided for @onb4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Link with Phone Number'**
+  String get onb4Title;
+
+  /// No description provided for @onb4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'On your WhatsApp screen, choose "Link with phone number instead" instead of using a QR code.'**
+  String get onb4Body;
+
+  /// No description provided for @onb5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the Code You Receive'**
+  String get onb5Title;
+
+  /// No description provided for @onb5Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Type the code shown by Velie where indicated. Never enter a code you did not request yourself.'**
+  String get onb5Body;
+
+  /// No description provided for @languagePickerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get languagePickerTitle;
+
+  /// No description provided for @swahiliLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Swahili (SW)'**
+  String get swahiliLabel;
+
+  /// No description provided for @englishLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'English (EN)'**
+  String get englishLabel;
+
+  /// No description provided for @continueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueLabel;
+
+  /// No description provided for @connectedSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected! ✓'**
+  String get connectedSnack;
+
+  /// No description provided for @refreshCodeFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not get a new code: {error}'**
+  String refreshCodeFailed(Object error);
+
+  /// No description provided for @howToConnectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How to Connect'**
+  String get howToConnectTitle;
+
+  /// No description provided for @helpStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Open WhatsApp on your phone'**
+  String get helpStep1;
+
+  /// No description provided for @helpStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to: Settings → Linked Devices'**
+  String get helpStep2;
+
+  /// No description provided for @helpStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap "Link a Device"'**
+  String get helpStep3;
+
+  /// No description provided for @helpStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose "Link with Phone Number"'**
+  String get helpStep4;
+
+  /// No description provided for @helpStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code shown here into WhatsApp'**
+  String get helpStep5;
+
+  /// No description provided for @pairingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect WhatsApp'**
+  String get pairingTitle;
+
+  /// No description provided for @helpLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get helpLabel;
+
+  /// No description provided for @connectedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected ✓'**
+  String get connectedTitle;
+
+  /// No description provided for @copyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copyLabel;
+
+  /// No description provided for @rateLimitedMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'You have reached the limit'**
+  String get rateLimitedMsg;
+
+  /// No description provided for @cannotConnectServer.
+  ///
+  /// In en, this message translates to:
+  /// **"We can't connect to the server"**
+  String get cannotConnectServer;
+
   /// No description provided for @textStatusAppBarNew.
   ///
   /// In en, this message translates to:

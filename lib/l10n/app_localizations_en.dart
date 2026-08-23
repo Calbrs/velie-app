@@ -839,6 +839,124 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customRecurrence => 'Custom recurrence';
 
   @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterPending => 'Pending';
+
+  @override
+  String get filterSent => 'Sent';
+
+  @override
+  String get filterFailed => 'Failed';
+
+  @override
+  String get searchByCaptionHint => 'Search by caption...';
+
+  @override
+  String get queueLoadFailed => 'Could not load the queue';
+
+  @override
+  String get noPostsYet => "You haven't scheduled any posts yet";
+
+  @override
+  String get noPostsForStatus => 'No posts with this status';
+
+  @override
+  String get createFirstPost => 'Start by creating your first post';
+
+  @override
+  String get changeFilterAbove => 'Try changing the filter above';
+
+  @override
+  String get onb1Title => 'Open the WhatsApp Menu';
+
+  @override
+  String get onb1Body =>
+      'Open WhatsApp on your phone, then tap the three-dot menu (⋮) at the top right of the screen.';
+
+  @override
+  String get onb2Title => 'Tap "Linked Devices"';
+
+  @override
+  String get onb2Body => 'In the menu that opens, select "Linked Devices".';
+
+  @override
+  String get onb3Title => 'Tap "Link a Device"';
+
+  @override
+  String get onb3Body =>
+      'On the Linked Devices screen, tap the green button labeled "Link a Device".';
+
+  @override
+  String get onb4Title => 'Link with Phone Number';
+
+  @override
+  String get onb4Body =>
+      'On your WhatsApp screen, choose "Link with phone number instead" instead of using a QR code.';
+
+  @override
+  String get onb5Title => 'Enter the Code You Receive';
+
+  @override
+  String get onb5Body =>
+      'Type the code shown by Velie where indicated. Never enter a code you did not request yourself.';
+
+  @override
+  String get languagePickerTitle => 'Language';
+
+  @override
+  String get swahiliLabel => 'Swahili (SW)';
+
+  @override
+  String get englishLabel => 'English (EN)';
+
+  @override
+  String get continueLabel => 'Continue';
+
+  @override
+  String get connectedSnack => 'Connected! ✓';
+
+  @override
+  String refreshCodeFailed(Object error) => 'Could not get a new code: $error';
+
+  @override
+  String get howToConnectTitle => 'How to Connect';
+
+  @override
+  String get helpStep1 => 'Open WhatsApp on your phone';
+
+  @override
+  String get helpStep2 => 'Go to: Settings → Linked Devices';
+
+  @override
+  String get helpStep3 => 'Tap "Link a Device"';
+
+  @override
+  String get helpStep4 => 'Choose "Link with Phone Number"';
+
+  @override
+  String get helpStep5 => 'Enter the code shown here into WhatsApp';
+
+  @override
+  String get pairingTitle => 'Connect WhatsApp';
+
+  @override
+  String get helpLabel => 'Help';
+
+  @override
+  String get connectedTitle => 'Connected ✓';
+
+  @override
+  String get copyLabel => 'Copy';
+
+  @override
+  String get rateLimitedMsg => 'You have reached the limit';
+
+  @override
+  String get cannotConnectServer => "We can't connect to the server";
+
+  @override
   String get textStatusAppBarNew => 'Text Status';
 
   @override

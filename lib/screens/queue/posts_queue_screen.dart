@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../core/constants/post_status.dart';
 import '../../core/theme/app_colors.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/queue_provider.dart';
 import '../../widgets/common/empty_state_view.dart';
 import '../../widgets/post/post_list_card.dart';
@@ -17,12 +18,12 @@ class PostsQueueScreen extends StatefulWidget {
 }
 
 class _PostsQueueScreenState extends State<PostsQueueScreen> {
-  static const _filters = <(String, PostStatus?)>[
-    ('Zote', null),
-    ('Zinazosubiri', PostStatus.pending),
-    ('Zilizotumwa', PostStatus.sent),
-    ('Zimeshindwa', PostStatus.failed),
-  ];
+  List<(String, PostStatus?)> _filters(AppLocalizations l10n) => [
+        (l10n.filterAll, null),
+        (l10n.filterPending, PostStatus.pending),
+        (l10n.filterSent, PostStatus.sent),
+        (l10n.filterFailed, PostStatus.failed),
+      ];
 
   late TextEditingController _searchController;
 
@@ -42,6 +43,7 @@ class _PostsQueueScreenState extends State<PostsQueueScreen> {
   @override
   Widget build(BuildContext context) {
     final queue = context.watch<QueueProvider>();
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -55,7 +57,7 @@ class _PostsQueueScreenState extends State<PostsQueueScreen> {
             }
           },
         ),
-        title: const Text('Foleni ya Posts'),
+        title: Text(l10n.queueTitle2),
       ),
       body: SafeArea(
         child: Column(
@@ -66,7 +68,7 @@ class _PostsQueueScreenState extends State<PostsQueueScreen> {
                 controller: _searchController,
                 onChanged: queue.setSearchQuery,
                 decoration: InputDecoration(
-                  hintText: 'Tafuta kwa caption...',
+                  hintText: l10n.searchByCaptionHint,
                   prefixIcon: Icon(Icons.search, color: AppColors.textSecondary),
                   filled: true,
                   fillColor: AppColors.surface,
@@ -95,7 +97,7 @@ class _PostsQueueScreenState extends State<PostsQueueScreen> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
       child: Row(
-        children: _filters.map((f) {
+        children: _filters(AppLocalizations.of(context)).map((f) {
           final selected = queue.filter == f.$2;
           return Expanded(
             child: GestureDetector(
@@ -129,27 +131,24 @@ class _PostsQueueScreenState extends State<PostsQueueScreen> {
   }
 
   Widget _buildList(BuildContext context, QueueProvider queue) {
+    final l10n = AppLocalizations.of(context);
     if (queue.isLoading && queue.posts.isEmpty) {
       return const SizedBox.shrink();
     }
     if (queue.error != null && queue.posts.isEmpty) {
       return EmptyStateView(
         icon: Icons.cloud_off,
-        title: 'Haikuweza kupakia foleni',
+        title: l10n.queueLoadFailed,
         message: '${queue.error}',
-        actionLabel: 'Jaribu Tena',
+        actionLabel: l10n.retry,
         onAction: () => queue.refresh(),
       );
     }
     if (queue.filteredPosts.isEmpty) {
       return EmptyStateView(
         icon: Icons.inbox_outlined,
-        title: queue.posts.isEmpty
-            ? 'Bado hujapanga post yoyote'
-            : 'Hakuna post za hali hii',
-        message: queue.posts.isEmpty
-            ? 'Anza kutengeneza post yako ya kwanza'
-            : 'Badilisha kichujio juu',
+        title: queue.posts.isEmpty ? l10n.noPostsYet : l10n.noPostsForStatus,
+        message: queue.posts.isEmpty ? l10n.createFirstPost : l10n.changeFilterAbove,
         actionLabel: null,
         onAction: null,
       );

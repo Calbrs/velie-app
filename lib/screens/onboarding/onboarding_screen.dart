@@ -5,8 +5,10 @@ import 'package:provider/provider.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/instance_provider.dart';
+import '../../providers/locale_provider.dart';
 import '../../providers/onboarding_provider.dart';
 
 /// One-time onboarding carousel shown right after the splash screen.
@@ -25,41 +27,36 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int _page = 0;
 
-  static const _steps = <_OnboardingStep>[
+  List<_OnboardingStep> _steps(AppLocalizations l10n) => [
     _OnboardingStep(
-      title: 'Fungua Menyu ya WhatsApp',
-      body:
-          'Fungua WhatsApp kwenye simu yako, kisha bonyeza alama ya nukta tatu (⋮) juu kulia mwa skrini.',
+      title: l10n.onb1Title,
+      body: l10n.onb1Body,
       imagePath: 'assets/images/onboarding_1.png',
     ),
     _OnboardingStep(
-      title: 'Chagua "Linked Devices"',
-      body:
-          'Kwenye menyu itakayofunguka, chagua "Linked Devices" (Vifaa Vilivyounganishwa).',
+      title: l10n.onb2Title,
+      body: l10n.onb2Body,
       imagePath: 'assets/images/onboarding_2.png',
     ),
     _OnboardingStep(
-      title: 'Bonyeza "Link a Device"',
-      body:
-          'Kwenye skrini ya Linked Devices, bonyeza kitufe cha kijani kilichoandikwa "Link a Device".',
+      title: l10n.onb3Title,
+      body: l10n.onb3Body,
       imagePath: 'assets/images/onboarding_3.png',
     ),
     _OnboardingStep(
-      title: 'Unganisha kwa Namba',
-      body:
-          'Kwenye skrini ya WhatsApp yako, bonyeza "Link with phone number instead" badala ya kutumia QR Code.',
+      title: l10n.onb4Title,
+      body: l10n.onb4Body,
       imagePath: 'assets/images/onboarding_4.png',
     ),
     _OnboardingStep(
-      title: 'Weka Msimbo Utakaopewa',
-      body:
-          'Andika msimbo unaoonyeshwa na Velie mahali palipoainishwa. Usiingize msimbo kama hukuuomba wewe mwenyewe.',
+      title: l10n.onb5Title,
+      body: l10n.onb5Body,
       imagePath: 'assets/images/onboarding_5.png',
     ),
   ];
 
-  void _next() {
-    if (_page < _steps.length - 1) {
+  void _next(List<_OnboardingStep> steps) {
+    if (_page < steps.length - 1) {
       setState(() {
         _page++;
       });
@@ -97,6 +94,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void _skip() => _finish();
 
   void _showLanguagePicker(BuildContext context) {
+    final localeProvider = context.read<LocaleProvider>();
+    final l10n = AppLocalizations.of(context);
     showModalBottomSheet(
       context: context,
       backgroundColor: AppColors.background,
@@ -119,18 +118,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               const SizedBox(height: 24),
               Text(
-                'Lugha / Language',
+                l10n.languagePickerTitle,
                 style: AppTextStyles.displayLarge.copyWith(fontSize: 18),
               ),
               const SizedBox(height: 16),
               ListTile(
-                title: Text('Kiswahili (sW)', style: AppTextStyles.bodyMedium),
-                trailing: const Icon(Icons.check, color: AppColors.primary),
-                onTap: () => Navigator.pop(context),
+                title: Text(l10n.swahiliLabel, style: AppTextStyles.bodyMedium),
+                trailing: localeProvider.locale.languageCode == 'sw'
+                    ? const Icon(Icons.check, color: AppColors.primary)
+                    : null,
+                onTap: () {
+                  localeProvider.setLocale(const Locale('sw'));
+                  Navigator.pop(context);
+                },
               ),
               ListTile(
-                title: Text('English (eN)', style: AppTextStyles.bodyMedium),
-                onTap: () => Navigator.pop(context),
+                title: Text(l10n.englishLabel, style: AppTextStyles.bodyMedium),
+                trailing: localeProvider.locale.languageCode == 'en'
+                    ? const Icon(Icons.check, color: AppColors.primary)
+                    : null,
+                onTap: () {
+                  localeProvider.setLocale(const Locale('en'));
+                  Navigator.pop(context);
+                },
               ),
               const SizedBox(height: 16),
             ],
@@ -142,7 +152,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final step = _steps[_page];
+    final l10n = AppLocalizations.of(context);
+    final steps = _steps(l10n);
+    final step = steps[_page];
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -153,7 +165,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             onHorizontalDragEnd: (details) {
               if (details.primaryVelocity != null) {
                 if (details.primaryVelocity! < -300) {
-                  _next();
+                  _next(steps);
                 } else if (details.primaryVelocity! > 300) {
                   _back();
                 }
@@ -253,7 +265,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: List.generate(
-                                        _steps.length,
+                                        steps.length,
                                         (i) => AnimatedContainer(
                                           duration:
                                               const Duration(milliseconds: 250),
@@ -328,14 +340,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     color: Colors.transparent,
                                     child: InkWell(
                                       borderRadius: BorderRadius.circular(999),
-                                      onTap: _next,
+                                      onTap: () => _next(steps),
                                       child: Center(
                                         child: AnimatedSwitcher(
                                           duration:
                                               const Duration(milliseconds: 300),
                                           child: _page == 0
                                               ? Text(
-                                                  'Endelea',
+                                                  l10n.continueLabel,
                                                   key: const ValueKey('text'),
                                                   style: AppTextStyles
                                                       .displayLarge
@@ -346,7 +358,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                                   ),
                                                 )
                                               : Icon(
-                                                  _page == _steps.length - 1
+                                                  _page == steps.length - 1
                                                       ? Icons.check
                                                       : Icons.arrow_forward,
                                                   key: const ValueKey('icon'),
@@ -385,9 +397,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: const Text(
-                  'sW',
-                  style: TextStyle(
+                child: Text(
+                  context.watch<LocaleProvider>().locale.languageCode.toUpperCase(),
+                  style: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -411,9 +423,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                child: const Text(
-                  'Ruka',
-                  style: TextStyle(
+                child: Text(
+                  l10n.skip,
+                  style: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
