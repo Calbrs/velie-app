@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../core/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/create_post_provider.dart';
 
 /// Intercepts "back" from the composer screens (text / image / video). When
@@ -26,25 +27,24 @@ Future<void> confirmComposerBack(BuildContext context) async {
     context: context,
     builder: (ctx) => AlertDialog(
       backgroundColor: AppColors.surface,
-      title: const Text(
-        'Hifadhi kama Rasimu?',
-        style: TextStyle(color: Colors.white),
+      title: Text(
+        AppLocalizations.of(context).saveDraftTitle2,
+        style: const TextStyle(color: Colors.white),
       ),
-      content: const Text(
-        'Una mabadiliko ambayo hayajahifadhiwa. Je, ungependa kuyahifadhi '
-        'kama rasimu kabla ya kuondoka?',
-        style: TextStyle(color: Colors.white70),
+      content: Text(
+        AppLocalizations.of(context).saveDraftBody2,
+        style: const TextStyle(color: Colors.white70),
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(ctx, false),
-          child: const Text('Ghairi', style: TextStyle(color: Colors.white54)),
+          child: Text(AppLocalizations.of(context).discard, style: const TextStyle(color: Colors.white54)),
         ),
         TextButton(
           onPressed: () => Navigator.pop(ctx, true),
-          child: const Text(
-            'Hifadhi kama Rasimu',
-            style: TextStyle(color: AppColors.primary),
+          child: Text(
+            AppLocalizations.of(context).saveDraftButton,
+            style: const TextStyle(color: AppColors.primary),
           ),
         ),
       ],

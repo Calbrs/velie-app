@@ -1138,6 +1138,66 @@ class AppLocalizationsSw extends AppLocalizations {
   String get retryLabel => 'Jaribu Tena';
 
   @override
+  String get audioUploadFailed => 'Haikuweza kupakia muziki. Jaribu tena.';
+
+  @override
+  String get addMusic => 'Ongeza Muziki';
+
+  @override
+  String get audioFormats => 'Audio pekee · mp3/m4a/wav';
+
+  @override
+  String get changeMusic => 'Badilisha Muziki';
+
+  @override
+  String get removeMusic => 'Ondoa Muziki';
+
+  @override
+  String get selectedMusic => 'Muziki Uliochaguliwa';
+
+  @override
+  String get imageUploadFailed => 'Haikuweza kupakia picha. Jaribu tena.';
+
+  @override
+  String get cropImageFailed => 'Haikuweza kukata picha. Jaribu tena.';
+
+  @override
+  String get cropImageTitle => 'Kata Picha';
+
+  @override
+  String get noImage => 'Hakuna Picha';
+
+  @override
+  String get aspectRatioHint => '1:1 (WhatsApp Status)';
+
+  @override
+  String get permissionDeniedAudio => 'Ruhusa ya kusoma audio imeikataaliwa. Iwekeshe Mipangilio.';
+
+  @override
+  String get selectSong => 'Chagua Wimbo';
+
+  @override
+  String get searchSong => 'Tafuta wimbo…';
+
+  @override
+  String get loadSongsFailed => 'Imeshindikana kupakia wimbo. Jaribu tena.';
+
+  @override
+  String get noSongsOnDevice => 'Hakuna wimbo kwenye kifaa.';
+
+  @override
+  String get noSearchResults => 'Hakuna matokeo ya tafuta.';
+
+  @override
+  String get retryButton => 'Jaribu Tena';
+
+  @override
+  String get originalAudio => 'Sauti Halisi';
+
+  @override
+  String get musicLabel => 'Muziki';
+
+  @override
   String get saveDraftTitle2 => 'Hifadhi kama Rasimu?';
 
   @override

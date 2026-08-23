@@ -1138,6 +1138,66 @@ class AppLocalizationsEn extends AppLocalizations {
   String get retryLabel => 'Retry';
 
   @override
+  String get audioUploadFailed => 'Could not upload audio. Please try again.';
+
+  @override
+  String get addMusic => 'Add Music';
+
+  @override
+  String get audioFormats => 'Audio only · mp3/m4a/wav';
+
+  @override
+  String get changeMusic => 'Change Music';
+
+  @override
+  String get removeMusic => 'Remove Music';
+
+  @override
+  String get selectedMusic => 'Selected Music';
+
+  @override
+  String get imageUploadFailed => 'Could not upload image. Please try again.';
+
+  @override
+  String get cropImageFailed => 'Could not crop image. Please try again.';
+
+  @override
+  String get cropImageTitle => 'Crop Image';
+
+  @override
+  String get noImage => 'No Image';
+
+  @override
+  String get aspectRatioHint => '1:1 (WhatsApp Status)';
+
+  @override
+  String get permissionDeniedAudio => 'Permission to read audio denied. Enable it in Settings.';
+
+  @override
+  String get selectSong => 'Select Song';
+
+  @override
+  String get searchSong => 'Search song…';
+
+  @override
+  String get loadSongsFailed => 'Failed to load songs. Please try again.';
+
+  @override
+  String get noSongsOnDevice => 'No songs on device.';
+
+  @override
+  String get noSearchResults => 'No search results.';
+
+  @override
+  String get retryButton => 'Try Again';
+
+  @override
+  String get originalAudio => 'Original Audio';
+
+  @override
+  String get musicLabel => 'Music';
+
+  @override
   String get saveDraftTitle2 => 'Save as Draft?';
 
   @override

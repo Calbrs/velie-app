@@ -2230,6 +2230,126 @@ abstract class AppLocalizations {
   /// **'Retry'**
   String get retryLabel;
 
+  /// No description provided for @audioUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not upload audio. Please try again.'**
+  String get audioUploadFailed;
+
+  /// No description provided for @addMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Music'**
+  String get addMusic;
+
+  /// No description provided for @audioFormats.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio only · mp3/m4a/wav'**
+  String get audioFormats;
+
+  /// No description provided for @changeMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Music'**
+  String get changeMusic;
+
+  /// No description provided for @removeMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove Music'**
+  String get removeMusic;
+
+  /// No description provided for @selectedMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Music'**
+  String get selectedMusic;
+
+  /// No description provided for @imageUploadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not upload image. Please try again.'**
+  String get imageUploadFailed;
+
+  /// No description provided for @cropImageFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not crop image. Please try again.'**
+  String get cropImageFailed;
+
+  /// No description provided for @cropImageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crop Image'**
+  String get cropImageTitle;
+
+  /// No description provided for @noImage.
+  ///
+  /// In en, this message translates to:
+  /// **'No Image'**
+  String get noImage;
+
+  /// No description provided for @aspectRatioHint.
+  ///
+  /// In en, this message translates to:
+  /// **'1:1 (WhatsApp Status)'**
+  String get aspectRatioHint;
+
+  /// No description provided for @permissionDeniedAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission to read audio denied. Enable it in Settings.'**
+  String get permissionDeniedAudio;
+
+  /// No description provided for @selectSong.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Song'**
+  String get selectSong;
+
+  /// No description provided for @searchSong.
+  ///
+  /// In en, this message translates to:
+  /// **'Search song…'**
+  String get searchSong;
+
+  /// No description provided for @loadSongsFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load songs. Please try again.'**
+  String get loadSongsFailed;
+
+  /// No description provided for @noSongsOnDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'No songs on device.'**
+  String get noSongsOnDevice;
+
+  /// No description provided for @noSearchResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No search results.'**
+  String get noSearchResults;
+
+  /// No description provided for @retryButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get retryButton;
+
+  /// No description provided for @originalAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Audio'**
+  String get originalAudio;
+
+  /// No description provided for @musicLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Music'**
+  String get musicLabel;
+
   /// No description provided for @saveDraftTitle2.
   ///
   /// In en, this message translates to:

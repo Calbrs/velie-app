@@ -7,6 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 
 /// Result of picking (and optionally trimming) a device song.
 class PickedDeviceAudio {
@@ -27,9 +28,7 @@ Future<PickedDeviceAudio?> showDeviceAudioPicker(BuildContext context) async {
   if (!granted) {
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Huna ruhusa ya kusoma wimbo. Imewasha kutoka Mipangilio.'),
-        ),
+        SnackBar(content: Text(AppLocalizations.of(context).permissionDeniedAudio)),
       );
     }
     return null;
@@ -160,10 +159,10 @@ class _DeviceAudioSheetState extends State<_DeviceAudioSheet> {
           child: Row(
             children: [
               Expanded(
-                child: Text('Chagua Wimbo', style: AppTextStyles.sectionHeader),
+                child: Text(AppLocalizations.of(context).selectSong, style: AppTextStyles.sectionHeader),
               ),
               IconButton(
-                tooltip: 'Funga',
+                tooltip: AppLocalizations.of(context).close,
                 onPressed: _close,
                 icon: const Icon(Icons.close),
                 visualDensity: VisualDensity.compact,
@@ -177,7 +176,7 @@ class _DeviceAudioSheetState extends State<_DeviceAudioSheet> {
             controller: _searchController,
             onChanged: _onSearchChanged,
             decoration: InputDecoration(
-              hintText: 'Tafuta wimbo…',
+              hintText: AppLocalizations.of(context).searchSong,
               prefixIcon: const Icon(Icons.search),
               isDense: true,
               filled: true,
@@ -200,6 +199,7 @@ class _DeviceAudioSheetState extends State<_DeviceAudioSheet> {
       return const Center(child: CircularProgressIndicator());
     }
     if (_error != null) {
+      final l10n = AppLocalizations.of(context);
       return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -208,18 +208,19 @@ class _DeviceAudioSheetState extends State<_DeviceAudioSheet> {
             const SizedBox(height: 12),
             ElevatedButton(
               onPressed: _loadSongs,
-              child: const Text('Jaribu tena'),
+              child: Text(l10n.retryButton),
             ),
           ],
         ),
       );
     }
     if (_filtered.isEmpty) {
+      final l10n = AppLocalizations.of(context);
       return Center(
         child: Text(
           _searchController.text.isEmpty
-              ? 'Hakuna wimbo kwenye kifaa.'
-              : 'Hakuna matokeo ya tafuta.',
+              ? l10n.noSongsOnDevice
+              : l10n.noSearchResults,
           style: AppTextStyles.bodyMedium,
         ),
       );

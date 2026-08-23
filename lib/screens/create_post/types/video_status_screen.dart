@@ -433,7 +433,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                     const Spacer(),
 
                     // TOOL DOCK (Caption, Logo, Song, Quick Tags, Volume)
-                    _toolDock(draft.hasImage),
+                    _toolDock(draft.hasImage, l10n),
                     // Removed SizedBox(height: 20) to fix 15px overflow
                   ],
                 ),
@@ -824,7 +824,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
     );
   }
 
-  Widget _toolDock(bool hasVideo) {
+  Widget _toolDock(bool hasVideo, AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
@@ -845,7 +845,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                   size: 24,
                   color: AppColors.primary,
                 ),
-                'Caption',
+                l10n.captionTool,
                 onTap: _openCaptionDrawer,
               ),
               const SizedBox(width: 12),
@@ -867,7 +867,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                         size: 24,
                         color: AppColors.primary,
                       ),
-                'Logo',
+                l10n.logoTool,
                 onTap: _handleLogoClick,
               ),
               const SizedBox(width: 12),
@@ -894,19 +894,19 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                         size: 24,
                         color: AppColors.primary,
                       ),
-                'Muziki',
+                l10n.musicLabel,
                 onTap: _handleSongClick,
               ),
               const SizedBox(width: 12),
               _editorTool(
                 const Icon(Icons.tag, size: 24, color: AppColors.primary),
-                'Quick Tags',
+                l10n.quickTagsTool,
                 onTap: _openQuickTagsSheet,
               ),
               const SizedBox(width: 12),
               _editorTool(
                 const Icon(Icons.volume_up, size: 24, color: AppColors.primary),
-                'Volume',
+                l10n.volumeTool,
                 onTap: hasVideo ? _openVolumeDrawer : null,
               ),
             ],
@@ -1086,7 +1086,7 @@ class _VideoStatusScreenState extends State<VideoStatusScreen>
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      _musicFileName ?? 'Muziki',
+                      _musicFileName ?? AppLocalizations.of(ctx).musicLabel,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(

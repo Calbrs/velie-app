@@ -10,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 
 /// Runs in a background isolate so the UI thread is never blocked by the
 /// (CPU-heavy, pure-Dart) WebP re-encode.
@@ -100,7 +101,7 @@ class PosterPickerFieldState extends State<PosterPickerField> {
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Haikuweza kupakia picha. Jaribu tena.')),
+          SnackBar(content: Text(AppLocalizations.of(context).imageUploadFailed)),
         );
       }
     } finally {
@@ -119,21 +120,21 @@ class PosterPickerFieldState extends State<PosterPickerField> {
       final tempFile = File('${tempDir.path}/temp_crop.webp');
       await tempFile.writeAsBytes(widget.imageBytes!);
 
-      final cropped = await ImageCropper().cropImage(
-        sourcePath: tempFile.path,
-        uiSettings: [
-          AndroidUiSettings(
-            toolbarTitle: 'Kata Picha',
-            toolbarColor: AppColors.buttonPrimary,
-            toolbarWidgetColor: AppColors.textOnButton,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false,
-          ),
-          IOSUiSettings(
-            title: 'Kata Picha',
-            aspectRatioLockEnabled: false,
-          ),
-        ]);
+final cropped = await ImageCropper().cropImage(
+      sourcePath: tempFile.path,
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: AppLocalizations.of(context).cropImageTitle,
+          toolbarColor: AppColors.buttonPrimary,
+          toolbarWidgetColor: AppColors.textOnButton,
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: false,
+        ),
+        IOSUiSettings(
+          title: AppLocalizations.of(context).cropImageTitle,
+          aspectRatioLockEnabled: false,
+        ),
+      ]);
 
       if (cropped != null) {
         final bytes = await cropped.readAsBytes();
@@ -149,7 +150,7 @@ class PosterPickerFieldState extends State<PosterPickerField> {
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Haikuweza kukata picha. Jaribu tena.')),
+          SnackBar(content: Text(AppLocalizations.of(context).cropImageFailed)),
         );
       }
     } finally {
@@ -208,9 +209,9 @@ class PosterPickerFieldState extends State<PosterPickerField> {
                   Icon(Icons.add_photo_alternate_outlined,
                       size: 44, color: AppColors.ash),
                   const SizedBox(height: 10),
-                  Text('Hakuna Picha', style: AppTextStyles.bodyMedium),
+                  Text(AppLocalizations.of(context).noImage, style: AppTextStyles.bodyMedium),
                   const SizedBox(height: 4),
-                  Text('1:1 (WhatsApp Status)', style: AppTextStyles.caption),
+                  Text(AppLocalizations.of(context).aspectRatioHint, style: AppTextStyles.caption),
                 ],
               ),
             ),

@@ -1113,6 +1113,66 @@ class AppLocalizationsZh extends AppLocalizations {
   String get retryLabel => '重试';
 
   @override
+  String get audioUploadFailed => '无法上传音频，请重试。';
+
+  @override
+  String get addMusic => '添加音乐';
+
+  @override
+  String get audioFormats => '仅音频 · mp3/m4a/wav';
+
+  @override
+  String get changeMusic => '更换音乐';
+
+  @override
+  String get removeMusic => '移除音乐';
+
+  @override
+  String get selectedMusic => '已选音乐';
+
+  @override
+  String get imageUploadFailed => '无法上传图片，请重试。';
+
+  @override
+  String get cropImageFailed => '无法裁剪图片，请重试。';
+
+  @override
+  String get cropImageTitle => '裁剪图片';
+
+  @override
+  String get noImage => '无图片';
+
+  @override
+  String get aspectRatioHint => '1:1 (WhatsApp 状态)';
+
+  @override
+  String get permissionDeniedAudio => '读取音频权限被拒绝。请在设置中启用。';
+
+  @override
+  String get selectSong => '选择歌曲';
+
+  @override
+  String get searchSong => '搜索歌曲…';
+
+  @override
+  String get loadSongsFailed => '加载歌曲失败，请重试。';
+
+  @override
+  String get noSongsOnDevice => '设备上没有歌曲。';
+
+  @override
+  String get noSearchResults => '无搜索结果。';
+
+  @override
+  String get retryButton => '重试';
+
+  @override
+  String get originalAudio => '原始音频';
+
+  @override
+  String get musicLabel => '音乐';
+
+  @override
   String get saveDraftTitle2 => '保存为草稿？';
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 import 'device_audio_picker_sheet.dart';
 
 /// Background-music picker for video posts.
@@ -51,7 +52,7 @@ class _AudioPickerFieldState extends State<AudioPickerField> {
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Haikuweza kupakia muziki. Jaribu tena.')),
+          SnackBar(content: Text(AppLocalizations.of(context).audioUploadFailed)),
         );
       }
     } finally {
@@ -74,6 +75,7 @@ class _AudioPickerFieldState extends State<AudioPickerField> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final hasAudio = widget.audioPath != null;
 
     if (_busy) {
@@ -110,10 +112,10 @@ class _AudioPickerFieldState extends State<AudioPickerField> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Ongeza Muziki wa Usuli', style: AppTextStyles.bodyMedium),
+                      Text(l10n.addMusic, style: AppTextStyles.bodyMedium),
                       const SizedBox(height: 2),
                       Text(
-                        'Audio pekee · mp3/m4a/wav',
+                        l10n.audioFormats,
                         style: AppTextStyles.caption,
                       ),
                     ],
@@ -139,15 +141,15 @@ class _AudioPickerFieldState extends State<AudioPickerField> {
           const Icon(Icons.music_note, size: 22, color: AppColors.primary),
           const SizedBox(width: 12),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.audioName ?? 'Muziki uliochaguliwa',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontWeight: FontWeight.w600),
-                ),
+child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.audioName ?? l10n.selectedMusic,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontWeight: FontWeight.w600),
+                  ),
                 if (_sizeLabel.isNotEmpty) ...[
                   const SizedBox(height: 2),
                   Text(_sizeLabel, style: AppTextStyles.caption),
@@ -156,13 +158,13 @@ class _AudioPickerFieldState extends State<AudioPickerField> {
             ),
           ),
           IconButton(
-            tooltip: 'Badilisha muziki',
+            tooltip: l10n.changeMusic,
             onPressed: _pick,
             icon: const Icon(Icons.refresh, size: 20),
             visualDensity: VisualDensity.compact,
           ),
           IconButton(
-            tooltip: 'Ondoa muziki',
+            tooltip: l10n.removeMusic,
             onPressed: _remove,
             icon: const Icon(Icons.close, size: 20),
             visualDensity: VisualDensity.compact,
