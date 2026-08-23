@@ -34,6 +34,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     final dashboard = context.watch<DashboardProvider>();
     final business = context.watch<AuthProvider>().business;
+    final l10n = AppLocalizations.of(context);
 
     return PopScope(
       canPop: false,
@@ -43,7 +44,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         if (_lastPressedAt == null || now.difference(_lastPressedAt!) > const Duration(seconds: 2)) {
           _lastPressedAt = now;
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Bofya tena ili kutoka')),
+            SnackBar(content: Text(l10n.pressAgainToExit)),
           );
           return;
         }
@@ -111,13 +112,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.only(bottom: 16),
-                      child: Text('Chagua Aina ya Status', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                      child: Text(AppLocalizations.of(context).selectStatusType, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                     ),
                     ListTile(
                       leading: Image.asset('assets/icons/video.png', width: 28, height: 28, color: AppColors.primary),
-                      title: const Text('Video Status', style: TextStyle(fontWeight: FontWeight.w600)),
+                      title: Text(AppLocalizations.of(context).videoStatus, style: TextStyle(fontWeight: FontWeight.w600)),
                       onTap: () {
                         Navigator.pop(sheetContext);
                         context.read<CreatePostProvider>().setMediaType(PostMediaType.video);
@@ -126,7 +127,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     ListTile(
                       leading: Image.asset('assets/icons/Text-icon.png', width: 28, height: 28, color: AppColors.primary),
-                      title: const Text('Text Status', style: TextStyle(fontWeight: FontWeight.w600)),
+                      title: Text(AppLocalizations.of(context).textStatus, style: TextStyle(fontWeight: FontWeight.w600)),
                       onTap: () {
                         Navigator.pop(sheetContext);
                         context.read<CreatePostProvider>().setMediaType(PostMediaType.text);
@@ -135,7 +136,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     ListTile(
                       leading: Image.asset('assets/icons/camera.png', width: 28, height: 28, color: AppColors.primary),
-                      title: const Text('Image Status', style: TextStyle(fontWeight: FontWeight.w600)),
+                      title: Text(AppLocalizations.of(context).imageStatus, style: TextStyle(fontWeight: FontWeight.w600)),
                       onTap: () {
                         Navigator.pop(sheetContext);
                         context.read<CreatePostProvider>().setMediaType(PostMediaType.image);
@@ -377,7 +378,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Icon(Icons.inbox_outlined, color: AppColors.ash, size: 40),
             const SizedBox(height: 12),
             Text(
-              'Bado hakuna post',
+              AppLocalizations.of(context).dashboardNoPosts,
               style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textSecondary),
             ),
           ],

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../core/router/app_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/update_provider.dart';
 import '../../widgets/common/app_card.dart';
 
@@ -25,7 +26,7 @@ class NotificationsScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => AppRouter.back(context),
         ),
-        title: const Text('Taarifa'),
+        title: Text(AppLocalizations.of(context).notificationsAppBarTitle),
         centerTitle: true,
       ),
       body: Column(
@@ -63,7 +64,9 @@ class NotificationsScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                updateProvider.isReady ? 'Toleo Jipya Tayari' : 'Inapakua Toleo Jipya...',
+                                updateProvider.isReady
+                                    ? AppLocalizations.of(context).updateReadyTitle
+                                    : AppLocalizations.of(context).updateDownloadingTitle,
                                 style: AppTextStyles.titleMedium.copyWith(fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(height: 4),
@@ -79,7 +82,7 @@ class NotificationsScreen extends StatelessWidget {
                                 )
                               else if (updateProvider.isReady)
                                 Text(
-                                  'Bofya hapa kusasisha App yako sasa hivi.',
+                                  AppLocalizations.of(context).updateReadySubtitle,
                                   style: AppTextStyles.caption.copyWith(color: AppColors.textSecondary),
                                 ),
                             ],
@@ -112,12 +115,12 @@ class NotificationsScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     Text(
-                      'Hakuna Taarifa Mpya',
+                      AppLocalizations.of(context).noNotificationsTitle,
                       style: AppTextStyles.titleMedium,
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Taarifa zote kuhusu akaunti yako\nzitaonekana hapa.',
+                      AppLocalizations.of(context).noNotificationsBody,
                       style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textSecondary),
                       textAlign: TextAlign.center,
                     ),
