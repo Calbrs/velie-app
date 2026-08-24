@@ -1042,28 +1042,38 @@ class AppLocalizationsZh extends AppLocalizations {
   String get validatorCaptionLong => '说明超过 2200 个字符';
 
   @override
-  String everyNDays(int n) => '每 $n 天';
+  String everyNDays(int n) {
+    return '每 $n 天';
+  }
 
   @override
-  String everyNWeeksOnDays(int n, String days) => '每 $n 周的 $days';
+  String everyNWeeksOnDays(int n, String days) {
+    return '每 $n 周，$days';
+  }
 
   @override
-  String everyNWeeks(int n) => '每 $n 周';
+  String everyNWeeks(int n) {
+    return '每 $n 周';
+  }
 
   @override
-  String everyNMonths(int n) => '每 $n 月';
+  String everyNMonths(int n) {
+    return '每 $n 个月';
+  }
 
   @override
   String get customRecurrence => '自定义重复';
 
   @override
-  String get preparingVideoOnDevice => '正在设备上准备视频…';
+  String get preparingVideoOnDevice => '正在设备上准备视频...';
 
   @override
-  String videoFinalizing(int pct) => '正在完成视频… $pct%';
+  String videoFinalizing(int pct) {
+    return '视频即将完成... $pct%';
+  }
 
   @override
-  String get dontLeavePageRendering => '请勿离开此页面 — 正在设备上渲染。';
+  String get dontLeavePageRendering => '请勿离开此页面 — 正在您的设备上渲染。';
 
   @override
   String get renderFailed => '渲染失败';
@@ -1072,7 +1082,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get editTextStatus => '编辑文字状态';
 
   @override
-  String get editingPreviousPost => '你正在继续编辑之前的帖子。';
+  String get editingPreviousPost => '您正在继续编辑上一条帖子。';
 
   @override
   String get continueLabel => '继续';
@@ -1084,7 +1094,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get codeResent => '新验证码已发送。';
 
   @override
-  String get logoutAction => '退出账户';
+  String get logoutAction => '退出账号';
 
   @override
   String get businessFallback => '商家';
@@ -1096,10 +1106,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get postDetails => '帖子详情';
 
   @override
-  String get channelLabel => '渠道';
+  String get channelLabel => '频道';
 
   @override
-  String get scheduleTime => '安排时间';
+  String get scheduleTime => '计划时间';
 
   @override
   String get publishedAt => '发布时间';
@@ -1108,7 +1118,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get statusLabel => '状态';
 
   @override
-  String get viewers => '观看者';
+  String get viewers => '观看人数';
 
   @override
   String get retriesLabel => '重试次数';
@@ -1120,7 +1130,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get filterAll => '全部';
 
   @override
-  String get filterPending => '等待中';
+  String get filterPending => '待发送';
 
   @override
   String get filterSent => '已发送';
@@ -1129,31 +1139,31 @@ class AppLocalizationsZh extends AppLocalizations {
   String get filterFailed => '失败';
 
   @override
-  String get searchByCaptionHint => '按说明文字搜索...';
+  String get searchByCaptionHint => '按文字内容搜索...';
 
   @override
   String get queueLoadFailed => '无法加载队列';
 
   @override
-  String get noPostsYet => '你还没有安排任何帖子';
+  String get noPostsYet => '您还没有安排任何帖子';
 
   @override
   String get noPostsForStatus => '该状态下没有帖子';
 
   @override
-  String get createFirstPost => '创建你的第一篇帖子开始使用';
+  String get createFirstPost => '开始创建您的第一个帖子';
 
   @override
   String get changeFilterAbove => '尝试更改上方的筛选条件';
 
   @override
-  String get audioUploadFailed => '无法上传音频，请重试。';
+  String get audioUploadFailed => '音频上传失败，请重试。';
 
   @override
   String get addMusic => '添加音乐';
 
   @override
-  String get audioFormats => '仅音频 · mp3/m4a/wav';
+  String get audioFormats => '仅音频（mp3/m4a/wav）';
 
   @override
   String get selectedMusic => '已选音乐';
@@ -1165,13 +1175,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get removeMusic => '移除音乐';
 
   @override
-  String get permissionDeniedAudio => '读取音频权限被拒绝。请在设置中启用。';
+  String get permissionDeniedAudio => '读取音频权限被拒绝，请在设置中开启。';
 
   @override
   String get selectSong => '选择歌曲';
 
   @override
-  String get searchSong => '搜索歌曲…';
+  String get searchSong => '搜索歌曲...';
 
   @override
   String get retryButton => '重试';
@@ -1180,20 +1190,20 @@ class AppLocalizationsZh extends AppLocalizations {
   String get noSongsOnDevice => '设备上没有歌曲。';
 
   @override
-  String get noSearchResults => '无搜索结果。';
+  String get noSearchResults => '没有搜索结果。';
 
   @override
-  String get imageUploadFailed => '无法上传图片，请重试。';
+  String get imageUploadFailed => '图片上传失败，请重试。';
 
   @override
   String get cropImageTitle => '裁剪图片';
 
   @override
-  String get cropImageFailed => '无法裁剪图片，请重试。';
+  String get cropImageFailed => '图片裁剪失败，请重试。';
 
   @override
   String get noImage => '无图片';
 
   @override
-  String get aspectRatioHint => '1:1 (WhatsApp 状态)';
+  String get aspectRatioHint => '1:1（WhatsApp 状态）';
 }

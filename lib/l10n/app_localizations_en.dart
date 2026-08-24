@@ -1067,28 +1067,39 @@ class AppLocalizationsEn extends AppLocalizations {
   String get validatorCaptionLong => 'Caption exceeds 2200 characters';
 
   @override
-  String everyNDays(int n) => 'Every $n days';
+  String everyNDays(int n) {
+    return 'Every $n days';
+  }
 
   @override
-  String everyNWeeksOnDays(int n, String days) => 'Every $n weeks on $days';
+  String everyNWeeksOnDays(int n, String days) {
+    return 'Every $n weeks on $days';
+  }
 
   @override
-  String everyNWeeks(int n) => 'Every $n weeks';
+  String everyNWeeks(int n) {
+    return 'Every $n weeks';
+  }
 
   @override
-  String everyNMonths(int n) => 'Every $n months';
+  String everyNMonths(int n) {
+    return 'Every $n months';
+  }
 
   @override
   String get customRecurrence => 'Custom recurrence';
 
   @override
-  String get preparingVideoOnDevice => 'Preparing video on device…';
+  String get preparingVideoOnDevice => 'Preparing video on device...';
 
   @override
-  String videoFinalizing(int pct) => 'Finishing video… $pct%';
+  String videoFinalizing(int pct) {
+    return 'Finishing video... $pct%';
+  }
 
   @override
-  String get dontLeavePageRendering => "Don't leave this page — rendering on your device.";
+  String get dontLeavePageRendering =>
+      'Don\'t leave this page — rendering on your device.';
 
   @override
   String get renderFailed => 'Render failed';
@@ -1098,7 +1109,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get editingPreviousPost =>
-      "You're continuing to edit the previous post.";
+      'You\'re continuing to edit the previous post.';
 
   @override
   String get continueLabel => 'Continue';
@@ -1161,7 +1172,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get queueLoadFailed => 'Could not load the queue';
 
   @override
-  String get noPostsYet => "You haven't scheduled any posts yet";
+  String get noPostsYet => 'You haven\'t scheduled any posts yet';
 
   @override
   String get noPostsForStatus => 'No posts with this status';
@@ -1179,7 +1190,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addMusic => 'Add Music';
 
   @override
-  String get audioFormats => 'Audio only · mp3/m4a/wav';
+  String get audioFormats => 'Audio only (mp3/m4a/wav)';
 
   @override
   String get selectedMusic => 'Selected Music';
@@ -1191,7 +1202,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get removeMusic => 'Remove Music';
 
   @override
-  String get permissionDeniedAudio => 'Permission to read audio denied. Enable it in Settings.';
+  String get permissionDeniedAudio =>
+      'Permission to read audio denied. Enable it in Settings.';
 
   @override
   String get selectSong => 'Select Song';

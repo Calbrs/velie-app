@@ -1031,6 +1031,172 @@
   "@validatorCaptionEmpty": {},
 
   "validatorCaptionLong": "Caption exceeds 2200 characters",
-  "@validatorCaptionLong": {}
+  "@validatorCaptionLong": {},
+
+  "everyNDays": "Every {n} days",
+  "@everyNDays": {
+    "placeholders": { "n": { "type": "int" } }
+  },
+
+  "everyNWeeksOnDays": "Every {n} weeks on {days}",
+  "@everyNWeeksOnDays": {
+    "placeholders": { "n": { "type": "int" }, "days": { "type": "String" } }
+  },
+
+  "everyNWeeks": "Every {n} weeks",
+  "@everyNWeeks": {
+    "placeholders": { "n": { "type": "int" } }
+  },
+
+  "everyNMonths": "Every {n} months",
+  "@everyNMonths": {
+    "placeholders": { "n": { "type": "int" } }
+  },
+
+  "customRecurrence": "Custom recurrence",
+  "@customRecurrence": {},
+
+  "preparingVideoOnDevice": "Preparing video on device...",
+  "@preparingVideoOnDevice": {},
+
+  "videoFinalizing": "Finishing video... {pct}%",
+  "@videoFinalizing": {
+    "placeholders": { "pct": { "type": "int" } }
+  },
+
+  "dontLeavePageRendering": "Don't leave this page — rendering on your device.",
+  "@dontLeavePageRendering": {},
+
+  "renderFailed": "Render failed",
+  "@renderFailed": {},
+
+  "editTextStatus": "Edit Text Status",
+  "@editTextStatus": {},
+
+  "editingPreviousPost": "You're continuing to edit the previous post.",
+  "@editingPreviousPost": {},
+
+  "continueLabel": "Continue",
+  "@continueLabel": {},
+
+  "musicLabel": "Music",
+  "@musicLabel": {},
+
+  "codeResent": "A new code has been sent.",
+  "@codeResent": {},
+
+  "logoutAction": "Sign out of account",
+  "@logoutAction": {},
+
+  "businessFallback": "Business",
+  "@businessFallback": {},
+
+  "deleteAction": "Delete",
+  "@deleteAction": {},
+
+  "postDetails": "Post Details",
+  "@postDetails": {},
+
+  "channelLabel": "Channel",
+  "@channelLabel": {},
+
+  "scheduleTime": "Schedule Time",
+  "@scheduleTime": {},
+
+  "publishedAt": "Published At",
+  "@publishedAt": {},
+
+  "statusLabel": "Status",
+  "@statusLabel": {},
+
+  "viewers": "Viewers",
+  "@viewers": {},
+
+  "retriesLabel": "Retries",
+  "@retriesLabel": {},
+
+  "createdAtLabel": "Created At",
+  "@createdAtLabel": {},
+
+  "filterAll": "All",
+  "@filterAll": {},
+
+  "filterPending": "Pending",
+  "@filterPending": {},
+
+  "filterSent": "Sent",
+  "@filterSent": {},
+
+  "filterFailed": "Failed",
+  "@filterFailed": {},
+
+  "searchByCaptionHint": "Search by caption...",
+  "@searchByCaptionHint": {},
+
+  "queueLoadFailed": "Could not load the queue",
+  "@queueLoadFailed": {},
+
+  "noPostsYet": "You haven't scheduled any posts yet",
+  "@noPostsYet": {},
+
+  "noPostsForStatus": "No posts with this status",
+  "@noPostsForStatus": {},
+
+  "createFirstPost": "Start by creating your first post",
+  "@createFirstPost": {},
+
+  "changeFilterAbove": "Try changing the filter above",
+  "@changeFilterAbove": {},
+
+  "audioUploadFailed": "Could not upload audio. Please try again.",
+  "@audioUploadFailed": {},
+
+  "addMusic": "Add Music",
+  "@addMusic": {},
+
+  "audioFormats": "Audio only (mp3/m4a/wav)",
+  "@audioFormats": {},
+
+  "selectedMusic": "Selected Music",
+  "@selectedMusic": {},
+
+  "changeMusic": "Change Music",
+  "@changeMusic": {},
+
+  "removeMusic": "Remove Music",
+  "@removeMusic": {},
+
+  "permissionDeniedAudio": "Permission to read audio denied. Enable it in Settings.",
+  "@permissionDeniedAudio": {},
+
+  "selectSong": "Select Song",
+  "@selectSong": {},
+
+  "searchSong": "Search song...",
+  "@searchSong": {},
+
+  "retryButton": "Try Again",
+  "@retryButton": {},
+
+  "noSongsOnDevice": "No songs on device.",
+  "@noSongsOnDevice": {},
+
+  "noSearchResults": "No search results.",
+  "@noSearchResults": {},
+
+  "imageUploadFailed": "Could not upload image. Please try again.",
+  "@imageUploadFailed": {},
+
+  "cropImageTitle": "Crop Image",
+  "@cropImageTitle": {},
+
+  "cropImageFailed": "Could not crop image. Please try again.",
+  "@cropImageFailed": {},
+
+  "noImage": "No Image",
+  "@noImage": {},
+
+  "aspectRatioHint": "1:1 (WhatsApp Status)",
+  "@aspectRatioHint": {}
 }
 

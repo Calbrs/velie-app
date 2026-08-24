@@ -2092,6 +2092,18 @@ abstract class AppLocalizations {
   /// **'Passwords do not match'**
   String get validatorConfirmMismatch;
 
+  /// No description provided for @validatorCaptionEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Please write a caption'**
+  String get validatorCaptionEmpty;
+
+  /// No description provided for @validatorCaptionLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Caption exceeds 2200 characters'**
+  String get validatorCaptionLong;
+
   /// No description provided for @everyNDays.
   ///
   /// In en, this message translates to:
@@ -2125,19 +2137,19 @@ abstract class AppLocalizations {
   /// No description provided for @preparingVideoOnDevice.
   ///
   /// In en, this message translates to:
-  /// **'Preparing video on device…'**
+  /// **'Preparing video on device...'**
   String get preparingVideoOnDevice;
 
   /// No description provided for @videoFinalizing.
   ///
   /// In en, this message translates to:
-  /// **'Finishing video… {pct}%'**
+  /// **'Finishing video... {pct}%'**
   String videoFinalizing(int pct);
 
   /// No description provided for @dontLeavePageRendering.
   ///
   /// In en, this message translates to:
-  /// **"Don't leave this page — rendering on your device."**
+  /// **'Don\'t leave this page — rendering on your device.'**
   String get dontLeavePageRendering;
 
   /// No description provided for @renderFailed.
@@ -2155,7 +2167,7 @@ abstract class AppLocalizations {
   /// No description provided for @editingPreviousPost.
   ///
   /// In en, this message translates to:
-  /// **"You're continuing to edit the previous post."**
+  /// **'You\'re continuing to edit the previous post.'**
   String get editingPreviousPost;
 
   /// No description provided for @continueLabel.
@@ -2281,7 +2293,7 @@ abstract class AppLocalizations {
   /// No description provided for @noPostsYet.
   ///
   /// In en, this message translates to:
-  /// **"You haven't scheduled any posts yet"**
+  /// **'You haven\'t scheduled any posts yet'**
   String get noPostsYet;
 
   /// No description provided for @noPostsForStatus.
@@ -2317,7 +2329,7 @@ abstract class AppLocalizations {
   /// No description provided for @audioFormats.
   ///
   /// In en, this message translates to:
-  /// **'Audio only · mp3/m4a/wav'**
+  /// **'Audio only (mp3/m4a/wav)'**
   String get audioFormats;
 
   /// No description provided for @selectedMusic.
@@ -2403,20 +2415,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'1:1 (WhatsApp Status)'**
   String get aspectRatioHint;
-
-  /// No description provided for @validatorConfirmMismatch.
-
-  /// No description provided for @validatorCaptionEmpty.
-  ///
-  /// In en, this message translates to:
-  /// **'Please write a caption'**
-  String get validatorCaptionEmpty;
-
-  /// No description provided for @validatorCaptionLong.
-  ///
-  /// In en, this message translates to:
-  /// **'Caption exceeds 2200 characters'**
-  String get validatorCaptionLong;
 }
 
 class _AppLocalizationsDelegate
